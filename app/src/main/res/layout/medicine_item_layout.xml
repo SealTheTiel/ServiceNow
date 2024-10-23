@@ -25,7 +25,6 @@
 
             <ImageView
                 android:id="@+id/medicineImage"
-                tools:srcCompat="@tools:sample/avatars"
                 android:layout_width="105dp"
                 android:layout_height="85dp"
                 android:layout_margin="10dp"
