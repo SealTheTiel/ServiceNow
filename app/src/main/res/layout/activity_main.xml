@@ -9,12 +9,15 @@
         android:id="@+id/frame"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="@dimen/default_margins"
+        android:layout_marginTop="@dimen/default_margins"
+        android:layout_marginEnd="@dimen/default_margins"
+        android:paddingBottom="@dimen/default_margins"
         app:layout_constraintBottom_toTopOf="@+id/navbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
 
     </FrameLayout>
 
@@ -22,16 +25,16 @@
         android:id="@+id/navbar"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+
+        android:layout_marginStart="@dimen/default_margins"
+        android:layout_marginEnd="@dimen/default_margins"
+        android:layout_marginBottom="@dimen/default_margins"
         android:background="@drawable/rounded"
         android:elevation="2dp"
-
-        app:itemIconTint="@null"
-        app:itemIconSize="50dp"
         android:paddingLeft="30dp"
         android:paddingRight="30dp"
+        app:itemIconSize="50dp"
+        app:itemIconTint="@null"
         app:itemRippleColor="@color/transparent"
         app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
