@@ -12,4 +12,5 @@
     <color name="text_black">#FF0F0F0F</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="secondary_blue">#FFECF1FF</color>
+    <color name="tertiary_blue">#FF809CFF</color>
 </resources>
