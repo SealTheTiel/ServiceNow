@@ -4,14 +4,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
     android:orientation="vertical"
     tools:context=".ViewDetails">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/detail1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical"/>
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="Detail 1"
+        android:textColor="@color/primary_blue"
+        android:textSize="20sp" />
 
+    <TextView
+        android:id="@+id/detail1_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="TextView"
+        android:textColor="#809CFF" />
+
+    <TextView
+        android:id="@+id/detail2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="Detail 2"
+        android:textColor="@color/primary_blue"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/detail2_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="TextView"
+        android:textColor="#809CFF" />
+
+    <Button
+        android:id="@+id/addToCartBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:backgroundTint="@color/primary_blue"
+        android:tint="@color/primary_blue"
+        android:text="Add to Cart" />
 </LinearLayout>
