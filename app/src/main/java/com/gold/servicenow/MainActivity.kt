@@ -21,6 +21,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 //        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+
         navbar = findViewById(R.id.navbar)
         navbar.itemIconTintList = null
     }
