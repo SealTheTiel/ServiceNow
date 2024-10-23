@@ -2,15 +2,15 @@ package com.gold.servicenow
 
 class DataGenerator {
     companion object {
-        private val foodname1: FoodName = FoodName(R.drawable.food1, "Chicken Adobo", 50.0f, "Angrydobo", "Soy Sauce, Vinegar, Garlic, Bay Leaves, Pepper", "Restaurant","Ingredients")
-        private val foodname2: FoodName = FoodName(R.drawable.food2, "Pancit Malabon", 60.0f, "Pancit Malabon Express", "Shrimp, Pork, Vegetables, Rice Noodles", "Restaurant","Ingredients")
-        private val foodname3: FoodName = FoodName(R.drawable.food3, "Pancit Bihon", 40.0f, "Little Quaipo", "Pork, Vegetables, Rice Noodles", "Restaurant","Ingredients")
-        private val foodname4: FoodName = FoodName(R.drawable.food4, "Lechon Kawali", 70.0f, "Mang Inasal", "Pork Belly, Salt, Pepper, Oil", "Restaurant","Ingredients")
-        private val foodname5: FoodName = FoodName(R.drawable.food5, "Sinigang na Baboy", 80.0f, "Max's Restaurant", "Pork, Tamarind, Vegetables", "Restaurant","Ingredients")
-        private val foodname6: FoodName = FoodName(R.drawable.food6, "Kare-Kare", 90.0f, "Aristocrat", "Oxtail, Tripe, Vegetables, Peanut Sauce", "Restaurant","Ingredients")
-        private val foodname7: FoodName = FoodName(R.drawable.food7, "Bicol Express", 60.0f, "Mesa", "Pork, Coconut Milk, Chili Peppers", "Restaurant","Ingredients")
+        private val foodname1: Food = Food(R.drawable.food1, "Chicken Adobo", 50.0f, "Angrydobo", "Soy Sauce, Vinegar, Garlic, Bay Leaves, Pepper", "Restaurant","Ingredients")
+        private val foodname2: Food = Food(R.drawable.food2, "Pancit Malabon", 60.0f, "Pancit Malabon Express", "Shrimp, Pork, Vegetables, Rice Noodles", "Restaurant","Ingredients")
+        private val foodname3: Food = Food(R.drawable.food3, "Pancit Bihon", 40.0f, "Little Quaipo", "Pork, Vegetables, Rice Noodles", "Restaurant","Ingredients")
+        private val foodname4: Food = Food(R.drawable.food4, "Lechon Kawali", 70.0f, "Mang Inasal", "Pork Belly, Salt, Pepper, Oil", "Restaurant","Ingredients")
+        private val foodname5: Food = Food(R.drawable.food5, "Sinigang na Baboy", 80.0f, "Max's Restaurant", "Pork, Tamarind, Vegetables", "Restaurant","Ingredients")
+        private val foodname6: Food = Food(R.drawable.food6, "Kare-Kare", 90.0f, "Aristocrat", "Oxtail, Tripe, Vegetables, Peanut Sauce", "Restaurant","Ingredients")
+        private val foodname7: Food = Food(R.drawable.food7, "Bicol Express", 60.0f, "Mesa", "Pork, Coconut Milk, Chili Peppers", "Restaurant","Ingredients")
 
-        fun getFoodName(): List<FoodName> {
+        fun getFoodName(): ArrayList<Food> {
             return arrayListOf(foodname1, foodname2, foodname3, foodname4, foodname5, foodname6, foodname7)
         }
 
@@ -21,7 +21,7 @@ class DataGenerator {
         private val medicine5: Medicine = Medicine(R.drawable.medicine5, "Simvastatin", 50.0f, "High Cholesterol", "Dosage", "1 tablet daily", "Side Effects","Muscle Pain, Liver Damage")
         private val medicine6: Medicine = Medicine(R.drawable.medicine6, "Metformin", 60.0f, "Type 2 Diabetes", "Dosage", "1 tablet daily", "Side Effects","Nausea, Diarrhea")
 
-        fun getMedicine(): List<Medicine> {
+        fun getMedicine(): ArrayList<Medicine> {
             return arrayListOf(medicine1, medicine2, medicine3, medicine4, medicine5, medicine6)
         }
 
@@ -32,7 +32,7 @@ class DataGenerator {
         private val leisure5: Leisure = Leisure(R.drawable.leisure5, "Yoga", 300.0f, "Meditation", "Mandaluyong", "09123456789", "Location", "Contact")
         private val leisure6: Leisure = Leisure(R.drawable.leisure6, "Karaoke", 50.0f, "Singing", "Manila", "09123456789", "Location", "Contact")
 
-        fun getLeisure(): List<Leisure> {
+        fun getLeisure(): ArrayList<Leisure> {
             return arrayListOf(leisure1, leisure2, leisure3, leisure4, leisure5, leisure6)
         }
 

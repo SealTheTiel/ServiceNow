@@ -1,6 +1,6 @@
 package com.gold.servicenow
 
-class FoodName (imageId: Int, name: String, price: Float, restaurant: String, description: String, detail1:String, detail2: String) {
+class Food (imageId: Int, name: String, price: Float, restaurant: String, description: String, detail1:String, detail2: String) {
     var imageId = imageId
         private set
 

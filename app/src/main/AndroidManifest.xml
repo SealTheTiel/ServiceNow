@@ -13,6 +13,9 @@
         android:theme="@style/Theme.ServiceNow"
         tools:targetApi="31">
         <activity
+            android:name=".PaymentMethod"
+            android:exported="false" />
+        <activity
             android:name=".ViewDetails"
             android:exported="false" />
         <activity
