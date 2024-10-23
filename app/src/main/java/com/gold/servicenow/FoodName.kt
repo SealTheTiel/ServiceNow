@@ -1,6 +1,6 @@
 package com.gold.servicenow
 
-class FoodName (imageId: Int, name: String, price: Float, restaurant: String, description: String) {
+class FoodName (imageId: Int, name: String, price: Float, restaurant: String, description: String, detail1:String, detail2: String) {
     var imageId = imageId
         private set
 
@@ -14,6 +14,12 @@ class FoodName (imageId: Int, name: String, price: Float, restaurant: String, de
         private set
 
     var description = description
+        private set
+
+    var detail1 = detail1
+        private set
+
+    var detail2 = detail2
         private set
 
 }
