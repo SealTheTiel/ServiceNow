@@ -1,29 +1,42 @@
 package com.gold.servicenow
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.gold.servicenow.ui.theme.ServiceNowTheme
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import com.gold.servicenow.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainActivity : ComponentActivity() {
+
+class MainActivity : AppCompatActivity() {
     private lateinit var navbar: BottomNavigationView
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+
+        supportActionBar?.hide()
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         navbar = findViewById(R.id.navbar)
         navbar.itemIconTintList = null
+        replaceFragment(HomeFragment())
+        binding.navbar.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.home -> replaceFragment(HomeFragment())
+                R.id.medicine -> replaceFragment(MedicineFragment())
+                R.id.food -> replaceFragment(FoodFragment())
+                R.id.entertainment -> replaceFragment(EntertainmentFragment())
+                else -> {}
+            }
+            true
+        }
     }
 
+    private fun replaceFragment(fragment: Fragment) {
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.frame, fragment)
+        fragmentTransaction.commit()
+    }
 }

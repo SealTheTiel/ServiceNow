@@ -22,15 +22,6 @@
             android:name=".AddtoCart"
             android:exported="false" />
         <activity
-            android:name=".EntertainmentActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MedicineActivity"
-            android:exported="false" />
-        <activity
-            android:name=".FoodActivity"
-            android:exported="false" />
-        <activity
             android:name=".SplashScreenActivity"
             android:exported="true">
             <intent-filter>
