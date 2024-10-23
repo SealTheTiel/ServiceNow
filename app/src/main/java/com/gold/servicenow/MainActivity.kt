@@ -12,36 +12,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.gold.servicenow.ui.theme.ServiceNowTheme
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : ComponentActivity() {
+    private lateinit var navbar: BottomNavigationView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            ServiceNowTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
-        }
+//        enableEdgeToEdge()
+        setContentView(R.layout.activity_main)
+        navbar = findViewById(R.id.navbar)
+        navbar.itemIconTintList = null
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ServiceNowTheme {
-        Greeting("Android")
-    }
 }
