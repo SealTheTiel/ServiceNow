@@ -40,7 +40,6 @@
         android:layout_width="match_parent"
         android:layout_gravity="center"
         android:textSize="16sp"
-        android:backgroundTint="@color/primary_blue"
         android:gravity="center"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
@@ -48,7 +47,7 @@
         android:text="Pay"
         android:background="@drawable/rounded"
         android:textAllCaps="false"
-        android:tint="@color/primary_blue"
+        android:tint="#2260FF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
