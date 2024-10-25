@@ -16,7 +16,7 @@
         app:layout_constraintGuide_percent="0.12" />
 
     <ImageButton
-        android:id="@+id/backButtonWhite"
+        android:id="@+id/successBackButton"
         android:layout_width="wrap_content"
         android:layout_height="34dp"
         android:background="@android:color/transparent"
