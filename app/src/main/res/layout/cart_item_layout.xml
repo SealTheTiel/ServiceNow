@@ -42,7 +42,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Food Name"
-                    android:textColor="#2260FF"
+                    android:textColor="@color/primary_blue"
                     android:textSize="20sp" />
 
                 <TextView

@@ -14,7 +14,7 @@
         android:fontFamily="sans-serif"
         android:text="Payment Method"
         android:textAlignment="center"
-        android:textColor="#2260FF"
+        android:textColor="@color/primary_blue"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
@@ -47,7 +47,6 @@
         android:text="Pay"
         android:background="@drawable/rounded"
         android:textAllCaps="false"
-        android:tint="#2260FF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

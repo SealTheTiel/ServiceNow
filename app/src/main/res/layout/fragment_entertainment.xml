@@ -16,7 +16,7 @@
         android:fontFamily="sans-serif"
         android:text="Leisure"
         android:textAlignment="center"
-        android:textColor="#2260FF"
+        android:textColor="@color/primary_blue"
         android:textSize="34sp"
         android:textStyle="bold" />
 
