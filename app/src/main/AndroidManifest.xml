@@ -13,6 +13,9 @@
         android:theme="@style/Theme.ServiceNow"
         tools:targetApi="31">
         <activity
+            android:name=".Location"
+            android:exported="false" />
+        <activity
             android:name=".Register"
             android:exported="false" />
         <activity
