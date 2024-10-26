@@ -90,6 +90,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
             android:hint="Cash"
+            android:textColorHint="@color/primary_blue"
             android:textSize="14sp"
             android:ems="16"
             android:inputType="numberDecimal"/>
@@ -130,6 +131,7 @@
             android:layout_marginStart="40dp"
             android:hint="Add New Card"
             android:textSize="14sp"
+            android:textColorHint="@color/primary_blue"
             android:ems="16"
             android:inputType="number"/>
 
