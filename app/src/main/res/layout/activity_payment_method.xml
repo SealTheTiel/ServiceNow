@@ -119,13 +119,13 @@
         app:layout_constraintTop_toBottomOf="@+id/credit" >
 
         <ImageView
-            android:id="@+id/cashIcon"
+            android:id="@+id/cardIcon"
             android:layout_width="40dp"
             android:layout_height="44dp"
             app:srcCompat="@drawable/credit_card_icon" />
 
         <EditText
-            android:id="@+id/cashInput"
+            android:id="@+id/cardInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"

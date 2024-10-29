@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:background="@drawable/shadow"
-        app:cardBackgroundColor="@color/white"
+        app:cardBackgroundColor="@color/pure_white"
         app:cardCornerRadius="20dp"
         app:cardPreventCornerOverlap="true">
 
