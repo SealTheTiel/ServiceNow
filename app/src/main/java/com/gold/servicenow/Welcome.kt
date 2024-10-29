@@ -22,13 +22,11 @@ class Welcome : ComponentActivity() {
         registerButton.setOnClickListener {
             val intent = Intent(this, Register::class.java)
             startActivity(intent)
-            finish()
         }
 
         loginButton.setOnClickListener {
             val intent = Intent(this, Login::class.java)
             startActivity(intent)
-            finish()
         }
 
 //        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
