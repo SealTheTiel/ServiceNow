@@ -5,7 +5,9 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Welcome">
+    tools:context=".Welcome"
+    android:clipToPadding="false"
+    android:background="@color/white">
 
     <ImageView
         android:id="@+id/logoIcon"
@@ -16,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.3"
-        app:srcCompat="@drawable/logo_blue" />
+        android:src="@drawable/logo_blue" />
 
     <Button
         android:id="@+id/welcomeLoginButton"
@@ -26,33 +28,46 @@
         android:layout_marginLeft="64dp"
         android:layout_marginRight="64dp"
         android:background="@drawable/rounded"
+        android:elevation="@dimen/half_elevation"
         android:gravity="center"
+        android:padding="@dimen/half_margins"
+        android:stateListAnimator="@null"
         android:text="Log In"
+        android:textStyle="bold"
         android:textAllCaps="false"
-        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:backgroundTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoIcon"/>
+        app:layout_constraintTop_toBottomOf="@+id/logoIcon"
+        app:layout_constraintVertical_bias="0.6" />
 
     <Button
+        app:backgroundTint="@null"
         android:id="@+id/welcomeRegisterButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginLeft="64dp"
         android:layout_marginRight="64dp"
-        android:background="@drawable/rounded_gray"
+        android:background="@drawable/rounded"
+        android:backgroundTint="@color/white"
         android:gravity="center"
         android:text="Register"
         android:textAllCaps="false"
+        android:textStyle="bold"
         android:textColor="@color/primary_blue"
-        android:textSize="16sp"
+        android:textSize="24sp"
+        android:stateListAnimator="@null"
+        android:elevation="@dimen/half_elevation"
+        android:padding="@dimen/half_margins"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcomeLoginButton"
-        app:layout_constraintVertical_bias="0.08" />
+        app:layout_constraintVertical_bias="0.15" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
