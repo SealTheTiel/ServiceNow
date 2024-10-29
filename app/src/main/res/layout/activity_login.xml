@@ -57,11 +57,11 @@
 
     <TextView
         android:id="@+id/loginEmail"
+        android:text="Email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/double_margins"
         android:layout_marginTop="24dp"
-        android:text="Email"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,6 +69,8 @@
 
     <EditText
         android:id="@+id/loginEmailInput"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/double_margins"
@@ -77,10 +79,8 @@
         android:layout_marginBottom="@dimen/half_margins"
         android:background="@drawable/rounded_gray"
         android:ems="16"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:padding="@dimen/default_margins"
         android:paddingHorizontal="12dp"
+        android:padding="@dimen/default_margins"
         android:textColor="@color/primary_blue"
         android:textColorHint="@color/tertiary_blue"
 
@@ -90,11 +90,11 @@
 
     <TextView
         android:id="@+id/loginPassword"
+        android:text="Password"
         android:layout_width="109dp"
         android:layout_height="34dp"
         android:layout_marginStart="@dimen/double_margins"
         android:layout_marginTop="24dp"
-        android:text="Password"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -102,6 +102,8 @@
 
     <EditText
         android:id="@+id/loginPasswordInput"
+        android:hint="Password"
+        android:inputType="textPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/double_margins"
@@ -110,11 +112,8 @@
         android:layout_marginBottom="@dimen/half_margins"
         android:background="@drawable/rounded_gray"
         android:ems="16"
-
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:padding="@dimen/default_margins"
         android:paddingHorizontal="12dp"
+        android:padding="@dimen/default_margins"
         android:textColor="@color/primary_blue"
         android:textColorHint="@color/tertiary_blue"
 
