@@ -44,11 +44,11 @@
 
     <TextView
         android:id="@+id/loginWelcome"
+        android:text="Welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/double_margins"
         android:layout_marginTop="@dimen/double_margins"
-        android:text="Welcome"
         android:textColor="@color/primary_blue"
         android:textSize="32sp"
         android:textStyle="bold"
@@ -141,9 +141,12 @@
 
     <Button
         android:id="@+id/loginLoginButton"
-        android:layout_width="0dp"
+        android:text="Log In"
+
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="@dimen/double_margins"
         android:layout_marginStart="64dp"
         android:layout_marginEnd="64dp"
         android:background="@drawable/rounded"
@@ -151,14 +154,12 @@
         android:elevation="@dimen/default_elevation"
         android:gravity="center"
         android:stateListAnimator="@null"
-        android:text="Log In"
         android:textAllCaps="false"
-
         android:textColor="@color/white"
         android:textSize="20sp"
-
         android:textStyle="bold"
         app:backgroundTint="@null"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -168,25 +169,25 @@
 
     <Button
         android:id="@+id/loginGoogleButton"
+        android:text="Login with Google"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginStart="64dp"
         android:layout_marginTop="@dimen/double_margins"
+        android:layout_marginStart="64dp"
         android:layout_marginEnd="64dp"
         android:background="@drawable/rounded"
         android:backgroundTint="@color/white"
         android:elevation="@dimen/default_elevation"
         android:gravity="center"
         android:stateListAnimator="@null"
-        android:text="Login with Google"
-
         android:textAllCaps="false"
         android:textColor="@color/primary_blue"
         android:textSize="20sp"
-
         android:textStyle="bold"
         app:backgroundTint="@null"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
 
@@ -194,13 +195,13 @@
 
 
     <TextView
-        android:id="@+id/loginNoAccount"
+        android:id="@+id/registerNoAccount"
+        android:text="Dont have an account?"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="@dimen/half_margins"
         android:layout_weight="1"
-        android:text="Dont have an account?"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/loginSignup"
@@ -211,23 +212,23 @@
 
     <TextView
         android:id="@+id/loginSignup"
+        android:text="Sign Up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/half_margins"
+        android:layout_marginStart="@dimen/half_margins"
         android:layout_weight="1"
         android:background="@android:color/transparent"
         android:clickable="true"
         android:focusable="true"
-        android:text="Sign Up"
         android:textAllCaps="false"
         android:textColor="@color/primary_blue"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/loginNoAccount"
+        app:layout_constraintBottom_toBottomOf="@+id/registerNoAccount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/loginNoAccount"
-        app:layout_constraintTop_toTopOf="@+id/loginNoAccount"
+        app:layout_constraintStart_toEndOf="@+id/registerNoAccount"
+        app:layout_constraintTop_toTopOf="@+id/registerNoAccount"
         app:layout_constraintVertical_bias="0.0" />
 
 
