@@ -228,7 +228,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/loginNoAccount"
-        app:layout_constraintTop_toTopOf="@+id/loginNoAccount" />
+        app:layout_constraintTop_toTopOf="@+id/loginNoAccount"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
