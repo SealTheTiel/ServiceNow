@@ -1,12 +1,21 @@
 package com.gold.servicenow
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
+import android.widget.ImageButton
+import android.widget.TextView
+import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import kotlin.math.log
 
-class Register : AppCompatActivity() {
+class Register : ComponentActivity() {
+    private lateinit var registerButton: Button
+    private lateinit var googleButton: Button
+    private lateinit var loginButton: TextView
+    private lateinit var backButton: ImageButton
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -15,6 +24,29 @@ class Register : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        registerButton = findViewById(R.id.registerSignupButton)
+        googleButton = findViewById(R.id.registerGoogleButton)
+        loginButton = findViewById(R.id.registerSignIn)
+        backButton = findViewById(R.id.registerBackButton)
+
+        registerButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+        googleButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+        loginButton.setOnClickListener {
+            val intent = Intent(this, Login::class.java)
+            startActivity(intent)
+        }
+        backButton.setOnClickListener {
+            finish()
         }
     }
 }
