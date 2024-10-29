@@ -5,12 +5,14 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Register">
+    tools:context=".Register"
+    android:background="@color/white">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.12" />
 
@@ -33,118 +35,135 @@
         android:id="@+id/registerBackButton"
         android:layout_width="wrap_content"
         android:layout_height="34dp"
+        android:layout_marginStart="@dimen/double_margins"
         android:background="@android:color/transparent"
+        android:src="@drawable/back_icon"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
-        app:layout_constraintEnd_toStartOf="@+id/registerHeader"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/back_icon" />
+        app:tint="@null" />
 
     <TextView
         android:id="@+id/registerName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="@dimen/double_margins"
         android:layout_marginTop="24dp"
         android:text="Full Name"
-        android:textSize="20sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/guideline" />
 
     <EditText
         android:id="@+id/registerNameInput"
-        android:layout_width="wrap_content"
-        android:layout_height="32sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/double_margins"
+        android:layout_marginTop="@dimen/half_margins"
+        android:layout_marginEnd="@dimen/double_margins"
+        android:layout_marginBottom="@dimen/half_margins"
+        android:background="@drawable/rounded_gray"
         android:ems="16"
         android:hint="Full Name"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:textColorHint="@color/primary_blue"
-        android:background="@drawable/rounded_gray"
-        android:paddingHorizontal="12dp"
         android:inputType="textPersonName"
+        android:padding="@dimen/default_margins"
+        android:paddingHorizontal="12dp"
+        android:textColor="@color/primary_blue"
+        android:textColorHint="@color/tertiary_blue"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerName"/>
+        app:layout_constraintTop_toBottomOf="@+id/registerName" />
 
     <TextView
         android:id="@+id/registerEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="@dimen/double_margins"
+        android:layout_marginTop="24dp"
         android:text="Email"
-        android:textSize="20sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerNameInput" />
 
     <EditText
         android:id="@+id/registerEmailInput"
-        android:layout_width="wrap_content"
-        android:layout_height="32sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/double_margins"
+        android:layout_marginTop="@dimen/half_margins"
+        android:layout_marginEnd="@dimen/double_margins"
+        android:layout_marginBottom="@dimen/half_margins"
+        android:background="@drawable/rounded_gray"
         android:ems="16"
         android:hint="Email"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:textColorHint="@color/primary_blue"
-        android:background="@drawable/rounded_gray"
-        android:paddingHorizontal="12dp"
         android:inputType="textEmailAddress"
+        android:padding="@dimen/default_margins"
+        android:paddingHorizontal="12dp"
+        android:textColor="@color/primary_blue"
+        android:textColorHint="@color/tertiary_blue"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerEmail"/>
+        app:layout_constraintTop_toBottomOf="@+id/registerEmail" />
 
     <TextView
         android:id="@+id/registerNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="@dimen/double_margins"
+        android:layout_marginTop="24dp"
         android:text="Mobile Number"
-        android:textSize="20sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerEmailInput" />
 
     <EditText
         android:id="@+id/registerNumberInput"
-        android:layout_width="wrap_content"
-        android:layout_height="32sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/double_margins"
+        android:layout_marginTop="@dimen/half_margins"
+        android:layout_marginEnd="@dimen/double_margins"
+        android:layout_marginBottom="@dimen/half_margins"
+        android:background="@drawable/rounded_gray"
         android:ems="16"
         android:hint="Mobile Number"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:textColorHint="@color/primary_blue"
-        android:background="@drawable/rounded_gray"
-        android:paddingHorizontal="12dp"
         android:inputType="number"
+        android:padding="@dimen/default_margins"
+        android:paddingHorizontal="12dp"
+        android:textColor="@color/primary_blue"
+        android:textColorHint="@color/tertiary_blue"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerNumber"/>
+        app:layout_constraintTop_toBottomOf="@+id/registerNumber" />
 
     <TextView
         android:id="@+id/registerPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="@dimen/double_margins"
+        android:layout_marginTop="24dp"
         android:text="Password"
-        android:textSize="20sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerNumberInput" />
 
     <EditText
         android:id="@+id/registerPasswordInput"
-        android:layout_width="wrap_content"
-        android:layout_height="32sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/double_margins"
+        android:layout_marginTop="@dimen/half_margins"
+        android:layout_marginEnd="@dimen/double_margins"
+        android:layout_marginBottom="@dimen/half_margins"
+        android:background="@drawable/rounded_gray"
         android:ems="16"
         android:hint="Password"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:textColorHint="@color/primary_blue"
-        android:background="@drawable/rounded_gray"
-        android:paddingHorizontal="12dp"
         android:inputType="textPassword"
+        android:padding="@dimen/default_margins"
+        android:paddingHorizontal="12dp"
+        android:textColor="@color/primary_blue"
+        android:textColorHint="@color/tertiary_blue"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerPassword" />
 
@@ -152,73 +171,81 @@
         android:id="@+id/registerAgree"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="By continuing, you agree to the"
         android:layout_marginTop="32dp"
+        android:text="By continuing, you agree to the"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerPasswordInput" />
 
-    <LinearLayout
-        android:id="@+id/registerTnC"
+    <TextView
+        android:id="@+id/registerTerms"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_weight="1"
+        android:background="@android:color/transparent"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="Terms of Use"
+        android:textAllCaps="false"
+        android:textColor="@color/primary_blue"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/registerAnd"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerAgree">
+        app:layout_constraintTop_toTopOf="@+id/registerAnd" />
 
-        <TextView
-            android:id="@+id/registerTerms"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:clickable="true"
-            android:focusable="true"
-            android:text="Terms of Use"
-            android:textAllCaps="false"
-            android:textColor="@color/primary_blue"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+    <TextView
+        android:id="@+id/registerAnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:text=" and "
+        app:layout_constraintEnd_toEndOf="@+id/registerAgree"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="@+id/registerAgree"
+        app:layout_constraintTop_toBottomOf="@+id/registerAgree" />
 
-        <TextView
-            android:id="@+id/registerAnd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text=" and " />
-
-        <TextView
-            android:id="@+id/registerPrivacy"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:clickable="true"
-            android:focusable="true"
-            android:text="Privacy Policy"
-            android:textAllCaps="false"
-            android:textColor="@color/primary_blue"
-            android:textSize="14sp"
-            android:textStyle="bold" />
-    </LinearLayout>
+    <TextView
+        android:id="@+id/registerPrivacy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@android:color/transparent"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="Privacy Policy"
+        android:textAllCaps="false"
+        android:textColor="@color/primary_blue"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/registerAnd"
+        app:layout_constraintTop_toTopOf="@+id/registerAnd" />
 
     <Button
         android:id="@+id/registerSignupButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginLeft="64dp"
-        android:layout_marginRight="64dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginEnd="64dp"
         android:background="@drawable/rounded"
+        android:backgroundTint="@color/primary_blue"
+        android:elevation="@dimen/default_elevation"
         android:gravity="center"
+        android:stateListAnimator="@null"
         android:text="Sign Up"
         android:textAllCaps="false"
-        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:backgroundTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/registerTnC"
+        app:layout_constraintTop_toBottomOf="@+id/registerAnd"
         app:layout_constraintVertical_bias="0.2" />
 
     <Button
@@ -226,53 +253,58 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginLeft="64dp"
-        android:layout_marginRight="64dp"
-        android:background="@drawable/rounded_gray"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="@dimen/double_margins"
+        android:layout_marginEnd="64dp"
+        android:background="@drawable/rounded"
+        android:backgroundTint="@color/white"
+        android:elevation="@dimen/default_elevation"
         android:gravity="center"
+        android:stateListAnimator="@null"
         android:text="Sign Up with Google"
         android:textAllCaps="false"
         android:textColor="@color/primary_blue"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:backgroundTint="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerSignupButton"
-        app:layout_constraintVertical_bias="0.08" />
+        app:layout_constraintTop_toBottomOf="@+id/registerSignupButton" />
 
-    <LinearLayout
+
+    <TextView
+        android:id="@+id/registerNoAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintVertical_bias="0.16"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="@dimen/half_margins"
+        android:layout_weight="1"
+        android:text="Already have an account?"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/registerSignIn"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerGoogleButton">
+        app:layout_constraintTop_toBottomOf="@+id/registerGoogleButton" />
 
-        <TextView
-            android:id="@+id/loginNoAccount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:text="Already have an account?" />
-
-        <TextView
-            android:id="@+id/loginSignup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textAllCaps="false"
-            android:background="@android:color/transparent"
-            android:textColor="@color/primary_blue"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:clickable="true"
-            android:focusable="true"
-            android:text="Sign Up" />
-    </LinearLayout>
+    <TextView
+        android:id="@+id/registerSignIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/half_margins"
+        android:layout_weight="1"
+        android:background="@android:color/transparent"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="Sign In"
+        android:textAllCaps="false"
+        android:textColor="@color/primary_blue"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/registerNoAccount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/registerNoAccount"
+        app:layout_constraintTop_toTopOf="@+id/registerNoAccount" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
