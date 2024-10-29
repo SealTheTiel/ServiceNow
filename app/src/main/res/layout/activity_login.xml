@@ -35,18 +35,19 @@
         android:layout_width="wrap_content"
         android:layout_height="34dp"
         android:background="@android:color/transparent"
+        android:src="@drawable/back_icon"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
-        app:layout_constraintEnd_toStartOf="@+id/loginHeader"
+        android:layout_marginStart="@dimen/double_margins"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/back_icon" />
+        app:tint="@null" />
 
     <TextView
         android:id="@+id/loginWelcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/double_margins"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="@dimen/double_margins"
         android:text="Welcome"
         android:textColor="@color/primary_blue"
         android:textSize="32sp"
@@ -66,34 +67,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginWelcome" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/loginEmailCard"
+    <EditText
+        android:id="@+id/loginEmailInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="@dimen/default_margins"
         android:layout_marginStart="@dimen/double_margins"
-        android:layout_marginTop="@dimen/half_margins"
         android:layout_marginEnd="@dimen/double_margins"
-        app:cardBackgroundColor="@color/light_gray"
-        app:cardCornerRadius="@dimen/default_corner_radius"
-        app:cardElevation="0dp"
+        android:layout_marginTop="@dimen/half_margins"
+        android:layout_marginBottom="@dimen/half_margins"
+        android:background="@drawable/rounded_gray"
+        android:ems="16"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:paddingHorizontal="12dp"
+        android:textColorHint="@color/tertiary_blue"
+        android:textColor="@color/primary_blue"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/loginEmail">
-
-
-        <EditText
-            android:id="@+id/loginEmailInput"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/default_margins"
-            android:background="@drawable/rounded_gray"
-            android:ems="16"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:paddingHorizontal="12dp"
-            android:textColorHint="@color/primary_blue" />
-    </androidx.cardview.widget.CardView>
-
+        app:layout_constraintTop_toBottomOf="@id/loginEmail"/>
     <TextView
         android:id="@+id/loginPassword"
         android:layout_width="109dp"
@@ -104,35 +97,29 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/loginEmailCard" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/loginPasswordCard"
+        app:layout_constraintTop_toBottomOf="@id/loginEmailInput" />
+    <EditText
+        android:id="@+id/loginPasswordInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="@dimen/default_margins"
         android:layout_marginStart="@dimen/double_margins"
-        android:layout_marginTop="@dimen/half_margins"
         android:layout_marginEnd="@dimen/double_margins"
-        app:cardBackgroundColor="@color/light_gray"
-        app:cardCornerRadius="@dimen/default_corner_radius"
-        app:cardElevation="0dp"
+        android:layout_marginTop="@dimen/half_margins"
+        android:layout_marginBottom="@dimen/half_margins"
+        android:background="@drawable/rounded_gray"
+
+        android:ems="16"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:paddingHorizontal="12dp"
+        android:textColorHint="@color/tertiary_blue"
+        android:textColor="@color/primary_blue"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/loginPassword">
+        app:layout_constraintTop_toBottomOf="@id/loginPassword"/>
 
-        <EditText
-            android:id="@+id/loginPasswordInput"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/default_margins"
-            android:background="@drawable/rounded_gray"
-
-            android:ems="16"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:paddingHorizontal="12dp"
-            android:textColorHint="@color/primary_blue" />
-    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/loginForgetPassword"
@@ -147,71 +134,77 @@
         android:textSize="14sp"
         android:textStyle="bold"
         android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="@id/loginPasswordCard"
-        app:layout_constraintTop_toBottomOf="@id/loginPasswordCard" />
+        app:layout_constraintEnd_toEndOf="@id/loginPasswordInput"
+        app:layout_constraintTop_toBottomOf="@id/loginPasswordInput" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/loginLoginCard"
-        android:layout_width="match_parent"
+
+    <Button
+        android:id="@+id/loginLoginButton"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/primary_blue"
-        app:cardCornerRadius="@dimen/default_corner_radius"
+        android:layout_gravity="center"
+        android:background="@drawable/rounded"
+        android:backgroundTint="@color/primary_blue"
+        android:gravity="center"
+        android:text="Log In"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        app:backgroundTint="@null"
+
         android:layout_marginStart="64dp"
         android:layout_marginEnd="64dp"
-        app:cardElevation="@dimen/half_elevation"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/loginPasswordCard"
-        app:layout_constraintVertical_bias="0.40">
+        app:layout_constraintTop_toBottomOf="@id/loginPasswordInput"
+        app:layout_constraintVertical_bias="0.40"
 
-        <Button
-            android:id="@+id/loginLoginButton"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:background="@color/transparent"
-            android:gravity="center"
-            android:text="Log In"
-            android:textAllCaps="false"
-            android:textSize="16sp"/>
-    </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-        android:id="@+id/loginRegisterCard"
+        android:stateListAnimator="@null"
+        android:elevation="@dimen/default_elevation"/>
+
+    <Button
+        android:id="@+id/loginGoogleButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="@dimen/default_corner_radius"
+        android:layout_gravity="center"
+        android:background="@drawable/rounded"
+        android:backgroundTint="@color/white"
+        android:gravity="center"
+        android:textColor="@color/primary_blue"
+        android:text="Login with Google"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        app:backgroundTint="@null"
+
         android:layout_marginStart="64dp"
         android:layout_marginEnd="64dp"
-        app:cardElevation="@dimen/half_elevation"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="@dimen/double_margins"
+
+        app:layout_constraintVertical_bias="0.10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/loginLoginCard"
-        app:layout_constraintVertical_bias="0.10">
-        <Button
-            android:id="@+id/loginGoogleButton"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:background="@color/transparent"
-            android:gravity="center"
-            android:textColor="@color/primary_blue"
-            android:text="Login with Google"
-            android:textAllCaps="false"
-            android:textSize="16sp"/>
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintTop_toBottomOf="@id/loginLoginButton"
+
+        android:stateListAnimator="@null"
+        android:elevation="@dimen/default_elevation"/>
+
+
+
+
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginRegisterCard"
-        app:layout_constraintVertical_bias="0.16">
+        app:layout_constraintTop_toBottomOf="@+id/loginGoogleButton"
+        app:layout_constraintVertical_bias="0.16"
+        android:layout_marginTop="@dimen/double_margins">
 
         <TextView
             android:id="@+id/loginNoAccount"
