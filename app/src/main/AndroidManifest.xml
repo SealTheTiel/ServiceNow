@@ -34,7 +34,7 @@
             android:name=".ViewDetails"
             android:exported="false" />
         <activity
-            android:name=".AddtoCart"
+            android:name=".CartActivity"
             android:exported="false" />
         <activity
             android:name=".SplashScreenActivity"
