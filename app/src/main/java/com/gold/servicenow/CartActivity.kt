@@ -21,7 +21,7 @@ class CartActivity : ComponentActivity(), CartChangeListener {
         this.total = findViewById(R.id.cartTotal)
 
         this.total.text = "Total: PHP 0.00"
-        CartList.setListener(this)
+        CartList.addListener(this)
         val adapter = CartAdapter(this.cartList)
         this.recyclerView.adapter = adapter
         this.recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)

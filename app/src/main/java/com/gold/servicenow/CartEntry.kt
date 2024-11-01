@@ -19,21 +19,34 @@ object CartList {
     val cartList: ArrayList<CartEntry> = ArrayList()
     private var listener: CartChangeListener? = null
 
-    fun setListener(cartChangeListener: CartChangeListener) {
+    fun addListener(cartChangeListener: CartChangeListener) {
         listener = cartChangeListener
         notifyListener()
     }
+
+    fun getCartEntry(name: String): CartEntry? {
+        for (entry in this.cartList) {
+            if (entry.name == name) {
+                return entry
+            }
+        }
+        return null
+    }
+
     fun addCartEntry(cartEntry: CartEntry) {
         for (entry in this.cartList) {
             if (entry.name == cartEntry.name) {
                 entry.quantity += cartEntry.quantity
+                notifyListener()
                 return
             }
         }
+        notifyListener()
         this.cartList.add(cartEntry)
     }
 
     fun removeCartEntry(cartEntry: CartEntry) {
+        notifyListener()
         this.cartList.remove(cartEntry)
     }
 
@@ -49,7 +62,7 @@ object CartList {
         return total
     }
 
-    private fun notifyListener() {
+    fun notifyListener() {
         listener?.onCartUpdated(getCartTotal())
     }
 
