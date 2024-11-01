@@ -34,7 +34,7 @@
             android:layout_marginRight="5dp"
             android:background="#00FFFFFF"
             android:soundEffectsEnabled="true"
-            app:srcCompat="@drawable/cart" />
+            app:srcCompat="@drawable/ic_cart" />
 
     </LinearLayout>
 
