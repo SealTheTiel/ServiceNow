@@ -43,5 +43,11 @@ class EntertainmentFragment : Fragment() {
         val adapter = EntertainmentAdapter(leisureList)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+
+        cart = view.findViewById(R.id.cartLeisure)
+        cart.setOnClickListener {
+            val intent = Intent(context, CartActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

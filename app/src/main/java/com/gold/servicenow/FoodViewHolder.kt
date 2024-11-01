@@ -69,7 +69,7 @@ class FoodViewHolder(itemView: View): ViewHolder(itemView) {
             }
         }
         dialogButton.setOnClickListener {
-            val cartEntry = CartEntry(food.name, food.price, dialogQuantity.text.toString().toInt(), food.imageId,)
+            val cartEntry = CartEntry(food.name, food.price, dialogQuantity.text.toString().toInt(), food.imageId)
             CartList.addCartEntry(cartEntry)
             dialog.dismiss()
         }

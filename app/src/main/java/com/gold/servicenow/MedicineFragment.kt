@@ -42,5 +42,11 @@ class MedicineFragment : Fragment() {
         val adapter = MedicineAdapter(medicineList)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+
+        cart = view.findViewById(R.id.cartMedicine)
+        cart.setOnClickListener {
+            val intent = Intent(context, CartActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
