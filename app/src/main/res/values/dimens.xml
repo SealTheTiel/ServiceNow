@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="double_corner_radius">30dp</dimen>
     <dimen name="default_corner_radius">20dp</dimen>
     <dimen name="half_corner_radius">10dp</dimen>
     <dimen name="double_margins">32dp</dimen>
