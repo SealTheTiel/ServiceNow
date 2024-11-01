@@ -19,6 +19,13 @@ object CartList {
     val cartList: ArrayList<CartEntry> = ArrayList()
 
     fun addCartEntry(cartEntry: CartEntry) {
+        // check if the item is already in the cart
+        for (entry in this.cartList) {
+            if (entry.name == cartEntry.name) {
+                entry.quantity += cartEntry.quantity
+                return
+            }
+        }
         this.cartList.add(cartEntry)
     }
 
