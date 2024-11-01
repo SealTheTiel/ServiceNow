@@ -68,5 +68,10 @@ class FoodViewHolder(itemView: View): ViewHolder(itemView) {
                 dialogQuantity.text = quantity.toString()
             }
         }
+        dialogButton.setOnClickListener {
+            val cartEntry = CartEntry(food.name, food.price, dialogQuantity.text.toString().toInt(), food.imageId,)
+            CartList.addCartEntry(cartEntry)
+            dialog.dismiss()
+        }
     }
 }
