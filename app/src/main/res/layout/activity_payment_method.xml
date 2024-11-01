@@ -33,23 +33,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/back_icon" />
 
-    <Button
-        android:id="@+id/payButton"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:layout_gravity="center"
-        android:textSize="16sp"
-        android:gravity="center"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="20dp"
-        android:text="Pay"
-        android:background="@drawable/rounded"
-        android:textAllCaps="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
@@ -58,10 +41,10 @@
         app:layout_constraintGuide_percent="0.12" />
 
     <TextView
-        android:id="@+id/cash"
+        android:id="@+id/paymentCashLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="@dimen/default_margins"
         android:layout_marginTop="40dp"
         android:text="Cash"
         android:textSize="16sp"
@@ -69,87 +52,146 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cashCard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cash" >
-
-        <ImageView
-            android:id="@+id/cashIcon"
-            android:layout_width="40dp"
-            android:layout_height="44dp"
-            app:srcCompat="@drawable/cash_icon" />
-
-        <EditText
-            android:id="@+id/cashInput"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:hint="Cash"
-            android:textColorHint="@color/primary_blue"
-            android:textSize="14sp"
-            android:ems="16"
-            android:inputType="numberDecimal"/>
-
-    </androidx.cardview.widget.CardView>
-
     <TextView
-        android:id="@+id/credit"
+        android:id="@+id/paymentCreditLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/default_margins"
+        android:layout_marginStart="@dimen/default_margins"
         android:text="Credit"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cashCard" />
+        app:layout_constraintTop_toBottomOf="@+id/paymentCash" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/creditCardCard"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/paymentCash"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/half_margins"
+        android:layout_marginStart="@dimen/default_margins"
+        android:layout_marginEnd="@dimen/default_margins"
+        android:background="@drawable/rounded"
+        android:backgroundTint="@color/white"
+        android:elevation="@dimen/default_elevation"
+        android:padding="@dimen/half_margins"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/credit" >
+        app:layout_constraintTop_toBottomOf="@+id/paymentCashLabel">
 
         <ImageView
-            android:id="@+id/cardIcon"
-            android:layout_width="40dp"
-            android:layout_height="44dp"
-            app:srcCompat="@drawable/credit_card_icon" />
+            android:id="@+id/paymentCashIcon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="5dp"
+            android:src="@drawable/cash_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_conversion_absoluteHeight="50dp"
+            tools:layout_conversion_absoluteWidth="50dp" />
 
         <EditText
-            android:id="@+id/cardInput"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:hint="Add New Card"
-            android:textSize="14sp"
-            android:textColorHint="@color/primary_blue"
-            android:ems="16"
-            android:inputType="number"/>
+            android:id="@+id/paymentCashText"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center|start"
+            android:layout_marginStart="@dimen/half_margins"
+            android:layout_marginEnd="@dimen/half_margins"
+            android:ems="18"
+            android:hint="Cash"
+            android:inputType="numberDecimal"
+            android:textColor="@color/primary_blue"
+            android:textColorHint="@color/tertiary_blue"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/paymentCashButton"
+            app:layout_constraintStart_toEndOf="@+id/paymentCashIcon"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.cardview.widget.CardView>
+        <RadioButton
+            android:id="@+id/paymentCashButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
 
-    <RadioButton
-        android:id="@+id/cashRadioButton"
-        android:layout_width="wrap_content"
-        android:layout_height="44dp"
-        app:layout_constraintTop_toTopOf="@+id/cashCard"
-        app:layout_constraintStart_toEndOf="@id/cashCard"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <RadioButton
-        android:id="@+id/creditRadioButton"
-        android:layout_width="wrap_content"
-        android:layout_height="44dp"
-        app:layout_constraintTop_toTopOf="@+id/creditCardCard"
-        app:layout_constraintStart_toEndOf="@id/creditCardCard"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/paymentCredit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/half_margins"
+        android:layout_marginStart="@dimen/default_margins"
+        android:layout_marginEnd="@dimen/default_margins"
+        android:background="@drawable/rounded"
+        android:backgroundTint="@color/white"
+        android:elevation="@dimen/default_elevation"
+        android:padding="@dimen/half_margins"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/paymentCreditLabel">
+
+        <ImageView
+            android:id="@+id/paymentCreditIcon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="5dp"
+            android:src="@drawable/credit_card_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/paymentCreditText"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center|start"
+            android:layout_marginEnd="@dimen/half_margins"
+            android:layout_marginStart="@dimen/half_margins"
+            android:ems="18"
+            android:hint="Add credit card"
+            android:inputType="number"
+            android:textColor="@color/primary_blue"
+            android:textColorHint="@color/tertiary_blue"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/paymentCreditButton"
+            app:layout_constraintStart_toEndOf="@+id/paymentCreditIcon"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <RadioButton
+            android:id="@+id/paymentCreditButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <Button
+        android:id="@+id/paymentProceedButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_margins"
+        android:background="@drawable/rounded"
+        android:backgroundTint="@color/primary_blue"
+        android:gravity="center"
+        android:padding="@dimen/default_margins"
+        android:text="Pay"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:tint="@color/primary_blue"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
