@@ -2,14 +2,15 @@ package com.gold.servicenow
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import com.gold.servicenow.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-
 class MainActivity : AppCompatActivity() {
     private lateinit var navbar: BottomNavigationView
     private lateinit var binding: ActivityMainBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         navbar = findViewById(R.id.navbar)
         navbar.itemIconTintList = null
         replaceFragment(HomeFragment())
+
         binding.navbar.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.home -> replaceFragment(HomeFragment())
@@ -33,10 +35,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Function to replace fragment
     private fun replaceFragment(fragment: Fragment) {
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.frame, fragment)
-        fragmentTransaction.commit()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.frame, fragment)  // Make sure 'frame' exists in your XML layout
+            .addToBackStack(null)  // Optional, add to back stack if needed
+            .commit()
     }
 }
