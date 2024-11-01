@@ -31,7 +31,6 @@
         android:textColor="@color/primary_blue"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/addToCartDescription1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/addToCartName"
@@ -44,7 +43,6 @@
         android:layout_marginTop="@dimen/half_margins"
         android:text="TextView"
         android:textColor="#809CFF"
-        app:layout_constraintBottom_toTopOf="@+id/addToCartDetail2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addToCartDetail1" />
@@ -58,7 +56,6 @@
         android:textColor="@color/primary_blue"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/addToCartDescription2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addToCartDescription1" />
@@ -68,22 +65,69 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/half_margins"
-        android:layout_marginBottom="15dp"
         android:text="TextView"
         android:textColor="#809CFF"
-        app:layout_constraintBottom_toTopOf="@+id/addToCartButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addToCartDetail2" />
+
+
+    <Button
+        android:id="@+id/addToCartDecrement"
+        android:layout_width="35dp"
+        android:layout_height="45dp"
+        android:backgroundTint="@color/primary_blue"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="-"
+        android:textSize="20sp"
+        app:backgroundTint="@null"
+        app:cornerRadius="500dp"
+        app:layout_constraintBottom_toBottomOf="@+id/addToCartIncrement"
+        app:layout_constraintEnd_toStartOf="@+id/addToCartQuantity"
+        app:layout_constraintTop_toTopOf="@+id/addToCartIncrement" />
+
+    <EditText
+        android:id="@+id/addToCartQuantity"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@null"
+        android:enabled="false"
+        android:gravity="center"
+        android:inputType="number"
+        android:padding="0dp"
+        android:text="1"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/addToCartIncrement"
+        app:layout_constraintEnd_toStartOf="@+id/addToCartIncrement"
+        app:layout_constraintTop_toTopOf="@+id/addToCartIncrement" />
+
+    <Button
+        android:id="@+id/addToCartIncrement"
+        android:layout_width="35dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="@dimen/default_margins"
+        android:backgroundTint="@color/primary_blue"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="+"
+        android:textSize="20sp"
+        app:backgroundTint="@null"
+        app:cornerRadius="500dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addToCartDescription2" />
 
     <Button
         android:id="@+id/addToCartButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/double_margins"
+        android:layout_marginTop="@dimen/default_margins"
         android:background="@drawable/rounded"
         android:backgroundTint="@color/primary_blue"
+        android:elevation="@dimen/default_elevation"
         android:padding="@dimen/half_margins"
+        android:stateListAnimator="@null"
         android:text="Add to Cart"
         android:textAllCaps="false"
         android:textSize="20sp"
@@ -91,8 +135,7 @@
         app:backgroundTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addToCartDescription2"
-        android:stateListAnimator="@null"
-        android:elevation="@dimen/default_elevation"/>
+        app:layout_constraintTop_toBottomOf="@+id/addToCartIncrement" />
 </androidx.constraintlayout.widget.ConstraintLayout>
