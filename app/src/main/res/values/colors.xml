@@ -8,10 +8,11 @@
     <color name="pure_black">#FF000000</color>
     <color name="pure_white">#FFFFFFFF</color>
     <color name="primary_blue">#FF2260FF</color>
-    <color name="white">#FFF1F1F1</color>
+    <color name="white">#FFF9F9F9</color>
     <color name="black">#FF0F0F0F</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="secondary_blue">#FFECF1FF</color>
     <color name="tertiary_blue">#FF809CFF</color>
     <color name="light_gray">#FFE6E6E6</color>
+    <color name="red">#FFDD1111</color>
 </resources>
