@@ -43,6 +43,7 @@ class Register : ComponentActivity() {
         }
         loginButton.setOnClickListener {
             val intent = Intent(this, Login::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
             startActivity(intent)
         }
         backButton.setOnClickListener {
