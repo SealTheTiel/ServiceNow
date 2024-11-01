@@ -17,9 +17,13 @@ class CartEntry {
 
 object CartList {
     val cartList: ArrayList<CartEntry> = ArrayList()
+    private var listener: CartChangeListener? = null
 
+    fun setListener(cartChangeListener: CartChangeListener) {
+        listener = cartChangeListener
+        notifyListener()
+    }
     fun addCartEntry(cartEntry: CartEntry) {
-        // check if the item is already in the cart
         for (entry in this.cartList) {
             if (entry.name == cartEntry.name) {
                 entry.quantity += cartEntry.quantity
@@ -37,11 +41,20 @@ object CartList {
         this.cartList.clear()
     }
 
-    fun getCartTotal(): Double {
-        var total: Double = 0.0
+    fun getCartTotal(): Float {
+        var total: Float = 0.0f
         for (cartEntry in this.cartList) {
             total += cartEntry.price * cartEntry.quantity
         }
         return total
     }
+
+    private fun notifyListener() {
+        listener?.onCartUpdated(getCartTotal())
+    }
+
+}
+
+interface CartChangeListener {
+    fun onCartUpdated(totalPrice: Float)
 }
