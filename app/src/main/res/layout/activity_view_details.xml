@@ -1,54 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="16dp"
-    android:orientation="vertical"
-    tools:context=".ViewDetails">
+    android:background="@drawable/dialog_background"
+    android:padding="@dimen/double_margins"
+    android:clipToPadding="false">
 
     <TextView
-        android:id="@+id/detail1"
-        android:layout_width="match_parent"
+        android:id="@+id/addToCartName"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
+        android:text="Name"
+        android:textColor="@color/primary_blue"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread_inside" />
+
+    <TextView
+        android:id="@+id/addToCartDetail1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margins"
         android:text="Detail 1"
         android:textColor="@color/primary_blue"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/addToCartDescription1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/addToCartName"
+        app:layout_constraintVertical_chainStyle="spread_inside" />
 
     <TextView
-        android:id="@+id/detail1_description"
-        android:layout_width="match_parent"
+        android:id="@+id/addToCartDescription1"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
+        android:layout_marginTop="@dimen/half_margins"
         android:text="TextView"
-        android:textColor="#809CFF" />
+        android:textColor="#809CFF"
+        app:layout_constraintBottom_toTopOf="@+id/addToCartDetail2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addToCartDetail1" />
 
     <TextView
-        android:id="@+id/detail2"
-        android:layout_width="match_parent"
+        android:id="@+id/addToCartDetail2"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
+        android:layout_marginTop="@dimen/double_margins"
         android:text="Detail 2"
         android:textColor="@color/primary_blue"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/addToCartDescription2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addToCartDescription1" />
 
     <TextView
-        android:id="@+id/detail2_description"
-        android:layout_width="match_parent"
+        android:id="@+id/addToCartDescription2"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="@dimen/half_margins"
+        android:layout_marginBottom="15dp"
         android:text="TextView"
-        android:textColor="#809CFF" />
+        android:textColor="#809CFF"
+        app:layout_constraintBottom_toTopOf="@+id/addToCartButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addToCartDetail2" />
 
     <Button
-        android:id="@+id/addToCartBtn"
-        android:layout_width="match_parent"
+        android:id="@+id/addToCartButton"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginTop="@dimen/double_margins"
+        android:background="@drawable/rounded"
         android:backgroundTint="@color/primary_blue"
+        android:padding="@dimen/half_margins"
+        android:text="Add to Cart"
+        android:textAllCaps="false"
+        android:textSize="20sp"
         android:tint="@color/primary_blue"
-        android:text="Add to Cart" />
-</LinearLayout>
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addToCartDescription2"
+        android:stateListAnimator="@null"
+        android:elevation="@dimen/default_elevation"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
