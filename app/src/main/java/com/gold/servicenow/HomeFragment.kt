@@ -48,6 +48,5 @@ class HomeFragment : Fragment() {
         fragmentTransition.commit()
 
         (activity as? MainActivity)?.findViewById<BottomNavigationView>(R.id.navbar)?.selectedItemId = selected
-
     }
 }
