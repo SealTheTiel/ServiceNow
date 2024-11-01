@@ -44,5 +44,11 @@ class FoodFragment : Fragment() {
         val adapter = FoodAdapter(foodList)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+
+        cart = view.findViewById(R.id.cartFood)
+        cart.setOnClickListener {
+            val intent = Intent(context, CartActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
