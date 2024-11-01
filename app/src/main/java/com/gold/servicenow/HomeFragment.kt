@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeFragment : Fragment() {
 
@@ -26,24 +27,26 @@ class HomeFragment : Fragment() {
 
         // Set click listeners for each button
         medicineButton.setOnClickListener {
-            replaceFragment(MedicineFragment())
+            replaceFragment(MedicineFragment(), R.id.medicine)
         }
 
         foodButton.setOnClickListener {
-            replaceFragment(FoodFragment())
+            replaceFragment(FoodFragment(), R.id.food)
         }
 
         entertainmentButton.setOnClickListener {
-            replaceFragment(EntertainmentFragment())
+            replaceFragment(EntertainmentFragment(), R.id.entertainment)
         }
 
         return view
     }
 
-    private fun replaceFragment(fragment: Fragment) {
+    private fun replaceFragment(fragment: Fragment, selected: Int) {
         var fragmentTransition = parentFragmentManager.beginTransaction()
         fragmentTransition.replace(R.id.frame, fragment)
         fragmentTransition.addToBackStack(null)
         fragmentTransition.commit()
+
+        (activity as? MainActivity)?.findViewById<BottomNavigationView>(R.id.navbar)?.selectedItemId = selected
     }
 }
