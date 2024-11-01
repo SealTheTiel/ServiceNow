@@ -16,7 +16,7 @@
     android:orientation="horizontal">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
+        android:id="@+id/cartImageHolder"
         android:layout_width="90dp"
         android:layout_height="wrap_content"
         android:clipChildren="true"
@@ -45,8 +45,8 @@
         android:textColor="@color/primary_blue"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
-        app:layout_constraintTop_toTopOf="@+id/cardView" />
+        app:layout_constraintStart_toEndOf="@+id/cartImageHolder"
+        app:layout_constraintTop_toTopOf="@+id/cartImageHolder" />
 
     <TextView
         android:id="@+id/cartPrice"
@@ -75,11 +75,11 @@
         app:backgroundTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/cartPrice"
-        app:tint="@color/white"
+        android:tint="@color/white"
         android:stateListAnimator="@null" />
 
     <EditText
-        android:id="@+id/quantityEditText"
+        android:id="@+id/cartQuantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@null"
@@ -109,7 +109,7 @@
         app:background="@null"
         app:backgroundTint="@null"
         android:layout_marginStart="80dp"
-        app:tint="@color/white"
+        android:tint="@color/white"
         app:layout_constraintStart_toEndOf="@+id/cartDecrement"
         app:layout_constraintStart_toStartOf="@+id/cartDecrement"
         app:layout_constraintTop_toTopOf="@+id/cartDecrement"
