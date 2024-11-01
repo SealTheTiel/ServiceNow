@@ -37,9 +37,14 @@
         android:layout_gravity="center"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
+        android:background= "@drawable/rounded"
         android:backgroundTint="@color/primary_blue"
+        app:backgroundTint="@null"
         android:gravity="center"
         android:text="Checkout"
+        android:textSize="24sp"
+        android:padding="@dimen/default_margins"
+        android:textColor="@color/white"
         android:textAllCaps="false"
         android:tint="@color/primary_blue" />
 </LinearLayout>
