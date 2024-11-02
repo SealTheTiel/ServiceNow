@@ -44,9 +44,11 @@ class HomeFragment : Fragment() {
     private fun replaceFragment(fragment: Fragment, selected: Int) {
         var fragmentTransition = parentFragmentManager.beginTransaction()
         fragmentTransition.replace(R.id.frame, fragment)
-        fragmentTransition.addToBackStack(null)
+        //fragmentTransition.addToBackStack(null)
         fragmentTransition.commit()
 
         (activity as? MainActivity)?.findViewById<BottomNavigationView>(R.id.navbar)?.selectedItemId = selected
+
     }
+
 }
