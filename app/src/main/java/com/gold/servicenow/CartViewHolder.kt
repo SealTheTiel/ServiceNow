@@ -1,6 +1,7 @@
 package com.gold.servicenow
 
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -22,7 +23,7 @@ class CartViewHolder(itemView: View, adapter: CartAdapter): ViewHolder(itemView)
         this.cartEntry = cartEntry
         name.text = cartEntry.name
         image.setImageResource(cartEntry.imageId)
-        quantity.setText(cartEntry.quantity)
+        quantity.setText(String.format("%d", cartEntry.quantity))
         price.text = "PHP " + String.format("%.2f", cartEntry.price * cartEntry.quantity)
 
         description.visibility = View.GONE
@@ -35,12 +36,14 @@ class CartViewHolder(itemView: View, adapter: CartAdapter): ViewHolder(itemView)
         }
 
         increment.setOnClickListener {
+            increment.startAnimation(AnimationUtils.loadAnimation(itemView.context, R.anim.button_click))
             val newEntry = CartEntry(cartEntry.name, cartEntry.price, 1, cartEntry.imageId)
             CartList.addCartEntry(newEntry)
             val amount = CartList.getCartEntry(cartEntry.name)?.quantity ?: return@setOnClickListener
-            quantity.setText(amount)
+            quantity.setText(String.format("%d", amount))
         }
         decrement.setOnClickListener {
+            decrement.startAnimation(AnimationUtils.loadAnimation(itemView.context, R.anim.button_click))
             if (cartEntry.quantity == 1) {
                 adapter.removeItem(adapterPosition)
                 CartList.removeCartEntry(cartEntry)
@@ -49,7 +52,7 @@ class CartViewHolder(itemView: View, adapter: CartAdapter): ViewHolder(itemView)
             val newEntry = CartEntry(cartEntry.name, cartEntry.price, -1, cartEntry.imageId)
             CartList.addCartEntry(newEntry)
             val amount = CartList.getCartEntry(cartEntry.name)?.quantity ?: return@setOnClickListener
-            quantity.setText(amount)
+            quantity.setText(String.format("%d", amount))
         }
     }
 }
