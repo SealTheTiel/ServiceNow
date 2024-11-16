@@ -1,5 +1,6 @@
 package com.gold.servicenow
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ class HomeFragment : Fragment() {
     private lateinit var medicineButton: CardView
     private lateinit var foodButton: CardView
     private lateinit var entertainmentButton: CardView
+    private lateinit var profileButton: CardView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,6 +26,8 @@ class HomeFragment : Fragment() {
         medicineButton = view.findViewById(R.id.medicine_button)
         foodButton = view.findViewById(R.id.food_button)
         entertainmentButton = view.findViewById(R.id.entertainment_button)
+        profileButton = view.findViewById(R.id.profile_button)
+
 
         // Set click listeners for each button
         medicineButton.setOnClickListener {
@@ -36,6 +40,11 @@ class HomeFragment : Fragment() {
 
         entertainmentButton.setOnClickListener {
             replaceFragment(EntertainmentFragment(), R.id.entertainment)
+        }
+
+        profileButton.setOnClickListener {
+            val intent = Intent(activity, Profile::class.java)
+            startActivity(intent)
         }
 
         return view
