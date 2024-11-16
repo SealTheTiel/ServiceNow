@@ -22,7 +22,7 @@ class CartViewHolder(itemView: View, adapter: CartAdapter): ViewHolder(itemView)
         this.cartEntry = cartEntry
         name.text = cartEntry.name
         image.setImageResource(cartEntry.imageId)
-        quantity.setText(cartEntry.quantity)
+        quantity.setText(String.format("%d", cartEntry.quantity))
         price.text = "PHP " + String.format("%.2f", cartEntry.price * cartEntry.quantity)
 
         description.visibility = View.GONE
@@ -38,7 +38,7 @@ class CartViewHolder(itemView: View, adapter: CartAdapter): ViewHolder(itemView)
             val newEntry = CartEntry(cartEntry.name, cartEntry.price, 1, cartEntry.imageId)
             CartList.addCartEntry(newEntry)
             val amount = CartList.getCartEntry(cartEntry.name)?.quantity ?: return@setOnClickListener
-            quantity.setText(amount)
+            quantity.setText(String.format("%d", amount))
         }
         decrement.setOnClickListener {
             if (cartEntry.quantity == 1) {
@@ -49,7 +49,7 @@ class CartViewHolder(itemView: View, adapter: CartAdapter): ViewHolder(itemView)
             val newEntry = CartEntry(cartEntry.name, cartEntry.price, -1, cartEntry.imageId)
             CartList.addCartEntry(newEntry)
             val amount = CartList.getCartEntry(cartEntry.name)?.quantity ?: return@setOnClickListener
-            quantity.setText(amount)
+            quantity.setText(String.format("%d", amount))
         }
     }
 }
