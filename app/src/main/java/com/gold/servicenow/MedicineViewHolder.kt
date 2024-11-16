@@ -56,8 +56,8 @@ class MedicineViewHolder(itemView: View): ViewHolder(itemView) {
         val dialogDetail2: TextView = dialog.findViewById(R.id.addToCartDetail2)
         val dialogDescription1: TextView = dialog.findViewById(R.id.addToCartDescription1)
         val dialogDescription2: TextView = dialog.findViewById(R.id.addToCartDescription2)
-        val dialogIncrement: Button = dialog.findViewById(R.id.addToCartIncrement)
-        val dialogDecrement: Button = dialog.findViewById(R.id.addToCartDecrement)
+        val dialogIncrement: ImageButton = dialog.findViewById(R.id.addToCartIncrement)
+        val dialogDecrement: ImageButton = dialog.findViewById(R.id.addToCartDecrement)
         val dialogQuantity: TextView = dialog.findViewById(R.id.addToCartQuantity)
         val dialogButton: Button = dialog.findViewById(R.id.addToCartButton)
 
