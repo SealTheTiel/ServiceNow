@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "968987641165",
+    "project_id": "gold-servicenow",
+    "storage_bucket": "gold-servicenow.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:968987641165:android:85372c4690b697ea332304",
+        "android_client_info": {
+          "package_name": "com.gold.servicenow"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDH02qNXhTrrtUqnAj26gdqk9Lny-Sq3iw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
