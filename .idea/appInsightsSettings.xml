@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.gold.servicenow" />
+                  <option name="mobileSdkAppId" value="1:968987641165:android:85372c4690b697ea332304" />
+                  <option name="projectId" value="gold-servicenow" />
+                  <option name="projectNumber" value="968987641165" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
