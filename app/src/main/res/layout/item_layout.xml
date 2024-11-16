@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="@dimen/default_margins"
-    android:layout_marginTop="@dimen/default_margins"
+    android:layout_marginTop="@dimen/half_margins"
+    android:layout_marginBottom="@dimen/half_margins"
     android:layout_marginRight="@dimen/default_margins"
     android:orientation="horizontal"
     app:cardCornerRadius="@dimen/default_corner_radius"
@@ -89,7 +90,7 @@
                 app:backgroundTint="@null"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/itemIncrement"
-                app:tint="@color/white" />
+                android:tint="@color/white" />
 
             <EditText
                 android:id="@+id/itemQuantity"
@@ -125,7 +126,7 @@
                 app:backgroundTint="@null"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:tint="@color/white" />
+                android:tint="@color/white" />
 
             <ImageButton
                 android:id="@+id/itemDelete"
@@ -140,7 +141,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.075"
-                app:tint="@color/red" />
+                android:tint="@color/red" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
