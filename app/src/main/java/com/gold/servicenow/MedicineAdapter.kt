@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 class MedicineAdapter(private val data: ArrayList<Medicine>): Adapter<MedicineViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MedicineViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val itemView = inflater.inflate(R.layout.medicine_item_layout, parent, false)
+        val itemView = inflater.inflate(R.layout.item_layout, parent, false)
         return MedicineViewHolder(itemView)
     }
 
