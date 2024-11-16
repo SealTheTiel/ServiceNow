@@ -13,6 +13,9 @@
         android:theme="@style/Theme.ServiceNow"
         tools:targetApi="31">
         <activity
+            android:name=".Profile"
+            android:exported="false" />
+        <activity
             android:name=".SetLocationActivity"
             android:exported="false" />
         <activity
@@ -50,8 +53,7 @@
             android:exported="true"
             android:label="@string/app_name"
             android:launchMode="standard"
-            android:theme="@style/Theme.ServiceNow">
-        </activity>
+            android:theme="@style/Theme.ServiceNow"></activity>
     </application>
 
 </manifest>
