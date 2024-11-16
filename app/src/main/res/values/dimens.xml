@@ -6,6 +6,7 @@
     <dimen name="double_margins">32dp</dimen>
     <dimen name="default_margins">16dp</dimen>
     <dimen name="half_margins">8dp</dimen>
-    <dimen name="default_elevation">8dp</dimen>
-    <dimen name="half_elevation">4dp</dimen>
+    <dimen name="double_elevation">8dp</dimen>
+    <dimen name="default_elevation">4dp</dimen>
+    <dimen name="half_elevation">2dp</dimen>
 </resources>
