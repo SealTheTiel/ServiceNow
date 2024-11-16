@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 class FoodAdapter(private val data: ArrayList<Food>): Adapter<FoodViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val itemView = inflater.inflate(R.layout.food_item_layout, parent, false)
+        val itemView = inflater.inflate(R.layout.item_layout, parent, false)
         return FoodViewHolder(itemView)
     }
 
