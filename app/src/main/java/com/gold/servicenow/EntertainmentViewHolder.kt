@@ -4,25 +4,35 @@ import android.app.Dialog
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 
 class EntertainmentViewHolder(itemView: View): ViewHolder(itemView) {
-    private val image: ImageView = itemView.findViewById(R.id.leisureImage)
-    private val name: TextView = itemView.findViewById(R.id.leisureName)
-    private val purpose: TextView = itemView.findViewById(R.id.leisurePurpose)
-    private val price: TextView = itemView.findViewById(R.id.leisurePrice)
-    private val button: CardView = itemView.findViewById(R.id.leisureButton)
+    private val image: ImageView = itemView.findViewById(R.id.itemImage)
+    private val name: TextView = itemView.findViewById(R.id.itemName)
+    private val description: TextView = itemView.findViewById(R.id.itemDescription)
+    private val price: TextView = itemView.findViewById(R.id.itemPrice)
+    private val quantity: EditText = itemView.findViewById(R.id.itemQuantity)
+    private val decrement: ImageButton = itemView.findViewById(R.id.itemDecrement)
+    private val increment: ImageButton = itemView.findViewById(R.id.itemIncrement)
+    private val delete: ImageButton = itemView.findViewById(R.id.itemDelete)
     private lateinit var leisure: Leisure
 
     fun bindData(leisure: Leisure) {
         this.leisure = leisure
         image.setImageResource(leisure.imageId)
         name.text = leisure.name
-        purpose.text = leisure.description
+        description.text = leisure.description
         price.text = "PHP " + leisure.price.toString()
+
+        quantity.visibility = View.GONE
+        decrement.visibility = View.GONE
+        increment.visibility = View.GONE
+        delete.visibility = View.GONE
     }
 
     init {

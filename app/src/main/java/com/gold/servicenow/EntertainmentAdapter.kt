@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 class EntertainmentAdapter(private val data: ArrayList<Leisure>): Adapter<EntertainmentViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EntertainmentViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val itemView = inflater.inflate(R.layout.leisure_item_layout, parent, false)
+        val itemView = inflater.inflate(R.layout.item_layout, parent, false)
         return EntertainmentViewHolder(itemView)
     }
 
