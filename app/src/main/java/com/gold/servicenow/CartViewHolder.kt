@@ -36,14 +36,14 @@ class CartViewHolder(itemView: View, adapter: CartAdapter): ViewHolder(itemView)
         }
 
         increment.setOnClickListener {
-            increment.startAnimation(AnimationUtils.loadAnimation(itemView.context, R.anim.button_click))
+            increment.startAnimation(AnimationUtils.loadAnimation(itemView.context, R.anim.button_click_scale))
             val newEntry = CartEntry(cartEntry.name, cartEntry.price, 1, cartEntry.imageId)
             CartList.addCartEntry(newEntry)
             val amount = CartList.getCartEntry(cartEntry.name)?.quantity ?: return@setOnClickListener
             quantity.setText(String.format("%d", amount))
         }
         decrement.setOnClickListener {
-            decrement.startAnimation(AnimationUtils.loadAnimation(itemView.context, R.anim.button_click))
+            decrement.startAnimation(AnimationUtils.loadAnimation(itemView.context, R.anim.button_click_scale))
             if (cartEntry.quantity == 1) {
                 adapter.removeItem(adapterPosition)
                 CartList.removeCartEntry(cartEntry)

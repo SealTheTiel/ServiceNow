@@ -32,19 +32,16 @@ class Register : ComponentActivity() {
         backButton = findViewById(R.id.registerBackButton)
 
         registerButton.setOnClickListener {
-            registerButton.startAnimation(android.view.animation.AnimationUtils.loadAnimation(this, R.anim.button_click))
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
         }
         googleButton.setOnClickListener {
-            googleButton.startAnimation(android.view.animation.AnimationUtils.loadAnimation(this, R.anim.button_click))
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
         }
         loginButton.setOnClickListener {
-            loginButton.startAnimation(android.view.animation.AnimationUtils.loadAnimation(this, R.anim.button_click))
             val intent = Intent(this, Login::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
             startActivity(intent)
