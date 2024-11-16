@@ -9,13 +9,15 @@
     android:layout_marginBottom="@dimen/half_margins"
     android:layout_marginRight="@dimen/default_margins"
     android:orientation="horizontal"
+    android:backgroundTint="@color/white"
     app:cardCornerRadius="@dimen/default_corner_radius"
     app:cardElevation="@dimen/default_elevation">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:clipChildren="false">
 
         <androidx.cardview.widget.CardView
             android:layout_width="90dp"

@@ -1,6 +1,7 @@
 package com.gold.servicenow
 
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -35,12 +36,14 @@ class CartViewHolder(itemView: View, adapter: CartAdapter): ViewHolder(itemView)
         }
 
         increment.setOnClickListener {
+            increment.startAnimation(AnimationUtils.loadAnimation(itemView.context, R.anim.button_click))
             val newEntry = CartEntry(cartEntry.name, cartEntry.price, 1, cartEntry.imageId)
             CartList.addCartEntry(newEntry)
             val amount = CartList.getCartEntry(cartEntry.name)?.quantity ?: return@setOnClickListener
             quantity.setText(String.format("%d", amount))
         }
         decrement.setOnClickListener {
+            decrement.startAnimation(AnimationUtils.loadAnimation(itemView.context, R.anim.button_click))
             if (cartEntry.quantity == 1) {
                 adapter.removeItem(adapterPosition)
                 CartList.removeCartEntry(cartEntry)
