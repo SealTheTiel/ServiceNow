@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clipChildren="false"
     tools:context=".Profile">
 
 
@@ -13,10 +14,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.12" />
+        app:layout_constraintGuide_percent="0.16" />
 
     <TextView
-        android:id="@+id/loginHeader"
+        android:id="@+id/profileHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif"
@@ -42,101 +43,67 @@
         app:layout_constraintTop_toTopOf="parent"
         app:tint="@null" />
 
-    <TextView
-        android:id="@+id/registerName2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:text="Full Name"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="185dp" />
 
-    <TextView
-        android:id="@+id/loginEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="18dp"
-        android:text="Email"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerNameInput2" />
-
-    <EditText
-        android:id="@+id/loginEmailInput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/double_margins"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="@dimen/double_margins"
-        android:background="@drawable/rounded_gray"
-        android:ems="16"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:padding="@dimen/default_margins"
-        android:paddingHorizontal="12dp"
-        android:textColor="@color/primary_blue"
-        android:textColorHint="@color/tertiary_blue"
-
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="136dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toTopOf="@+id/profileName2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/loginEmail" />
+        app:layout_constraintStart_toStartOf="parent">
 
-    <TextView
-        android:id="@+id/loginPassword"
-        android:layout_width="109dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="18dp"
-        android:text="Password"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/loginEmailInput" />
+        <!-- Circular Profile Card -->
+        <ImageButton
+            android:id="@+id/editProfileImage"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/rounded"
+            android:contentDescription="Edit profile"
+            android:elevation="4dp"
+            android:tint="@android:color/white"
+            android:translationX="16dp"
+            android:translationY="16dp"
+            android:translationZ="10dp"
+            app:layout_constraintBottom_toBottomOf="@id/profileCard"
+            app:layout_constraintEnd_toEndOf="@id/profileCard"
+            app:srcCompat="@drawable/baseline_edit_24" />
 
-    <EditText
-        android:id="@+id/loginPasswordInput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/double_margins"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="@dimen/double_margins"
-        android:background="@drawable/rounded_gray"
-        android:ems="16"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:padding="@dimen/default_margins"
-        android:paddingHorizontal="12dp"
-        android:textColor="@color/primary_blue"
-        android:textColorHint="@color/tertiary_blue"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/profileCard"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="16dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            app:cardCornerRadius="60dp"
+            app:cardElevation="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/loginPassword" />
+            <ImageView
+                android:id="@+id/profileImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/default_margins"
+                android:scaleType="centerCrop"
+                android:src="@drawable/default_profile_picture"
+                android:tint="@color/primary_blue" />
+        </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/registerNumber2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="18dp"
-        android:text="Mobile Number"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginPasswordInput" />
+        <!-- Pencil Button Overlapping the Card -->
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <EditText
-        android:id="@+id/registerNumberInput2"
+        android:id="@+id/profileNumberInput2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/rounded_gray"
         android:ems="16"
@@ -149,10 +116,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerNumber2" />
+        app:layout_constraintTop_toBottomOf="@+id/profileNumber2" />
 
     <EditText
-        android:id="@+id/registerNameInput2"
+        android:id="@+id/profileNameInput2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -169,19 +136,107 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerName2" />
+        app:layout_constraintTop_toBottomOf="@+id/profileName2" />
 
+    <TextView
+        android:id="@+id/profileEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="12dp"
+        android:text="Email"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileNameInput2" />
+
+    <EditText
+        android:id="@+id/profileEmailInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/double_margins"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="@dimen/double_margins"
+        android:background="@drawable/rounded_gray"
+        android:ems="16"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:padding="@dimen/default_margins"
+        android:paddingHorizontal="12dp"
+        android:textColor="@color/primary_blue"
+        android:textColorHint="@color/tertiary_blue"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profileEmail" />
+
+    <TextView
+        android:id="@+id/profilePassword"
+        android:layout_width="109dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="12dp"
+        android:text="Password"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profileEmailInput" />
+
+    <EditText
+        android:id="@+id/profilePasswordInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/double_margins"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="@dimen/double_margins"
+        android:background="@drawable/rounded_gray"
+        android:ems="16"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:padding="@dimen/default_margins"
+        android:paddingHorizontal="12dp"
+        android:textColor="@color/primary_blue"
+        android:textColorHint="@color/tertiary_blue"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profilePassword" />
+
+    <TextView
+        android:id="@+id/profileNumber2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="12dp"
+        android:text="Mobile Number"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profilePasswordInput" />
+
+    <TextView
+        android:id="@+id/profileName2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:text="Full Name"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="257dp" />
 
     <Button
-        android:id="@+id/loginLoginButton"
+        android:id="@+id/profileLoginButton"
         android:layout_width="match_parent"
 
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="64dp"
-        android:layout_marginBottom="18dp"
+        android:layout_marginBottom="12dp"
         android:background="@drawable/rounded"
         android:backgroundTint="@color/primary_blue"
         android:elevation="@dimen/default_elevation"
@@ -199,6 +254,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerNumberInput2" />
+        app:layout_constraintTop_toBottomOf="@+id/profileNumberInput2"
+        app:layout_constraintVertical_bias="0.851" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
