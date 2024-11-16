@@ -36,20 +36,17 @@ class Login : ComponentActivity() {
 
         // TEMPORARILY GO TO MAIN ACTIVITY
         loginButton.setOnClickListener {
-            loginButton.startAnimation(AnimationUtils.loadAnimation(this, R.anim.button_click))
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
         }
         googleButton.setOnClickListener {
-            googleButton.startAnimation(AnimationUtils.loadAnimation(this, R.anim.button_click))
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
         }
 
         signupButton.setOnClickListener {
-            signupButton.startAnimation(AnimationUtils.loadAnimation(this, R.anim.button_click))
             val intent = Intent(this, Register::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
             startActivity(intent)
