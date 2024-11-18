@@ -10,6 +10,8 @@ import com.gold.servicenow.entertainment.EntertainmentFragment
 import com.gold.servicenow.food.FoodFragment
 import com.gold.servicenow.medicine.MedicineFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.gold.servicenow.database.DatabaseHandler
+import com.google.firebase.FirebaseApp
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navbar: BottomNavigationView
@@ -17,6 +19,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        FirebaseApp.initializeApp(this)
+        val databaseHandler = DatabaseHandler()
+
+        // Insert dummy data -> Uncomment if there is new dummy data, simply change Data Generator
+//        databaseHandler.insertFoodData()
+//        databaseHandler.insertMedicineData()
+//        databaseHandler.insertEntertainmentData()
+
         supportActionBar?.hide()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
