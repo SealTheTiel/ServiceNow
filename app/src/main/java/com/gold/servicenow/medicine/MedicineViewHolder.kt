@@ -12,6 +12,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.gold.servicenow.R
@@ -28,6 +29,8 @@ class MedicineViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
     private val decrement: ImageButton = itemView.findViewById(R.id.itemDecrement)
     private val increment: ImageButton = itemView.findViewById(R.id.itemIncrement)
     private val delete: ImageButton = itemView.findViewById(R.id.itemDelete)
+    private val loading: ProgressBar = itemView.findViewById(R.id.itemLoading)
+
     private lateinit var medicine: Medicine
 
     fun bindData(medicine: Medicine) {
@@ -46,6 +49,7 @@ class MedicineViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
                 imageBitmap = android.graphics.BitmapFactory.decodeStream(`in`)
                 imageHandler.post {
                     image.setImageBitmap(imageBitmap)
+                    loading.visibility = View.GONE
                 }
             } catch (e: Exception) {
                 error("Error: ${e.message}")

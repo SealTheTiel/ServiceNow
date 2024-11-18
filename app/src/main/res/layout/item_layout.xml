@@ -25,15 +25,25 @@
             android:layout_margin="10dp"
             android:layout_weight="0"
             app:cardCornerRadius="10dp"
-            app:cardElevation="0dp">
+            app:cardElevation="0dp"
+            android:background="@color/white">
 
             <ImageView
+                android:background="@color/white"
                 android:id="@+id/itemImage"
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
                 android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/food1" />
+                android:scaleType="centerCrop"/>
+
+            <ProgressBar
+                android:id="@+id/itemLoading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:indeterminate="true"
+                android:background="@color/white"
+                android:indeterminateTint="@color/tertiary_blue" />
         </androidx.cardview.widget.CardView>
 
         <androidx.constraintlayout.widget.ConstraintLayout

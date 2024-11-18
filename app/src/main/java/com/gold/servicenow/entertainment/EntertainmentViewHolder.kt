@@ -13,6 +13,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.gold.servicenow.R
@@ -29,17 +30,11 @@ class EntertainmentViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
     private val decrement: ImageButton = itemView.findViewById(R.id.itemDecrement)
     private val increment: ImageButton = itemView.findViewById(R.id.itemIncrement)
     private val delete: ImageButton = itemView.findViewById(R.id.itemDelete)
+    private val loading: ProgressBar = itemView.findViewById(R.id.itemLoading)
+
     private lateinit var entertainment: Entertainment
 
     fun bindData(entertainment: Entertainment) {
-        println("Entertainmen ID: ${entertainment.id}\n" +
-                "\tName: ${entertainment.name}\n" +
-                "\tDescription: ${entertainment.description}\n" +
-                "\tPrice: ${entertainment.price}\n" +
-                "\tImage ID: ${entertainment.imageUrl}\n" +
-                "\tDetail 1: ${entertainment.detail1}\n" +
-                "\tDetail 2: ${entertainment.detail2}\n")
-
         this.entertainment = entertainment
         name.text = entertainment.name
         description.text = entertainment.description
@@ -55,6 +50,7 @@ class EntertainmentViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
                 imageBitmap = android.graphics.BitmapFactory.decodeStream(`in`)
                 imageHandler.post {
                     image.setImageBitmap(imageBitmap)
+                    loading.visibility = View.GONE
                 }
             } catch (e: Exception) {
                 error("Error: ${e.message}")
