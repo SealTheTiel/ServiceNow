@@ -8,7 +8,7 @@ class DataGenerator {
     companion object {
         private val foodname1: Food = Food(
             1,
-            R.drawable.food1,
+            "https://i.imgur.com/lRL2qj6.jpeg",
             "Chicken Adobo",
             50.0f,
             "Angrydobo",
@@ -18,7 +18,7 @@ class DataGenerator {
         )
         private val foodname2: Food = Food(
             2,
-            R.drawable.food2,
+            "https://i.imgur.com/uVXzA1Z.jpeg",
             "Pancit Malabon",
             60.0f,
             "Pancit Malabon Express",
@@ -28,7 +28,7 @@ class DataGenerator {
         )
         private val foodname3: Food = Food(
             3,
-            R.drawable.food3,
+            "https://i.imgur.com/K53ZLHY.jpeg",
             "Pancit Bihon",
             40.0f,
             "Little Quaipo",
@@ -38,7 +38,7 @@ class DataGenerator {
         )
         private val foodname4: Food = Food(
             4,
-            R.drawable.food4,
+            "https://i.imgur.com/lwUKFNt.jpeg",
             "Lechon Kawali",
             70.0f,
             "Mang Inasal",
@@ -48,7 +48,7 @@ class DataGenerator {
         )
         private val foodname5: Food = Food(
             5,
-            R.drawable.food5,
+            "https://i.imgur.com/DqDEFWJ.jpeg",
             "Sinigang na Baboy",
             80.0f,
             "Max's Restaurant",
@@ -58,7 +58,7 @@ class DataGenerator {
         )
         private val foodname6: Food = Food(
             6,
-            R.drawable.food6,
+            "https://i.imgur.com/tZxIKPW.jpeg",
             "Kare-Kare",
             90.0f,
             "Aristocrat",
@@ -68,7 +68,7 @@ class DataGenerator {
         )
         private val foodname7: Food = Food(
             7,
-            R.drawable.food7,
+           "https://i.imgur.com/lq2N6kB.jpeg",
             "Bicol Express",
             60.0f,
             "Mesa",
@@ -83,7 +83,7 @@ class DataGenerator {
 
         private val medicine1: Medicine = Medicine(
             1,
-            R.drawable.medicine1,
+            "https://i.imgur.com/9Pt5J7q.png",
             "Paracetamol",
             10.0f,
             "Fever, Pain Reliever",
@@ -94,7 +94,7 @@ class DataGenerator {
         )
         private val medicine2: Medicine = Medicine(
             2,
-            R.drawable.medicine2,
+            "https://i.imgur.com/qgAdW9w.jpeg",
             "Loperamide",
             20.0f,
             "Diarrhea",
@@ -105,7 +105,7 @@ class DataGenerator {
         )
         private val medicine3: Medicine = Medicine(
             3,
-            R.drawable.medicine3,
+            "https://i.imgur.com/pDf3dGH.jpeg",
             "Cetirizine",
             30.0f,
             "Allergies",
@@ -116,7 +116,7 @@ class DataGenerator {
         )
         private val medicine4: Medicine = Medicine(
             4,
-            R.drawable.medicine4,
+            "https://i.imgur.com/UrCc2TA.png",
             "Omeprazole",
             40.0f,
             "Acid Reflux",
@@ -127,7 +127,7 @@ class DataGenerator {
         )
         private val medicine5: Medicine = Medicine(
             5,
-            R.drawable.medicine5,
+            "https://i.imgur.com/2JL6TfZ.png",
             "Simvastatin",
             50.0f,
             "High Cholesterol",
@@ -138,7 +138,7 @@ class DataGenerator {
         )
         private val medicine6: Medicine = Medicine(
             6,
-            R.drawable.medicine6,
+            "https://i.imgur.com/irpUbOo.jpeg",
             "Metformin",
             60.0f,
             "Type 2 Diabetes",
@@ -154,7 +154,7 @@ class DataGenerator {
 
         private val entertainment1: Entertainment = Entertainment(
             1,
-            R.drawable.leisure1,
+            "https://i.imgur.com/PdzwEz8.jpeg",
             "Spa",
             100.0f,
             "Relaxing Massage",
@@ -165,7 +165,7 @@ class DataGenerator {
         )
         private val entertainment2: Entertainment = Entertainment(
             2,
-            R.drawable.leisure2,
+            "https://i.imgur.com/6JxyEZu.jpeg",
             "Gym",
             200.0f,
             "Workout",
@@ -176,7 +176,7 @@ class DataGenerator {
         )
         private val entertainment3: Entertainment = Entertainment(
             3,
-            R.drawable.leisure3,
+            "https://i.imgur.com/I4186Jk.jpeg",
             "Swimming Pool",
             150.0f,
             "Swimming",
@@ -187,7 +187,7 @@ class DataGenerator {
         )
         private val entertainment4: Entertainment = Entertainment(
             4,
-            R.drawable.leisure4,
+            "https://i.imgur.com/5puq68J.jpeg",
             "Sauna",
             250.0f,
             "Steam Bath",
@@ -198,7 +198,7 @@ class DataGenerator {
         )
         private val entertainment5: Entertainment = Entertainment(
             5,
-            R.drawable.leisure5,
+            "https://i.imgur.com/q7meECV.jpeg",
             "Yoga",
             300.0f,
             "Meditation",
@@ -209,7 +209,7 @@ class DataGenerator {
         )
         private val entertainment6: Entertainment = Entertainment(
             6,
-            R.drawable.leisure6,
+            "https://i.imgur.com/rLiiP5i.jpeg",
             "Karaoke",
             50.0f,
             "Singing",
