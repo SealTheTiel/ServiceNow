@@ -4,13 +4,13 @@ class CartEntry {
     var name: String = ""
     var price: Float = 0.0f
     var quantity: Int = 0
-    var imageId: Int = 0
+    var imageUrl: String = ""
 
-    constructor(name: String, price: Float, quantity: Int, imageId: Int) {
+    constructor(name: String, price: Float, quantity: Int, imageUrl: String) {
         this.name = name
         this.price = price
         this.quantity = quantity
-        this.imageId = imageId
+        this.imageUrl = imageUrl
     }
 }
 
