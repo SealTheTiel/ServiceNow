@@ -23,9 +23,9 @@ class MainActivity : AppCompatActivity() {
         val databaseHandler = DatabaseHandler()
 
         // Insert dummy data -> Uncomment if there is new dummy data, simply change Data Generator
-        databaseHandler.insertFoodData()
-        databaseHandler.insertMedicineData()
-        databaseHandler.insertEntertainmentData()
+//        databaseHandler.insertFoodData()
+//        databaseHandler.insertMedicineData()
+//        databaseHandler.insertEntertainmentData()
 
         supportActionBar?.hide()
         binding = ActivityMainBinding.inflate(layoutInflater)
