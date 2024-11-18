@@ -7,6 +7,7 @@ import com.gold.servicenow.medicine.Medicine
 class DataGenerator {
     companion object {
         private val foodname1: Food = Food(
+            1,
             R.drawable.food1,
             "Chicken Adobo",
             50.0f,
@@ -16,6 +17,7 @@ class DataGenerator {
             "Ingredients"
         )
         private val foodname2: Food = Food(
+            2,
             R.drawable.food2,
             "Pancit Malabon",
             60.0f,
@@ -25,6 +27,7 @@ class DataGenerator {
             "Ingredients"
         )
         private val foodname3: Food = Food(
+            3,
             R.drawable.food3,
             "Pancit Bihon",
             40.0f,
@@ -34,6 +37,7 @@ class DataGenerator {
             "Ingredients"
         )
         private val foodname4: Food = Food(
+            4,
             R.drawable.food4,
             "Lechon Kawali",
             70.0f,
@@ -43,6 +47,7 @@ class DataGenerator {
             "Ingredients"
         )
         private val foodname5: Food = Food(
+            5,
             R.drawable.food5,
             "Sinigang na Baboy",
             80.0f,
@@ -52,6 +57,7 @@ class DataGenerator {
             "Ingredients"
         )
         private val foodname6: Food = Food(
+            6,
             R.drawable.food6,
             "Kare-Kare",
             90.0f,
@@ -61,6 +67,7 @@ class DataGenerator {
             "Ingredients"
         )
         private val foodname7: Food = Food(
+            7,
             R.drawable.food7,
             "Bicol Express",
             60.0f,
@@ -75,6 +82,7 @@ class DataGenerator {
         }
 
         private val medicine1: Medicine = Medicine(
+            1,
             R.drawable.medicine1,
             "Paracetamol",
             10.0f,
@@ -85,6 +93,7 @@ class DataGenerator {
             "Nausea, Allergic Reactions"
         )
         private val medicine2: Medicine = Medicine(
+            2,
             R.drawable.medicine2,
             "Loperamide",
             20.0f,
@@ -95,6 +104,7 @@ class DataGenerator {
             "Constipation, Dizziness"
         )
         private val medicine3: Medicine = Medicine(
+            3,
             R.drawable.medicine3,
             "Cetirizine",
             30.0f,
@@ -105,6 +115,7 @@ class DataGenerator {
             "Drowsiness, Dry Mouth"
         )
         private val medicine4: Medicine = Medicine(
+            4,
             R.drawable.medicine4,
             "Omeprazole",
             40.0f,
@@ -115,6 +126,7 @@ class DataGenerator {
             "Headache, Diarrhea"
         )
         private val medicine5: Medicine = Medicine(
+            5,
             R.drawable.medicine5,
             "Simvastatin",
             50.0f,
@@ -125,6 +137,7 @@ class DataGenerator {
             "Muscle Pain, Liver Damage"
         )
         private val medicine6: Medicine = Medicine(
+            6,
             R.drawable.medicine6,
             "Metformin",
             60.0f,
@@ -140,6 +153,7 @@ class DataGenerator {
         }
 
         private val entertainment1: Entertainment = Entertainment(
+            1,
             R.drawable.leisure1,
             "Spa",
             100.0f,
@@ -150,6 +164,7 @@ class DataGenerator {
             "Contact"
         )
         private val entertainment2: Entertainment = Entertainment(
+            2,
             R.drawable.leisure2,
             "Gym",
             200.0f,
@@ -160,6 +175,7 @@ class DataGenerator {
             "Contact"
         )
         private val entertainment3: Entertainment = Entertainment(
+            3,
             R.drawable.leisure3,
             "Swimming Pool",
             150.0f,
@@ -170,6 +186,7 @@ class DataGenerator {
             "Contact"
         )
         private val entertainment4: Entertainment = Entertainment(
+            4,
             R.drawable.leisure4,
             "Sauna",
             250.0f,
@@ -180,6 +197,7 @@ class DataGenerator {
             "Contact"
         )
         private val entertainment5: Entertainment = Entertainment(
+            5,
             R.drawable.leisure5,
             "Yoga",
             300.0f,
@@ -190,6 +208,7 @@ class DataGenerator {
             "Contact"
         )
         private val entertainment6: Entertainment = Entertainment(
+            6,
             R.drawable.leisure6,
             "Karaoke",
             50.0f,

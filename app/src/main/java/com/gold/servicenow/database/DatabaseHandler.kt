@@ -172,6 +172,7 @@ class DatabaseHandler {
         val foodList = DataGenerator.getFoodName()
         foodList.forEach { food ->
             val foodData = mapOf(
+                "food_id" to food.food_id,
                 "image" to food.imageId,
                 "name" to food.name,
                 "price" to food.price,
@@ -191,6 +192,7 @@ class DatabaseHandler {
         val medicineList = DataGenerator.getMedicine()
         medicineList.forEach { medicine ->
             val medicineData = mapOf(
+                "medicine_id" to medicine.medicineId,
                 "name" to medicine.name,
                 "image" to medicine.imageId,
                 "price" to medicine.price,
@@ -211,6 +213,7 @@ class DatabaseHandler {
         val entertainmentList = DataGenerator.getLeisure()
         entertainmentList.forEach { entertainment ->
             val entertainmentData = mapOf(
+                "entertainment_id" to entertainment.entertainment_id,
                 "name" to entertainment.name,
                 "image" to entertainment.imageId,
                 "price" to entertainment.price,
