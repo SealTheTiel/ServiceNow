@@ -28,35 +28,6 @@ class DatabaseHandler {
         const val ENTERTAINMENT_COLLECTION = "entertainment"
         const val FOOD_COLLECTION = "food"
         const val MEDICINE_COLLECTION = "medicine"
-
-        const val ENTERTAINMENT_ID = "entertainment_id"
-        const val ENTERTAINMENT_NAME = "entertainment_name"
-        const val ENTERTAINMENT_IMAGE = "entertainment_image"
-        const val ENTERTAINMENT_DESCRIPTION = "entertainment_description"
-        const val ENTERTAINMENT_PRICE = "entertainment_price"
-        const val ENTERTAINMENT_LOCATION = "entertainment_location"
-        const val ENTERTAINMENT_CONTACT = "entertainment_contact"
-        const val ENTERTAINMENT_DETAIL1 = "entertainment_detail1"
-        const val ENTERTAINMENT_DETAIL2 = "entertainment_detail2"
-
-        const val FOOD_ID = "food_id"
-        const val FOOD_NAME = "food_name"
-        const val FOOD_IMAGE = "food_image"
-        const val FOOD_DESCRIPTION = "food_description"
-        const val FOOD_PRICE = "food_price"
-        const val FOOD_RESTAURANT = "food_restaurant"
-        const val FOOD_DETAIL1 = "food_detail1"
-        const val FOOD_DETAIL2 = "food_detail2"
-
-        const val MEDICINE_ID = "medicine_id"
-        const val MEDICINE_NAME = "medicine_name"
-        const val MEDICINE_IMAGE = "medicine_image"
-        const val MEDICINE_DESCRIPTION = "medicine_description"
-        const val MEDICINE_PRICE = "medicine_price"
-        const val MEDICINE_DOSAGE = "medicine_dosage"
-        const val MEDICINE_SIDE_EFFECTS = "medicine_side_effects"
-        const val MEDICINE_DETAIL1 = "medicine_detail1"
-        const val MEDICINE_DETAIL2 = "medicine_detail2"
     }
 
     // Add a new food document
