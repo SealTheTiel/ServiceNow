@@ -1,4 +1,4 @@
-package com.gold.servicenow
+package com.gold.servicenow.cart
 
 import android.view.View
 import android.view.animation.AnimationUtils
@@ -6,9 +6,10 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import androidx.recyclerview.widget.RecyclerView
+import com.gold.servicenow.R
 
-class CartViewHolder(itemView: View, adapter: CartAdapter): ViewHolder(itemView) {
+class CartViewHolder(itemView: View, adapter: CartAdapter): RecyclerView.ViewHolder(itemView) {
     private val image: ImageView = itemView.findViewById(R.id.itemImage)
     private val name: TextView = itemView.findViewById(R.id.itemName)
     private val description: TextView = itemView.findViewById(R.id.itemDescription)

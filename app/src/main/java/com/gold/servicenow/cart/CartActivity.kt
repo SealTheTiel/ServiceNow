@@ -1,4 +1,4 @@
-package com.gold.servicenow
+package com.gold.servicenow.cart
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.gold.servicenow.R
+import com.gold.servicenow.SetLocationActivity
 
 class CartActivity : ComponentActivity(), CartChangeListener {
     private val cartList: ArrayList<CartEntry> = CartList.cartList

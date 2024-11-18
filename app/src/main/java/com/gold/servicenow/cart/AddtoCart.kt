@@ -1,8 +1,9 @@
-package com.gold.servicenow
+package com.gold.servicenow.cart
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
+import com.gold.servicenow.R
 
 class AddtoCart : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

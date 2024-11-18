@@ -1,4 +1,4 @@
-package com.gold.servicenow
+package com.gold.servicenow.cart
 
 class CartEntry {
     var name: String = ""
