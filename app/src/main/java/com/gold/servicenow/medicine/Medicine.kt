@@ -1,7 +1,7 @@
 package com.gold.servicenow.medicine
 
 class Medicine (id:Int, imageUrl: String, name: String, price: Float, description: String, detail1:String, dosage: String, detail2:String, sideEffects: String) {
-    var id: Int = 0
+    var id: Int = id
         private set
     var imageUrl = imageUrl
         private set

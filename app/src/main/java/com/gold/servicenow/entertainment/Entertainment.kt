@@ -1,7 +1,7 @@
 package com.gold.servicenow.entertainment
 
 class Entertainment (id:Int, imageUrl: String, name: String, price: Float, description: String, location: String, contact: String, detail1:String, detail2: String) {
-    var id: Int = 0
+    var id: Int = id
         private set
     var imageUrl = imageUrl
         private set

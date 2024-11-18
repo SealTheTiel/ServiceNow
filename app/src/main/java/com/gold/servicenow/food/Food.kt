@@ -1,7 +1,7 @@
 package com.gold.servicenow.food
 
 class Food (id:Int, imageUrl: String, name: String, price: Float, restaurant: String, description: String, detail1:String, detail2: String) {
-    var id: Int = 0
+    var id: Int = id
         private set
 
     var imageUrl = imageUrl
