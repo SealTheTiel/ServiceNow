@@ -7,6 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
+import com.gold.servicenow.entertainment.EntertainmentFragment
+import com.gold.servicenow.food.FoodFragment
+import com.gold.servicenow.medicine.MedicineFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeFragment : Fragment() {

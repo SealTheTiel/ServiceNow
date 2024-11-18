@@ -6,6 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.*
 import androidx.fragment.app.Fragment
 import com.gold.servicenow.databinding.ActivityMainBinding
+import com.gold.servicenow.entertainment.EntertainmentFragment
+import com.gold.servicenow.food.FoodFragment
+import com.gold.servicenow.medicine.MedicineFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
