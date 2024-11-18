@@ -1,9 +1,9 @@
 package com.gold.servicenow.medicine
 
-class Medicine (medicineId:Int, imageId: Int, name: String, price: Float, description: String, detail1:String, dosage: String, detail2:String, sideEffects: String) {
-    var medicineId: Int = 0
+class Medicine (id:Int, imageUrl: String, name: String, price: Float, description: String, detail1:String, dosage: String, detail2:String, sideEffects: String) {
+    var id: Int = 0
         private set
-    var imageId = imageId
+    var imageUrl = imageUrl
         private set
 
     var name = name
