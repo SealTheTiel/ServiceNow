@@ -1,4 +1,4 @@
-package com.gold.servicenow
+package com.gold.servicenow.food
 
 class Food (imageId: Int, name: String, price: Float, restaurant: String, description: String, detail1:String, detail2: String) {
     var imageId = imageId

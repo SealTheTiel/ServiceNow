@@ -1,10 +1,11 @@
-package com.gold.servicenow
+package com.gold.servicenow.food
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView.Adapter
+import androidx.recyclerview.widget.RecyclerView
+import com.gold.servicenow.R
 
-class FoodAdapter(private val data: ArrayList<Food>): Adapter<FoodViewHolder>() {
+class FoodAdapter(private val data: ArrayList<Food>): RecyclerView.Adapter<FoodViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val itemView = inflater.inflate(R.layout.item_layout, parent, false)
