@@ -1,17 +1,21 @@
-package com.gold.servicenow
+package com.gold.servicenow.entertainment
 
 import android.app.Dialog
+import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.cardview.widget.CardView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import androidx.recyclerview.widget.RecyclerView
+import com.gold.servicenow.R
+import com.gold.servicenow.cart.CartEntry
+import com.gold.servicenow.cart.CartList
 
-class EntertainmentViewHolder(itemView: View): ViewHolder(itemView) {
+class EntertainmentViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
     private val image: ImageView = itemView.findViewById(R.id.itemImage)
     private val name: TextView = itemView.findViewById(R.id.itemName)
     private val description: TextView = itemView.findViewById(R.id.itemDescription)
@@ -20,14 +24,14 @@ class EntertainmentViewHolder(itemView: View): ViewHolder(itemView) {
     private val decrement: ImageButton = itemView.findViewById(R.id.itemDecrement)
     private val increment: ImageButton = itemView.findViewById(R.id.itemIncrement)
     private val delete: ImageButton = itemView.findViewById(R.id.itemDelete)
-    private lateinit var leisure: Leisure
+    private lateinit var entertainment: Entertainment
 
-    fun bindData(leisure: Leisure) {
-        this.leisure = leisure
-        image.setImageResource(leisure.imageId)
-        name.text = leisure.name
-        description.text = leisure.description
-        price.text = "PHP " + leisure.price.toString()
+    fun bindData(entertainment: Entertainment) {
+        this.entertainment = entertainment
+        image.setImageResource(entertainment.imageId)
+        name.text = entertainment.name
+        description.text = entertainment.description
+        price.text = "PHP " + entertainment.price.toString()
 
         quantity.visibility = View.GONE
         decrement.visibility = View.GONE
@@ -43,13 +47,13 @@ class EntertainmentViewHolder(itemView: View): ViewHolder(itemView) {
 
     private fun showDialog() {
         val dialog = Dialog(itemView.context)
-        dialog.requestWindowFeature(android.view.Window.FEATURE_NO_TITLE)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setContentView(R.layout.activity_view_details)
         dialog.show()
         dialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
         dialog.window?.attributes?.windowAnimations = R.style.DialogAnimation
-        dialog.window?.setGravity(android.view.Gravity.BOTTOM)
+        dialog.window?.setGravity(Gravity.BOTTOM)
 
         val dialogName: TextView = dialog.findViewById(R.id.addToCartName)
         val dialogDetail1: TextView = dialog.findViewById(R.id.addToCartDetail1)
@@ -62,11 +66,11 @@ class EntertainmentViewHolder(itemView: View): ViewHolder(itemView) {
         val dialogButton: Button = dialog.findViewById(R.id.addToCartButton)
 
 
-        dialogName.text = leisure.name
-        dialogDetail1.text = leisure.detail1
-        dialogDetail2.text = leisure.detail2
-        dialogDescription1.text = leisure.location
-        dialogDescription2.text = leisure.contact
+        dialogName.text = entertainment.name
+        dialogDetail1.text = entertainment.detail1
+        dialogDetail2.text = entertainment.detail2
+        dialogDescription1.text = entertainment.location
+        dialogDescription2.text = entertainment.contact
         dialogIncrement.setOnClickListener{
             var quantity = dialogQuantity.text.toString().toInt()
             quantity++
@@ -80,7 +84,12 @@ class EntertainmentViewHolder(itemView: View): ViewHolder(itemView) {
             }
         }
         dialogButton.setOnClickListener {
-            val cartEntry = CartEntry(leisure.name, leisure.price, dialogQuantity.text.toString().toInt(), leisure.imageId)
+            val cartEntry = CartEntry(
+                entertainment.name,
+                entertainment.price,
+                dialogQuantity.text.toString().toInt(),
+                entertainment.imageId
+            )
             CartList.addCartEntry(cartEntry)
             dialog.dismiss()
         }

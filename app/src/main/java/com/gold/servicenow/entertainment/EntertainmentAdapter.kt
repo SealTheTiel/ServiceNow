@@ -1,11 +1,11 @@
-package com.gold.servicenow
+package com.gold.servicenow.entertainment
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.compose.foundation.interaction.HoverInteraction
-import androidx.recyclerview.widget.RecyclerView.Adapter
+import androidx.recyclerview.widget.RecyclerView
+import com.gold.servicenow.R
 
-class EntertainmentAdapter(private val data: ArrayList<Leisure>): Adapter<EntertainmentViewHolder>() {
+class EntertainmentAdapter(private val data: ArrayList<Entertainment>): RecyclerView.Adapter<EntertainmentViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EntertainmentViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val itemView = inflater.inflate(R.layout.item_layout, parent, false)

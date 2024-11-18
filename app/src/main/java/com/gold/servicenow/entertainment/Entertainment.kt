@@ -1,6 +1,6 @@
-package com.gold.servicenow
+package com.gold.servicenow.entertainment
 
-class Leisure (imageId: Int, name: String, price: Float, description: String, location: String, contact: String, detail1:String, detail2: String) {
+class Entertainment (imageId: Int, name: String, price: Float, description: String, location: String, contact: String, detail1:String, detail2: String) {
     var imageId = imageId
         private set
 
