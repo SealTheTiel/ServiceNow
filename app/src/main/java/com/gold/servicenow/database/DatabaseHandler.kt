@@ -1,6 +1,7 @@
 package com.gold.servicenow.database
 
 import com.gold.servicenow.DataGenerator
+import com.gold.servicenow.entertainment.Entertainment
 import com.google.firebase.firestore.FirebaseFirestore
 
 class DatabaseHandler {
@@ -141,15 +142,32 @@ class DatabaseHandler {
     }
 
     // Get all entertainment documents
-    fun getEntertainment(onSuccess: (List<Map<String, Any>>) -> Unit, onFailure: (Exception) -> Unit) {
+    fun getEntertainment(onSuccess: (List<Entertainment>) -> Unit, onFailure: (Exception) -> Unit) {
         firestore.collection(ENTERTAINMENT_COLLECTION)
             .get()
             .addOnSuccessListener { result ->
-                val dataList = result.documents.map { it.data!! }
+                val dataList = result.documents.mapNotNull { doc ->
+                    try {
+                        Entertainment(
+                            entertainment_id = doc.get("entertainment_id") as? Int ?: 0,
+                            name = doc.get("entertainment_name") as? String ?: "",
+                            imageId = doc.get("entertainment_image") as? Int ?: 0,
+                            description = doc.get("entertainment_description") as? String ?: "",
+                            price = (doc.get("entertainment_price") as? Double)?.toFloat() ?: 0f,
+                            location = doc.get("entertainment_location") as? String ?: "",
+                            contact = doc.get("entertainment_contact") as? String ?: "",
+                            detail1 = doc.get("entertainment_detail1") as? String ?: "",
+                            detail2 = doc.get("entertainment_detail2") as? String ?: ""
+                        )
+                    } catch (e: Exception) {
+                        null // Skip invalid documents
+                    }
+                }
                 onSuccess(dataList)
             }
             .addOnFailureListener { exception -> onFailure(exception) }
     }
+
 
     // Update a specific entertainment document
     fun updateEntertainment(documentId: String, updatedData: Map<String, Any>, onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {

@@ -2,6 +2,7 @@ package com.gold.servicenow.entertainment
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import com.gold.servicenow.DataGenerator
 import com.gold.servicenow.R
 import com.gold.servicenow.cart.AddtoCart
 import com.gold.servicenow.cart.CartActivity
+import com.gold.servicenow.database.DatabaseHandler
 
 class EntertainmentFragment : Fragment() {
     private lateinit var cart: ImageButton
@@ -42,9 +44,23 @@ class EntertainmentFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val entertainmentList: ArrayList<Entertainment> = DataGenerator.Companion.getLeisure()
+        // get from firebase
+        val entertainmentList = ArrayList<Entertainment>()
         val recyclerView: RecyclerView = view.findViewById(R.id.leisureRecycle)
         val adapter = EntertainmentAdapter(entertainmentList)
+
+        val databaseHandler = DatabaseHandler()
+        databaseHandler.getEntertainment(
+            onSuccess = { data ->
+                entertainmentList.clear() // Clear existing data
+                entertainmentList.addAll(data) // Add fetched data
+                adapter.notifyDataSetChanged() // Notify adapter of the changes
+            },
+            onFailure = { exception ->
+                Log.e("Firestore", "Error fetching entertainment data: ${exception.message}")
+            }
+        )
+
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
