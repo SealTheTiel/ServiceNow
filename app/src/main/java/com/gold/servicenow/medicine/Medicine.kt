@@ -1,4 +1,4 @@
-package com.gold.servicenow
+package com.gold.servicenow.medicine
 
 class Medicine (imageId: Int, name: String, price: Float, description: String, detail1:String, dosage: String, detail2:String, sideEffects: String) {
     var imageId = imageId
