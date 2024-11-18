@@ -1,6 +1,10 @@
 package com.gold.servicenow.entertainment
 
 import android.app.Dialog
+import android.graphics.Bitmap
+import android.os.Debug
+import android.os.Handler
+import android.os.Looper
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.gold.servicenow.R
 import com.gold.servicenow.cart.CartEntry
 import com.gold.servicenow.cart.CartList
+import java.util.concurrent.Executors
 
 class EntertainmentViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
     private val image: ImageView = itemView.findViewById(R.id.itemImage)
@@ -27,11 +32,35 @@ class EntertainmentViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
     private lateinit var entertainment: Entertainment
 
     fun bindData(entertainment: Entertainment) {
+        println("Entertainmen ID: ${entertainment.id}\n" +
+                "\tName: ${entertainment.name}\n" +
+                "\tDescription: ${entertainment.description}\n" +
+                "\tPrice: ${entertainment.price}\n" +
+                "\tImage ID: ${entertainment.imageUrl}\n" +
+                "\tDetail 1: ${entertainment.detail1}\n" +
+                "\tDetail 2: ${entertainment.detail2}\n")
+
         this.entertainment = entertainment
-        image.setImageResource(entertainment.imageId)
         name.text = entertainment.name
         description.text = entertainment.description
         price.text = "PHP " + entertainment.price.toString()
+
+        val imageExecutor = Executors.newSingleThreadExecutor()
+        val imageHandler = Handler(Looper.getMainLooper())
+        var imageBitmap: Bitmap? = null
+
+        imageExecutor.execute {
+            try {
+                val `in` = java.net.URL(entertainment.imageUrl).openStream()
+                imageBitmap = android.graphics.BitmapFactory.decodeStream(`in`)
+                imageHandler.post {
+                    image.setImageBitmap(imageBitmap)
+                }
+            } catch (e: Exception) {
+                error("Error: ${e.message}")
+                e.printStackTrace()
+            }
+        }
 
         quantity.visibility = View.GONE
         decrement.visibility = View.GONE
@@ -88,7 +117,7 @@ class EntertainmentViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
                 entertainment.name,
                 entertainment.price,
                 dialogQuantity.text.toString().toInt(),
-                entertainment.imageId
+                entertainment.imageUrl
             )
             CartList.addCartEntry(cartEntry)
             dialog.dismiss()

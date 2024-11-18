@@ -1,6 +1,9 @@
 package com.gold.servicenow.medicine
 
 import android.app.Dialog
+import android.graphics.Bitmap
+import android.os.Handler
+import android.os.Looper
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.gold.servicenow.R
 import com.gold.servicenow.cart.CartEntry
 import com.gold.servicenow.cart.CartList
+import java.util.concurrent.Executors
 
 class MedicineViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
     private val image: ImageView = itemView.findViewById(R.id.itemImage)
@@ -28,10 +32,26 @@ class MedicineViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
     fun bindData(medicine: Medicine) {
         this.medicine = medicine
-        image.setImageResource(medicine.imageId)
         name.text = medicine.name
         description.text = medicine.description
         price.text = "PHP " + medicine.price.toString()
+
+        val imageExecutor = Executors.newSingleThreadExecutor()
+        val imageHandler = Handler(Looper.getMainLooper())
+        var imageBitmap: Bitmap? = null
+
+        imageExecutor.execute {
+            try {
+                val `in` = java.net.URL(medicine.imageUrl).openStream()
+                imageBitmap = android.graphics.BitmapFactory.decodeStream(`in`)
+                imageHandler.post {
+                    image.setImageBitmap(imageBitmap)
+                }
+            } catch (e: Exception) {
+                error("Error: ${e.message}")
+                e.printStackTrace()
+            }
+        }
 
         quantity.visibility = View.GONE
         decrement.visibility = View.GONE
@@ -88,7 +108,7 @@ class MedicineViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
                 medicine.name,
                 medicine.price,
                 dialogQuantity.text.toString().toInt(),
-                medicine.imageId
+                medicine.imageUrl
             )
             CartList.addCartEntry(cartEntry)
             dialog.dismiss()
