@@ -120,15 +120,15 @@ class DatabaseHandler {
                 val dataList = result.documents.mapNotNull { doc ->
                     try {
                         Entertainment(
-                            entertainment_id = doc.get("entertainment_id") as? Int ?: 0,
-                            name = doc.get("entertainment_name") as? String ?: "",
-                            imageId = doc.get("entertainment_image") as? Int ?: 0,
-                            description = doc.get("entertainment_description") as? String ?: "",
-                            price = (doc.get("entertainment_price") as? Double)?.toFloat() ?: 0f,
-                            location = doc.get("entertainment_location") as? String ?: "",
-                            contact = doc.get("entertainment_contact") as? String ?: "",
-                            detail1 = doc.get("entertainment_detail1") as? String ?: "",
-                            detail2 = doc.get("entertainment_detail2") as? String ?: ""
+                            id = doc.get("id") as? Int ?: 0,
+                            name = doc.get("name") as? String ?: "",
+                            imageUrl = doc.get("image") as? String ?: "0",
+                            description = doc.get("description") as? String ?: "",
+                            price = (doc.get("price") as? Double)?.toFloat() ?: 0f,
+                            location = doc.get("location") as? String ?: "",
+                            contact = doc.get("contact") as? String ?: "",
+                            detail1 = doc.get("detail1") as? String ?: "",
+                            detail2 = doc.get("detail2") as? String ?: ""
                         )
                     } catch (e: Exception) {
                         null // Skip invalid documents
