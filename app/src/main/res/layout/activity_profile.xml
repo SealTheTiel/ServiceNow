@@ -50,7 +50,7 @@
         android:layout_marginBottom="136dp"
         android:clipChildren="false"
         android:clipToPadding="false"
-        app:layout_constraintBottom_toTopOf="@+id/profileName2"
+        app:layout_constraintBottom_toTopOf="@+id/profileName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent">
@@ -100,7 +100,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <EditText
-        android:id="@+id/profileNumberInput2"
+        android:id="@+id/profileNumberInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -117,10 +117,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileNumber2" />
+        app:layout_constraintTop_toBottomOf="@+id/profileNumber" />
 
     <EditText
-        android:id="@+id/profileNameInput2"
+        android:id="@+id/profileNameInput"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -137,7 +137,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileName2" />
+        app:layout_constraintTop_toBottomOf="@+id/profileName" />
 
     <TextView
         android:id="@+id/profileEmail"
@@ -149,7 +149,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileNameInput2" />
+        app:layout_constraintTop_toBottomOf="@+id/profileNameInput" />
 
     <EditText
         android:id="@+id/profileEmailInput"
@@ -206,7 +206,7 @@
         app:layout_constraintTop_toBottomOf="@id/profilePassword" />
 
     <TextView
-        android:id="@+id/profileNumber2"
+        android:id="@+id/profileNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
@@ -218,7 +218,7 @@
         app:layout_constraintTop_toBottomOf="@+id/profilePasswordInput" />
 
     <TextView
-        android:id="@+id/profileName2"
+        android:id="@+id/profileName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
@@ -230,7 +230,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline" />
 
     <Button
-        android:id="@+id/profileLoginButton"
+        android:id="@+id/profileUpdateButton"
         android:layout_width="match_parent"
 
         android:layout_height="wrap_content"
@@ -242,21 +242,22 @@
         android:background="@drawable/rounded"
         android:backgroundTint="@color/primary_blue"
         android:elevation="@dimen/default_elevation"
+        android:enabled="false"
         android:gravity="center"
         android:stateListAnimator="@null"
         android:text="Update Profile"
         android:textAllCaps="false"
+
         android:textColor="@color/white"
         android:textSize="20sp"
-
         android:textStyle="bold"
+
         app:backgroundTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileNumberInput2"
+        app:layout_constraintTop_toBottomOf="@+id/profileNumberInput"
         app:layout_constraintVertical_bias="0.851" />
 
 
