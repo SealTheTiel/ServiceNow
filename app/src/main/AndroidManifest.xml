@@ -30,7 +30,7 @@
             android:name=".SetLocationActivity"
             android:exported="false" />
         <activity
-            android:name=".Register"
+            android:name=".RegisterActivity"
             android:exported="false" />
         <activity
             android:name=".Login"
