@@ -7,17 +7,18 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import android.view.animation.AnimationUtils
+import android.widget.EditText
+import com.gold.servicenow.database.DatabaseHandler
+import com.gold.servicenow.profile.CurrentProfile
 
 class Login : ComponentActivity() {
     private lateinit var loginButton: Button
-    private lateinit var googleButton: Button
     private lateinit var signupButton: TextView
     private lateinit var backButton: ImageButton
-
+    private lateinit var emailEditText: EditText
+    private lateinit var passwordEditText: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,22 +31,27 @@ class Login : ComponentActivity() {
         }
 
         loginButton = findViewById(R.id.loginLoginButton)
-        googleButton = findViewById(R.id.loginGoogleButton)
         signupButton = findViewById(R.id.loginSignup)
         backButton = findViewById(R.id.loginBackButton)
+        emailEditText = findViewById(R.id.loginEmailInput)
+        passwordEditText = findViewById(R.id.loginPasswordInput)
 
         // TEMPORARILY GO TO MAIN ACTIVITY
         loginButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
+            val email = emailEditText.text.toString()
+            val password = passwordEditText.text.toString()
+            CurrentProfile.login(email, password,
+                onSuccess = {
+                    println("[INFO] [Login]: Log in successful with email: $email")
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                },
+                onFailure = {
+                    println("[ERROR] [Login]: Failed to log in with email: $email")
+                }
+            )
         }
-        googleButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
-
         signupButton.setOnClickListener {
             val intent = Intent(this, Register::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
