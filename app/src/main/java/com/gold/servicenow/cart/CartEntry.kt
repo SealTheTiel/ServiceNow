@@ -66,6 +66,7 @@ object CartList {
         listener?.onCartUpdated(getCartTotal())
     }
 
+
 }
 
 interface CartChangeListener {
