@@ -5,10 +5,6 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.KeyEventDispatcher.Component
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class Welcome : ComponentActivity() {
     private lateinit var registerButton: Button
@@ -20,7 +16,7 @@ class Welcome : ComponentActivity() {
         registerButton = findViewById(R.id.welcomeRegisterButton)
         loginButton = findViewById(R.id.welcomeLoginButton)
         registerButton.setOnClickListener {
-            val intent = Intent(this, Register::class.java)
+            val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
 

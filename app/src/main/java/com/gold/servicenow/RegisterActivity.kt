@@ -2,7 +2,6 @@ package com.gold.servicenow
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
@@ -11,19 +10,22 @@ import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.lifecycleScope
 import com.gold.servicenow.profile.*
-import kotlinx.coroutines.launch
-import kotlin.coroutines.coroutineContext
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 
-class Register : ComponentActivity() {
+class RegisterActivity : ComponentActivity() {
     private lateinit var registerButton: Button
     private lateinit var loginButton: TextView
     private lateinit var backButton: ImageButton
-    private lateinit var emailEditText: EditText
+    private lateinit var emailEditText: TextInputEditText
+    private lateinit var emailEditLayout: TextInputLayout
     private lateinit var nameEditText: EditText
+    private lateinit var nameEditLayout: TextInputLayout
     private lateinit var contactEditText: EditText
+    private lateinit var contactEditLayout: TextInputLayout
     private lateinit var passwordEditText: EditText
+    private lateinit var passwordEditLayout: TextInputLayout
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,6 +45,20 @@ class Register : ComponentActivity() {
         nameEditText = findViewById(R.id.registerNameInput)
         contactEditText = findViewById(R.id.registerNumberInput)
         passwordEditText = findViewById(R.id.registerPasswordInput)
+        emailEditLayout = findViewById(R.id.registerEmail)
+        nameEditLayout = findViewById(R.id.registerName)
+        contactEditLayout = findViewById(R.id.registerNumber)
+        passwordEditLayout = findViewById(R.id.registerPassword)
+
+        emailEditText.setOnFocusChangeListener { view, focused ->
+            if (focused) return@setOnFocusChangeListener
+            emailEditLayout.helperText = InputValidator.validateEmail(emailEditText.text.toString())
+        }
+
+        passwordEditText.setOnFocusChangeListener { view, focused ->
+            if (focused) return@setOnFocusChangeListener
+            passwordEditLayout.helperText = InputValidator.validatePassword(passwordEditText.text.toString())
+        }
 
         registerButton.setOnClickListener {
             val name = nameEditText.text.toString()

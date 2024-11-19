@@ -10,7 +10,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import android.widget.EditText
-import com.gold.servicenow.database.DatabaseHandler
 import com.gold.servicenow.profile.CurrentProfile
 
 class Login : ComponentActivity() {
@@ -52,7 +51,7 @@ class Login : ComponentActivity() {
             )
         }
         signupButton.setOnClickListener {
-            val intent = Intent(this, Register::class.java)
+            val intent = Intent(this, RegisterActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
             startActivity(intent)
         }
