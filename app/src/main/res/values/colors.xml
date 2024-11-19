@@ -13,6 +13,6 @@
     <color name="transparent">#00FFFFFF</color>
     <color name="secondary_blue">#FFECF1FF</color>
     <color name="tertiary_blue">#FF809CFF</color>
-    <color name="light_gray">#FFE6E6E6</color>
+    <color name="light_gray">#FFF4F4FF</color>
     <color name="red">#FFDD1111</color>
 </resources>
