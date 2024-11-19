@@ -44,4 +44,15 @@ object CurrentProfile {
                         }
         )
     }
+
+    fun update(newProfile: Profile, onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {
+        ProfileDatabase().updateUser(this.profile!!, newProfile,
+            onSuccess = {   this.profile = newProfile
+                            onSuccess()
+                        },
+            onFailure = {   Exception -> onFailure(Exception)
+                            println("[ERROR] [Profile] Failed to update profile: ${this.profile!!.name}")
+                        }
+        )
+    }
 }
