@@ -24,7 +24,7 @@
             android:name="osmdroid.cachePath"
             android:value="osmdroid/cache" />
         <activity
-            android:name=".profile.Profile"
+            android:name=".profile.ProfileActivity"
             android:exported="false" />
         <activity
             android:name=".SetLocationActivity"
