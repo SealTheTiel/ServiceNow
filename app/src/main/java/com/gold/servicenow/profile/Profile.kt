@@ -2,17 +2,21 @@ package com.gold.servicenow.profile
 
 import com.google.android.gms.tasks.Tasks.await
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+class Profile(name: String, email: String, contact: String, password: String, imageUrl: String) {
+    var name = name
+        private set
 
-class Profile : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_profile)
-    }
+    var email = email
+        private set
+
+    var contact = contact
+        private set
+
+    var password = password
+        private set
+
+    var imageUrl = imageUrl
+        private set
+
+    constructor(name: String, email: String, contact: String, password: String) : this(name, email, contact, password, "")
 }
