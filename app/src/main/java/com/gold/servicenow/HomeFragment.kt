@@ -13,6 +13,7 @@ import com.gold.servicenow.food.FoodFragment
 import com.gold.servicenow.medicine.MedicineFragment
 import com.gold.servicenow.profile.CurrentProfile
 import com.gold.servicenow.profile.Profile
+import com.gold.servicenow.profile.ProfileActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeFragment : Fragment() {
@@ -54,7 +55,7 @@ class HomeFragment : Fragment() {
         }
 
         profileButton.setOnClickListener {
-            val intent = Intent(activity, Profile::class.java)
+            val intent = Intent(activity, ProfileActivity   ::class.java)
             startActivity(intent)
         }
 
