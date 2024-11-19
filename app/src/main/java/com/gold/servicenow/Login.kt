@@ -36,7 +36,6 @@ class Login : ComponentActivity() {
         emailEditText = findViewById(R.id.loginEmailInput)
         passwordEditText = findViewById(R.id.loginPasswordInput)
 
-        // TEMPORARILY GO TO MAIN ACTIVITY
         loginButton.setOnClickListener {
             val email = emailEditText.text.toString()
             val password = passwordEditText.text.toString()
