@@ -45,15 +45,15 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="136dp"
+        android:id="@+id/constraintLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:clipChildren="false"
         android:clipToPadding="false"
-        app:layout_constraintBottom_toTopOf="@+id/profileName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline">
 
         <!-- Circular Profile Card -->
         <ImageButton
@@ -64,24 +64,24 @@
             android:background="@drawable/rounded"
             android:contentDescription="Edit profile"
             android:elevation="4dp"
+            android:src="@drawable/baseline_edit_24"
             android:tint="@android:color/white"
             android:translationX="16dp"
             android:translationY="16dp"
             android:translationZ="10dp"
-            app:tint="@null"
             app:layout_constraintBottom_toBottomOf="@id/profileCard"
             app:layout_constraintEnd_toEndOf="@id/profileCard"
-            android:src="@drawable/baseline_edit_24" />
+            app:tint="@null" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/profileCard"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:layout_marginTop="16dp"
             android:clipChildren="false"
             android:clipToPadding="false"
             app:cardCornerRadius="60dp"
             app:cardElevation="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -99,135 +99,147 @@
         <!-- Pencil Button Overlapping the Card -->
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <EditText
-        android:id="@+id/profileNumberInput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/rounded_gray"
-        android:ems="16"
-        android:hint="Mobile Number"
-        android:inputType="number"
-        android:padding="@dimen/default_margins"
-        android:paddingHorizontal="12dp"
-        android:textColor="@color/primary_blue"
-        android:textColorHint="@color/tertiary_blue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileNumber" />
-
-    <EditText
-        android:id="@+id/profileNameInput"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/rounded_gray"
-        android:ems="16"
-        android:hint="Full Name"
-        android:inputType="textPersonName"
-        android:padding="@dimen/default_margins"
-        android:paddingHorizontal="12dp"
-        android:textColor="@color/primary_blue"
-        android:textColorHint="@color/tertiary_blue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileName" />
-
-    <TextView
-        android:id="@+id/profileEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="12dp"
-        android:text="Email"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileNameInput" />
-
-    <EditText
-        android:id="@+id/profileEmailInput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/double_margins"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="@dimen/double_margins"
-        android:background="@drawable/rounded_gray"
-        android:ems="16"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:padding="@dimen/default_margins"
-        android:paddingHorizontal="12dp"
-        android:textColor="@color/primary_blue"
-        android:textColorHint="@color/tertiary_blue"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/profileEmail" />
-
-    <TextView
-        android:id="@+id/profilePassword"
-        android:layout_width="109dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="12dp"
-        android:text="Password"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/profileEmailInput" />
-
-    <EditText
-        android:id="@+id/profilePasswordInput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/double_margins"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="@dimen/double_margins"
-        android:background="@drawable/rounded_gray"
-        android:ems="16"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:padding="@dimen/default_margins"
-        android:paddingHorizontal="12dp"
-        android:textColor="@color/primary_blue"
-        android:textColorHint="@color/tertiary_blue"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/profilePassword" />
-
-    <TextView
-        android:id="@+id/profileNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="12dp"
-        android:text="Mobile Number"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profilePasswordInput" />
-
-    <TextView
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/profileName"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="128dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
         android:text="Full Name"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:textColorHint="@color/dark_gray"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:hintTextAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:hintTextColor="@color/dark_gray"
+        app:errorTextColor="@color/red"
+        app:helperTextTextColor="@color/red"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/profileNameInput"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/rounded_gray"
+            android:hint="Full Name"
+            android:inputType="textPersonName"
+            android:paddingHorizontal="12dp"
+            android:paddingLeft="@dimen/default_margins"
+            android:paddingRight="@dimen/default_margins"
+            android:paddingTop="@dimen/double_margins"
+            android:textColor="@color/primary_blue"
+            android:textColorHighlight="@color/white"
+            android:textSize="24sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/profileEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:text="Email"
+        android:textColorHint="@color/dark_gray"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:hintTextAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:hintTextColor="@color/dark_gray"
+        app:errorTextColor="@color/red"
+        app:helperTextTextColor="@color/red"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileName">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/profileEmailInput"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/rounded_gray"
+            android:hint="Email"
+            android:inputType="textPersonName"
+            android:paddingHorizontal="12dp"
+            android:paddingLeft="@dimen/default_margins"
+            android:paddingRight="@dimen/default_margins"
+            android:paddingTop="@dimen/double_margins"
+            android:textColor="@color/primary_blue"
+            android:textColorHighlight="@color/white"
+            android:textSize="24sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/profilePassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:text="Password"
+        android:textColorHint="@color/dark_gray"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:hintTextAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:hintTextColor="@color/dark_gray"
+        app:errorTextColor="@color/red"
+        app:helperTextTextColor="@color/red"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profileEmail"
+        app:passwordToggleEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/profilePasswordInput"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/rounded_gray"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:paddingHorizontal="12dp"
+            android:paddingLeft="@dimen/default_margins"
+            android:paddingRight="@dimen/default_margins"
+            android:paddingTop="@dimen/double_margins"
+            android:textColor="@color/primary_blue"
+            android:textColorHighlight="@color/white"
+            android:textSize="24sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/profileNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:text="Contact Number"
+        android:textColorHint="@color/dark_gray"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:hintTextAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:hintTextColor="@color/dark_gray"
+        app:errorTextColor="@color/red"
+        app:helperTextTextColor="@color/red"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profilePassword">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/profileNumberInput"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/rounded_gray"
+            android:hint="Contact Number"
+            android:inputType="phone"
+            android:paddingHorizontal="12dp"
+            android:paddingLeft="@dimen/default_margins"
+            android:paddingRight="@dimen/default_margins"
+            android:paddingTop="@dimen/double_margins"
+            android:textColor="@color/primary_blue"
+            android:textColorHighlight="@color/white"
+            android:textSize="24sp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/profileUpdateButton"
@@ -236,7 +248,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="12dp"
         android:layout_marginEnd="64dp"
         android:layout_marginBottom="12dp"
         android:background="@drawable/rounded"
@@ -249,15 +260,15 @@
         android:textAllCaps="false"
 
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="24sp"
         android:textStyle="bold"
-
+        android:padding="@dimen/default_margins"
         app:backgroundTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileNumberInput"
+        app:layout_constraintTop_toBottomOf="@+id/profileNumber"
         app:layout_constraintVertical_bias="0.851" />
 
 
