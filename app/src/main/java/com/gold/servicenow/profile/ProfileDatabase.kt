@@ -26,9 +26,21 @@ class ProfileDatabase {
         )
 
         firestore.collection(PROFILE_COLLECTION)
-            .add(profileMap)
-            .addOnSuccessListener {
-                onSuccess(profile)
+            .get()
+            .addOnSuccessListener { results ->
+                for (result in results) {
+                    if (result.get("email") == profile.email) {
+                        onFailure(Exception("Email already exists"))
+                    }
+                }
+                firestore.collection(PROFILE_COLLECTION)
+                    .add(profileMap)
+                    .addOnSuccessListener {
+                        onSuccess(profile)
+                    }
+                    .addOnFailureListener {
+                            exception -> onFailure(exception)
+                    }
             }
             .addOnFailureListener {
                 exception -> onFailure(exception)
