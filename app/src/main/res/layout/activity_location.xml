@@ -146,20 +146,21 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <ImageView
+    <org.osmdroid.views.MapView
         android:id="@+id/locationMap"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="16dp"
-        android:src="@drawable/map_sample"
-        app:backgroundTint="@null"
         android:layout_marginTop="@dimen/double_margins"
+        app:backgroundTint="@null"
         app:layout_constraintBottom_toTopOf="@+id/paymentProceedButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/locationAddLocation"
         app:tint="@null" />
+
+
 
     <Button
         android:id="@+id/paymentProceedButton"
