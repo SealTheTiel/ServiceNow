@@ -45,8 +45,8 @@ class ProfileDatabase {
                         profile = Profile(
                             result.get("name") as String,
                             result.get("email") as String,
-                            result.get("password") as String,
                             result.get("contact") as String,
+                            result.get("password") as String,
                             result.get("imageUrl") as String
                         )
                         onSuccess(profile)
@@ -55,6 +55,36 @@ class ProfileDatabase {
             }
             .addOnFailureListener { exception ->
                 onFailure(exception)
+            }
+    }
+
+    fun updateUser(currentProfile: Profile, newProfile: Profile, onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {
+        val profileMap = mapOf(
+            "name" to newProfile.name,
+            "email" to newProfile.email,
+            "contact" to newProfile.contact,
+            "password" to newProfile.password,
+            "imageUrl" to newProfile.imageUrl
+        )
+        firestore.collection(PROFILE_COLLECTION)
+            .get()
+            .addOnSuccessListener {
+                for (result in it) {
+                    if (result.get("email") == currentProfile.email) {
+                        firestore.collection(PROFILE_COLLECTION)
+                            .document(result.id)
+                            .update(profileMap)
+                            .addOnSuccessListener {
+                                onSuccess()
+                            }
+                            .addOnFailureListener {
+                                exception -> onFailure(exception)
+                            }
+                    }
+                }
+            }
+            .addOnFailureListener {
+                exception -> onFailure(exception)
             }
     }
 
