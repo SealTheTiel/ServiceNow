@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.*
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import com.gold.servicenow.InputValidator
 import com.gold.servicenow.R
 import com.gold.servicenow.databinding.ActivityMainBinding
 import com.gold.servicenow.entertainment.EntertainmentFragment
@@ -17,14 +18,20 @@ import com.gold.servicenow.food.FoodFragment
 import com.gold.servicenow.medicine.MedicineFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.gold.servicenow.database.DatabaseHandler
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.FirebaseApp
 
 
 class ProfileActivity: ComponentActivity() {
-    private lateinit var nameEditText: EditText
-    private lateinit var emailEditText: EditText
-    private lateinit var contactEditText: EditText
-    private lateinit var passwordEditText: EditText
+    private lateinit var nameEditLayout: TextInputLayout
+    private lateinit var nameEditText: TextInputEditText
+    private lateinit var emailEditLayout: TextInputLayout
+    private lateinit var emailEditText: TextInputEditText
+    private lateinit var passwordEditLayout: TextInputLayout
+    private lateinit var passwordEditText: TextInputEditText
+    private lateinit var contactEditLayout: TextInputLayout
+    private lateinit var contactEditText: TextInputEditText
     private lateinit var updateButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,6 +54,10 @@ class ProfileActivity: ComponentActivity() {
         emailEditText = findViewById(R.id.profileEmailInput)
         contactEditText = findViewById(R.id.profileNumberInput)
         passwordEditText = findViewById(R.id.profilePasswordInput)
+        nameEditLayout = findViewById(R.id.profileName)
+        emailEditLayout = findViewById(R.id.profileEmail)
+        passwordEditLayout = findViewById(R.id.profilePassword)
+        contactEditLayout = findViewById(R.id.profileNumber)
         updateButton = findViewById(R.id.profileUpdateButton)
 
         println(CurrentProfile.profile?.name)
@@ -60,12 +71,17 @@ class ProfileActivity: ComponentActivity() {
         passwordEditText.setText(CurrentProfile.profile?.password)
         contactEditText.setText(CurrentProfile.profile?.contact)
 
-        updateButton.isEnabled = false
-        updateButton.backgroundTintList = getColorStateList(R.color.light_gray)
+        setButtonActivated(updateButton, false)
+
         nameEditText.addTextChangedListener {
             nameEdited = nameEditText.text.toString() != CurrentProfile.profile?.name
             if (nameEdited || emailEdited || contactEdited || passwordEdited) { setButtonActivated(updateButton, true) }
             else { setButtonActivated(updateButton, false) }
+        }
+
+        emailEditText.setOnFocusChangeListener { view, focused ->
+            if (focused) return@setOnFocusChangeListener
+            emailEditLayout.helperText = InputValidator.validateEmail(emailEditText.text.toString())
         }
 
         emailEditText.addTextChangedListener {
@@ -84,6 +100,10 @@ class ProfileActivity: ComponentActivity() {
             passwordEdited = passwordEditText.text.toString() != CurrentProfile.profile?.password
             if (nameEdited || emailEdited || contactEdited || passwordEdited) { setButtonActivated(updateButton, true) }
             else { setButtonActivated(updateButton, false) }
+        }
+        passwordEditText.setOnFocusChangeListener { view, focused ->
+            if (focused) return@setOnFocusChangeListener
+            passwordEditLayout.helperText = InputValidator.validatePassword(passwordEditText.text.toString())
         }
 
         updateButton.setOnClickListener {
@@ -104,13 +124,13 @@ class ProfileActivity: ComponentActivity() {
         }
 
     }
-    fun setButtonActivated(button: Button, status: Boolean) {
+    private fun setButtonActivated(button: Button, status: Boolean) {
         if (status) {
             button.isEnabled = true
-            button.backgroundTintList = getColorStateList(R.color.primary_blue)
+            button.visibility = Button.VISIBLE
         } else {
             button.isEnabled = false
-            button.backgroundTintList = getColorStateList(R.color.light_gray)
+            button.visibility = Button.GONE
         }
     }
 }
