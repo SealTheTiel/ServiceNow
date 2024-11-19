@@ -39,10 +39,7 @@
             android:name=".Welcome"
             android:exported="false" />
         <activity
-            android:name=".SuccessPaymentActivity"
-            android:exported="false" />
-        <activity
-            android:name=".PaymentMethod"
+            android:name=".SuccessActivity"
             android:exported="false" />
         <activity
             android:name=".ViewDetails"

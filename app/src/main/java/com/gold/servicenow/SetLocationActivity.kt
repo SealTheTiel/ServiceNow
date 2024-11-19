@@ -76,7 +76,7 @@ class SetLocationActivity : ComponentActivity() {
 
         // Proceed to payment method
         proceed.setOnClickListener {
-            val intent = Intent(this, PaymentMethod::class.java)
+            val intent = Intent(this, SuccessActivity::class.java)
             startActivity(intent)
         }
 

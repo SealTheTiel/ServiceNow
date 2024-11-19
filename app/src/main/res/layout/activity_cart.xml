@@ -62,7 +62,7 @@
         android:backgroundTint="@color/primary_blue"
         android:gravity="center"
         android:padding="@dimen/default_margins"
-        android:text="Checkout"
+        android:text="Confirm Details"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="24sp"
