@@ -20,3 +20,28 @@ class Profile(name: String, email: String, contact: String, password: String, im
 
     constructor(name: String, email: String, contact: String, password: String) : this(name, email, contact, password, "")
 }
+
+object CurrentProfile {
+    var profile: Profile? = null
+    fun login(email: String, password: String, onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {
+        ProfileDatabase().getProfile(email, password,
+            onSuccess = {   profile -> this.profile = profile
+                            onSuccess()
+                        },
+            onFailure = {   Exception -> onFailure(Exception)
+                            println("[ERROR] [Login] Failed to login with email: $email")
+                        }
+        )
+    }
+
+    fun register(profile: Profile, onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {
+        ProfileDatabase().insertProfile(profile,
+            onSuccess = {   profile -> this.profile = profile
+                            onSuccess()
+                        },
+            onFailure = {   Exception -> onFailure(Exception)
+                            println("[ERROR] [Register] Failed to register profile: ${profile.name}")
+                        }
+        )
+    }
+}
