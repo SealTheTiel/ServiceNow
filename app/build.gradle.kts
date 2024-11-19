@@ -74,4 +74,6 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-firestore")
     implementation("org.osmdroid:osmdroid-android:6.1.10")
+    implementation("com.google.code.gson:gson:2.10.1")
+
 }
