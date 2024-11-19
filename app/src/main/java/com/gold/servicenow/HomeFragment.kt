@@ -5,11 +5,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import com.gold.servicenow.entertainment.EntertainmentFragment
 import com.gold.servicenow.food.FoodFragment
 import com.gold.servicenow.medicine.MedicineFragment
+import com.gold.servicenow.profile.CurrentProfile
+import com.gold.servicenow.profile.Profile
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeFragment : Fragment() {
@@ -18,7 +21,7 @@ class HomeFragment : Fragment() {
     private lateinit var foodButton: CardView
     private lateinit var entertainmentButton: CardView
     private lateinit var profileButton: CardView
-
+    private lateinit var username: TextView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,8 +33,13 @@ class HomeFragment : Fragment() {
         foodButton = view.findViewById(R.id.food_button)
         entertainmentButton = view.findViewById(R.id.entertainment_button)
         profileButton = view.findViewById(R.id.profile_button)
+        username = view.findViewById(R.id.profile_label)
+        println(CurrentProfile.profile?.name)
+        println(CurrentProfile.profile?.email)
+        println(CurrentProfile.profile?.contact)
+        println(CurrentProfile.profile?.password)
 
-
+        username.text = CurrentProfile.profile?.name
         // Set click listeners for each button
         medicineButton.setOnClickListener {
             replaceFragment(MedicineFragment(), R.id.medicine)
