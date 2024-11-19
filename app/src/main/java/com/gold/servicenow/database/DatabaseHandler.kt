@@ -8,7 +8,7 @@ class DatabaseHandler {
 
 
     companion object {
-        private val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
+        val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
         fun addDocument(
             collection: String,
             data: Map<String, Any>,
@@ -28,6 +28,7 @@ class DatabaseHandler {
         const val ENTERTAINMENT_COLLECTION = "entertainment"
         const val FOOD_COLLECTION = "food"
         const val MEDICINE_COLLECTION = "medicine"
+        const val PROFILE_COLLECTION = "profile"
     }
 
     // Add a new food document
@@ -218,6 +219,5 @@ class DatabaseHandler {
             )
         }
     }
-
 
 }

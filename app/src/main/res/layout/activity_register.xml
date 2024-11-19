@@ -248,35 +248,11 @@
         app:layout_constraintTop_toBottomOf="@+id/registerAnd"
         app:layout_constraintVertical_bias="0.2" />
 
-    <Button
-        android:id="@+id/registerGoogleButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="@dimen/double_margins"
-        android:layout_marginEnd="64dp"
-        android:background="@drawable/rounded"
-        android:backgroundTint="@color/white"
-        android:elevation="@dimen/default_elevation"
-        android:gravity="center"
-        android:stateListAnimator="@null"
-        android:text="Sign Up with Google"
-        android:textAllCaps="false"
-        android:textColor="@color/primary_blue"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:backgroundTint="@null"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerSignupButton" />
-
 
     <TextView
         android:id="@+id/registerNoAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:layout_marginEnd="@dimen/half_margins"
         android:layout_weight="1"
         android:text="Already have an account?"
@@ -285,7 +261,7 @@
         app:layout_constraintEnd_toStartOf="@+id/registerSignIn"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerGoogleButton" />
+        tools:layout_editor_absoluteY="894dp" />
 
     <TextView
         android:id="@+id/registerSignIn"
