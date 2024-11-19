@@ -6,13 +6,13 @@ import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.activity.enableEdgeToEdge
 
-class SuccessPaymentActivity : AppCompatActivity() {
+class SuccessActivity : AppCompatActivity() {
     private lateinit var backButton: ImageButton
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        setContentView(R.layout.activity_success_payment)
+        setContentView(R.layout.activity_success)
 
         supportActionBar?.hide()
         backButton = findViewById(R.id.successBackButton)
