@@ -249,8 +249,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginStart="64dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="64dp"
-        android:layout_marginBottom="@dimen/double_margins"
         android:background="@drawable/rounded"
         android:backgroundTint="@color/primary_blue"
         android:elevation="@dimen/default_elevation"
@@ -258,17 +258,17 @@
         android:gravity="center"
         android:padding="@dimen/default_margins"
         android:stateListAnimator="@null"
-        android:text="Update Profile"
 
+        android:text="Update Profile"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold"
         app:backgroundTint="@null"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileNumber" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
