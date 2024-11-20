@@ -3,6 +3,7 @@
     <dimen name="double_corner_radius">30dp</dimen>
     <dimen name="default_corner_radius">20dp</dimen>
     <dimen name="half_corner_radius">10dp</dimen>
+    <dimen name="quad_margins">64dp</dimen>
     <dimen name="double_margins">32dp</dimen>
     <dimen name="default_margins">16dp</dimen>
     <dimen name="half_margins">8dp</dimen>
