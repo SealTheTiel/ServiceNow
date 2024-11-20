@@ -78,7 +78,7 @@ class DataGenerator {
         )
         private val foodname8: Food = Food(
             8,
-            "https://imgur.com/a/9fKBDwn",
+            "https://i.imgur.com/qAfCtD4.jpg",
             "Tinolang Manok",
             55.0f,
             "Home-Cooked Meals",
@@ -88,7 +88,7 @@ class DataGenerator {
         )
         private val foodname9: Food = Food(
             9,
-            "https://imgur.com/a/cbW4dFm",
+            "https://i.imgur.com/LkIER09.jpg",
             "Ginataang Gulay",
             50.0f,
             "Lutong Bahay",
@@ -98,7 +98,7 @@ class DataGenerator {
         )
         private val foodname10: Food = Food(
             10,
-            "https://imgur.com/a/xvyywEY",
+            "https://i.imgur.com/EfpUl6o.jpg",
             "Pinakbet",
             45.0f,
             "Ilocos Cuisine",
@@ -108,7 +108,7 @@ class DataGenerator {
         )
         private val foodname11: Food = Food(
             11,
-            "https://imgur.com/a/irrHDB1",
+            "https://i.imgur.com/GA6H8WI.jpg",
             "Bulalo",
             100.0f,
             "Tagaytay Eats",
@@ -118,7 +118,7 @@ class DataGenerator {
         )
         private val foodname12: Food = Food(
             12,
-            "https://imgur.com/a/JlQoIG3",
+            "https://i.imgur.com/xOAdij2.jpg",
             "Siomai",
             35.0f,
             "Dimsum House",
@@ -128,7 +128,7 @@ class DataGenerator {
         )
         private val foodname13: Food = Food(
             13,
-            "https://imgur.com/a/YrHFqlI",
+            "https://i.imgur.com/zTYjLyQ.jpg",
             "Paksiw na Bangus",
             50.0f,
             "Lutong Isda",
@@ -138,7 +138,7 @@ class DataGenerator {
         )
         private val foodname14: Food = Food(
             14,
-            "https://imgur.com/a/sPLYCFy",
+            "https://i.imgur.com/vT4w59J.jpg",
             "Monggo Guisado",
             40.0f,
             "Healthy Filipino Meals",
@@ -148,7 +148,7 @@ class DataGenerator {
         )
         private val foodname15: Food = Food(
             15,
-            "https://imgur.com/a/NIrqIio",
+            "https://i.imgur.com/2ASKKLE.jpg",
             "Nilagang Baka",
             90.0f,
             "Comfort Food",
@@ -158,7 +158,7 @@ class DataGenerator {
         )
         private val foodname16: Food = Food(
             16,
-            "https://imgur.com/a/6Mzmp71",
+            "https://i.imgur.com/Hi033c3.jpg",
             "Lumpiang Sariwa",
             50.0f,
             "Filipino Favorites",
@@ -239,7 +239,7 @@ class DataGenerator {
         )
         private val medicine7: Medicine = Medicine(
             7,
-            "https://imgur.com/a/Bv2LZuB",
+            "https://i.imgur.com/zDykw0Y.jpg",
             "Losartan",
             70.0f,
             "High Blood Pressure",
@@ -250,7 +250,7 @@ class DataGenerator {
         )
         private val medicine8: Medicine = Medicine(
             8,
-            "https://imgur.com/a/haNKrY9",
+            "https://i.imgur.com/jKDfrlM.jpg",
             "Amlodipine",
             80.0f,
             "Hypertension",
@@ -261,7 +261,7 @@ class DataGenerator {
         )
         private val medicine9: Medicine = Medicine(
             9,
-            "https://imgur.com/a/7gHr9lQ",
+            "https://i.imgur.com/IJMhe8S.jpg",
             "Aspirin",
             90.0f,
             "Pain, Blood Thinner",
@@ -272,7 +272,7 @@ class DataGenerator {
         )
         private val medicine10: Medicine = Medicine(
             10,
-            "https://imgur.com/a/y6qOAb6",
+            "https://i.imgur.com/WMflprc.jpg",
             "Captopril",
             100.0f,
             "High Blood Pressure",
@@ -283,7 +283,7 @@ class DataGenerator {
         )
         private val medicine11: Medicine = Medicine(
             11,
-            "https://imgur.com/a/xr8tN0g",
+            "https://i.imgur.com/54drB7f.jpg",
             "Metoprolol",
             110.0f,
             "Heart Problems",
@@ -294,7 +294,7 @@ class DataGenerator {
         )
         private val medicine12: Medicine = Medicine(
             12,
-            "https://imgur.com/a/It7KmHf",
+            "https://i.imgur.com/C0typ1p.jpg",
             "Clopidogrel",
             120.0f,
             "Blood Clot Prevention",
@@ -305,7 +305,7 @@ class DataGenerator {
         )
         private val medicine13: Medicine = Medicine(
             13,
-            "https://imgur.com/a/AMbgjc4",
+            "https://i.imgur.com/mEmNxhJ.jpg",
             "Furosemide",
             130.0f,
             "Fluid Retention, High Blood Pressure",
@@ -316,7 +316,7 @@ class DataGenerator {
         )
         private val medicine14: Medicine = Medicine(
             14,
-            "https://imgur.com/a/KkeJTGe",
+            "https://i.imgur.com/mzgJqdB.jpg",
             "Allopurinol",
             140.0f,
             "Gout",
@@ -327,7 +327,7 @@ class DataGenerator {
         )
         private val medicine15: Medicine = Medicine(
             15,
-            "https://imgur.com/a/ixD0y65",
+            "https://i.imgur.com/LIieo3k.jpg",
             "Hydrochlorothiazide",
             150.0f,
             "High Blood Pressure, Fluid Retention",
@@ -338,7 +338,7 @@ class DataGenerator {
         )
         private val medicine16: Medicine = Medicine(
             16,
-            "https://imgur.com/a/IjtOyOg",
+            "https://i.imgur.com/5bu0Jnu.jpg",
             "Atorvastatin",
             160.0f,
             "High Cholesterol",
@@ -420,7 +420,7 @@ class DataGenerator {
         )
         private val entertainment7: Entertainment = Entertainment(
             7,
-            "https://imgur.com/a/agPrJab",
+            "https://i.imgur.com/ij1t28B.jpg",
             "Movie Theater Coupon",
             120.0f,
             "Watching Movies",
@@ -431,7 +431,7 @@ class DataGenerator {
         )
         private val entertainment8: Entertainment = Entertainment(
             8,
-            "https://imgur.com/a/xCc01U6",
+            "https://i.imgur.com/vTqvtX2.jpg",
             "Bowling Coupon",
             180.0f,
             "Bowling Games",
@@ -442,7 +442,7 @@ class DataGenerator {
         )
         private val entertainment9: Entertainment = Entertainment(
             9,
-            "https://imgur.com/a/ejDPpBJ",
+            "https://i.imgur.com/LJ5bk40.jpg",
             "Afternoon Tea Coupon",
             300.0f,
             "Enjoy Tea and Snacks",
@@ -454,7 +454,7 @@ class DataGenerator {
 
         private val entertainment10: Entertainment = Entertainment(
             10,
-            "https://imgur.com/a/YxLavGd",
+            "https://i.imgur.com/4lDJMaU.jpg",
             "Herbal Gardening Workshop Coupon",
             200.0f,
             "Learn to Grow Herbs",
@@ -466,7 +466,7 @@ class DataGenerator {
 
         private val entertainment11: Entertainment = Entertainment(
             11,
-            "https://imgur.com/a/fb3QQ7M",
+            "https://i.imgur.com/GeEr6Cd.jpg",
             "Guided Nature Walk Coupon",
             150.0f,
             "Relaxing Walk in the Park",
@@ -478,7 +478,7 @@ class DataGenerator {
 
         private val entertainment12: Entertainment = Entertainment(
             12,
-            "https://imgur.com/a/ZESyU7N",
+            "https://i.imgur.com/IyAOq4O.jpg",
             "Bingo Night Coupon",
             100.0f,
             "Play and Socialize",
@@ -490,7 +490,7 @@ class DataGenerator {
 
         private val entertainment13: Entertainment = Entertainment(
             13,
-            "https://imgur.com/a/TRh9fJX",
+            "https://i.imgur.com/m9kBUPq.jpg",
             "Classical Music Concert Coupon",
             500.0f,
             "Relaxing Live Orchestra",
@@ -502,7 +502,7 @@ class DataGenerator {
 
         private val entertainment14: Entertainment = Entertainment(
             14,
-            "https://imgur.com/a/7PgTBPF",
+            "https://i.imgur.com/m298GWQ.jpg",
             "Light Exercise Class Coupon",
             250.0f,
             "Gentle Movements and Stretches",
@@ -514,7 +514,7 @@ class DataGenerator {
 
         private val entertainment15: Entertainment = Entertainment(
             15,
-            "https://imgur.com/a/VpY3ONa",
+            "https://i.imgur.com/UOzXNgl.jpg",
             "Local History Tour Coupon",
             350.0f,
             "Explore Historical Landmarks",
@@ -526,7 +526,7 @@ class DataGenerator {
 
         private val entertainment16: Entertainment = Entertainment(
             16,
-            "https://imgur.com/a/27yVa7g",
+            "https://i.imgur.com/gPBNBxQ.jpg",
             "Handicrafts Workshop Coupon",
             300.0f,
             "Learn Knitting or Weaving",
