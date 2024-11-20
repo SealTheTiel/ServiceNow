@@ -6,6 +6,8 @@ import android.content.pm.PackageManager
 import android.location.Geocoder
 import android.os.Bundle
 import android.util.Log
+import android.view.GestureDetector
+import android.view.MotionEvent
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioButton
@@ -16,11 +18,13 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import org.osmdroid.api.IGeoPoint
 import org.osmdroid.config.Configuration
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
 import org.osmdroid.views.overlay.ItemizedIconOverlay
 import org.osmdroid.views.overlay.ItemizedOverlayWithFocus
+import org.osmdroid.views.overlay.Marker
 import org.osmdroid.views.overlay.OverlayItem
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay
 import java.util.Locale
@@ -109,7 +113,7 @@ class SetLocationActivity : ComponentActivity() {
         setupDoubleTapListener()
 
         // Add markers with `ItemizedOverlayWithFocus`
-        //setupOverlayItems()
+        setupDefaultMarker()
 
         // Mark Add Location button as selected
         locationAddLocation.isChecked = true
@@ -179,64 +183,75 @@ class SetLocationActivity : ComponentActivity() {
             }, 2000) // Delay for 2 seconds
         }
     }
-
-
-
-
-
-
-    // Add double-tap listener to choose location
     private fun setupDoubleTapListener() {
-        locationMap.setOnTouchListener { _, event ->
-            if (event.pointerCount == 1 && event.actionMasked == android.view.MotionEvent.ACTION_UP) {
-                val tappedLocation = locationMap.projection.fromPixels(event.x.toInt(), event.y.toInt())
-                val lat = tappedLocation.latitude
-                val lon = tappedLocation.longitude
+        // Define a MapEventsReceiver to handle single taps
+        val mapEventsReceiver = object : org.osmdroid.events.MapEventsReceiver {
+            override fun singleTapConfirmedHelper(p: GeoPoint): Boolean {
+                val lat = p.latitude
+                val lon = p.longitude
 
                 // Convert latitude and longitude to address
-                val geocoder = Geocoder(this, Locale.getDefault())
+                val geocoder = Geocoder(this@SetLocationActivity, Locale.getDefault())
                 try {
                     val addresses = geocoder.getFromLocation(lat, lon, 1)
-                    if (addresses != null) {
-                        if (addresses.isNotEmpty()) {
-                            val address = addresses?.get(0)?.getAddressLine(0)
-                            locationAddInput.setText(address)
-                        } else {
-                            locationAddInput.setText("Lat: $lat, Lon: $lon")
-                        }
+                    val address = if (addresses != null && addresses.isNotEmpty()) {
+                        addresses[0].getAddressLine(0)
+                    } else {
+                        "Lat: $lat, Lon: $lon"
                     }
+                    locationAddInput.setText(address)
+
+                    // Add marker at clicked location
+                    addMarker(p, address)
                 } catch (e: Exception) {
                     locationAddInput.setText("Lat: $lat, Lon: $lon")
                     Log.e("MapClick", "Error converting location: ${e.message}")
                 }
+                return true
             }
-            false
+
+            override fun longPressHelper(p: GeoPoint): Boolean {
+                // Handle long press if needed
+                return false
+            }
         }
+
+        // Add a MapEventsOverlay to handle the events
+        val mapEventsOverlay = org.osmdroid.views.overlay.MapEventsOverlay(mapEventsReceiver)
+        locationMap.overlays.add(mapEventsOverlay)
     }
 
-//    // Setup overlay items using `ItemizedOverlayWithFocus`
-    private fun setupOverlayItems() {
-        // Create a list of overlay items
-        val items = ArrayList<OverlayItem>()
-        items.add(OverlayItem("", "", GeoPoint(14.5648, 120.9932)))
-        // Create the overlay
-        val overlay = ItemizedOverlayWithFocus(
-            items,
-            object : ItemizedIconOverlay.OnItemGestureListener<OverlayItem> {
-                override fun onItemSingleTapUp(index: Int, item: OverlayItem): Boolean {
-                    val lat = item.point.latitude
-                    val lon = item.point.longitude
-                    locationAddInput.setText("Lat: $lat, Lon: $lon")
-                    return true
-                }
+    private fun addMarker(location: GeoPoint, title: String) {
+        // Remove all existing markers
+        locationMap.overlays.removeIf { it is Marker }
 
-                override fun onItemLongPress(index: Int, item: OverlayItem): Boolean {
-                    return false
-                }
-            },
-            this
-        )
-        overlay.setFocusItemsOnTap(true)
-        locationMap.overlays.add(overlay)
+        // Add the new marker
+        val marker = Marker(locationMap)
+        marker.position = location
+        marker.title = title
+        marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
+        locationMap.overlays.add(marker)
+
+        // Refresh the map view to display the updated marker
+        locationMap.invalidate()
     }
-}
+
+
+
+    //    // Setup overlay items using `ItemizedOverlayWithFocus`
+    private fun setupDefaultMarker() {
+        // Set the default location to DLSU
+        val dlsuLocation = GeoPoint(14.5648, 120.9932)
+        val marker = Marker(locationMap)
+        marker.position = dlsuLocation
+        marker.title = "De La Salle University"
+        marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
+
+        // Add the marker to the map
+        locationMap.overlays.add(marker)
+
+        // Center the map on the default location
+        locationMap.controller.setZoom(15.0)
+        locationMap.controller.setCenter(dlsuLocation)
+    }}
+
