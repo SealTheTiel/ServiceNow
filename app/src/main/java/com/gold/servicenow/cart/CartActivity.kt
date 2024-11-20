@@ -1,5 +1,7 @@
 package com.gold.servicenow.cart
 
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -24,6 +26,15 @@ class CartActivity : ComponentActivity(), CartChangeListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cart)
         enableEdgeToEdge()
+
+//        private val cartUpdateReceiver = object : BroadcastReceiver() {
+//            override fun onReceive(context: Context?, intent: Intent?) {
+//                if (intent?.action == "cartUpdated") {
+//                    clearCart()
+//                    Log.d("CartActivity", "Cart cleared and updated!")
+//                }
+//            }
+//        }
 
         this.recyclerView = findViewById(R.id.cartRecycle)
         this.total = findViewById(R.id.cartTotal)
@@ -103,5 +114,17 @@ class CartActivity : ComponentActivity(), CartChangeListener {
         editor.apply() // Save changes
         Log.d("CartActivity", "Cart saved to SharedPreferences: size = ${cartList.size}")
     }
+
+//    private fun clearCart() {
+//        // Clear the cart data in memory
+//        cartList.clear()
+//        CartList.cartList.clear()
+//        CartList.notifyListener()
+//
+//        // Clear SharedPreferences
+//        sp.edit().clear().apply()
+//
+//
+//    }
 
 }

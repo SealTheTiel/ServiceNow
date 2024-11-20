@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.activity.enableEdgeToEdge
+import com.gold.servicenow.cart.CartList
 
 class SuccessActivity : AppCompatActivity() {
     private lateinit var backButton: ImageButton
@@ -13,6 +14,12 @@ class SuccessActivity : AppCompatActivity() {
         enableEdgeToEdge()
 
         setContentView(R.layout.activity_success)
+        clearSharedPreferences()
+        // NOTIFY CART FRAGMENT TO UPDATE THE CART
+        CartList.clearCart()
+        CartList.notifyListener()
+
+
 
         supportActionBar?.hide()
         backButton = findViewById(R.id.successBackButton)
@@ -41,5 +48,12 @@ class SuccessActivity : AppCompatActivity() {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)
         finish()
+    }
+
+    private fun clearSharedPreferences(){
+        val sharedPreferences = getSharedPreferences("cart", MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.clear()
+        editor.apply()
     }
 }
