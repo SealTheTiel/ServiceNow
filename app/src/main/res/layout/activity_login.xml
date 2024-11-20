@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".Login">
+    tools:context=".LoginActivity">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -59,11 +59,11 @@
         android:id="@+id/loginEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginStart="@dimen/double_margins"
+        android:layout_marginTop="@dimen/double_margins"
+        android:layout_marginEnd="@dimen/double_margins"
         android:text="Email"
-        android:textColorHint="@color/dark_gray"
+        android:textColorHint="@color/tertiary_blue"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:hintTextAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -95,11 +95,11 @@
         android:id="@+id/loginPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginStart="@dimen/double_margins"
+        android:layout_marginTop="@dimen/double_margins"
+        android:layout_marginEnd="@dimen/double_margins"
         android:text="Password"
-        android:textColorHint="@color/dark_gray"
+        android:textColorHint="@color/tertiary_blue"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:hintTextAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -109,7 +109,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/loginEmail"
-        app:passwordToggleEnabled="true">
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/primary_blue">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/loginPasswordInput"
@@ -126,57 +127,38 @@
             android:textColorHighlight="@color/white"
             android:textSize="24sp" />
     </com.google.android.material.textfield.TextInputLayout>
-    <TextView
-        android:id="@+id/loginForgetPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@android:color/transparent"
-        android:clickable="true"
-        android:focusable="true"
-        android:text="Forget Password"
-        android:textAllCaps="false"
-        android:textColor="@color/primary_blue"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@id/loginPassword"
-        app:layout_constraintTop_toBottomOf="@id/loginPassword" />
 
 
     <Button
         android:id="@+id/loginLoginButton"
-        android:text="Log In"
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="@dimen/double_margins"
-        android:layout_marginStart="64dp"
-        android:layout_marginEnd="64dp"
+        android:layout_marginStart="@dimen/quad_margins"
+        android:layout_marginEnd="@dimen/quad_margins"
+        android:layout_marginTop="@dimen/quad_margins"
         android:background="@drawable/rounded"
         android:backgroundTint="@color/primary_blue"
         android:elevation="@dimen/default_elevation"
         android:gravity="center"
+        android:padding="@dimen/default_margins"
         android:stateListAnimator="@null"
+        android:text="Log In"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:backgroundTint="@null"
-
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-
-        app:layout_constraintTop_toBottomOf="@id/loginPassword"
-        app:layout_constraintVertical_bias="0.40" />
+        app:layout_constraintTop_toBottomOf="@id/loginPassword" />
 
 
     <TextView
         android:id="@+id/registerNoAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/default_margins"
         android:layout_marginEnd="@dimen/half_margins"
         android:layout_weight="1"
         android:text="Dont have an account?"
