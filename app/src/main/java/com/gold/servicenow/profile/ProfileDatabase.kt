@@ -3,6 +3,7 @@ package com.gold.servicenow.profile
 
 import android.content.ContentValues
 import android.content.Context
+import android.widget.Toast
 import com.gold.servicenow.database.*
 import com.gold.servicenow.database.DatabaseHandler
 import com.gold.servicenow.database.DatabaseHandler.Companion.PROFILE_COLLECTION
@@ -13,6 +14,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.tasks.await
 import kotlin.math.max
+
 
 class ProfileDatabase {
     private val firestore = DatabaseHandler.firestore
@@ -31,6 +33,7 @@ class ProfileDatabase {
                 for (result in results) {
                     if (result.get("email") == profile.email) {
                         onFailure(Exception("Email already exists"))
+                        return@addOnSuccessListener
                     }
                 }
                 firestore.collection(PROFILE_COLLECTION)

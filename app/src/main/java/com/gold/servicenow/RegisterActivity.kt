@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
@@ -74,6 +75,7 @@ class RegisterActivity : ComponentActivity() {
                     finish()
                 },
                 onFailure = {
+                    Toast.makeText(this, "Registration failed.", Toast.LENGTH_SHORT).show()
                     println("[Register]: Registration failed.")
                 })
         }
