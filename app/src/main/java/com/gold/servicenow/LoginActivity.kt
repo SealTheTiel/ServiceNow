@@ -12,7 +12,7 @@ import androidx.core.view.WindowInsetsCompat
 import android.widget.EditText
 import com.gold.servicenow.profile.CurrentProfile
 
-class Login : ComponentActivity() {
+class LoginActivity : ComponentActivity() {
     private lateinit var loginButton: Button
     private lateinit var signupButton: TextView
     private lateinit var backButton: ImageButton
