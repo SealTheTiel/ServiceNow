@@ -2,6 +2,7 @@ package com.gold.servicenow.medicine
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import com.gold.servicenow.DataGenerator
 import com.gold.servicenow.R
 import com.gold.servicenow.cart.AddtoCart
 import com.gold.servicenow.cart.CartActivity
+import com.gold.servicenow.database.DatabaseHandler
 
 class MedicineFragment : Fragment() {
     private lateinit var cart: ImageButton
@@ -41,12 +43,22 @@ class MedicineFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val medicineList: ArrayList<Medicine> = DataGenerator.Companion.getMedicine()
+        val medicineList= ArrayList<Medicine>()
         val recyclerView: RecyclerView = view.findViewById(R.id.medicineRecycle)
         val adapter = MedicineAdapter(medicineList)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-
+        val databaseHandler = DatabaseHandler()
+        databaseHandler.getMedicine(
+            onSuccess = { data ->
+                medicineList.clear() // Clear existing data
+                medicineList.addAll(data) // Add fetched data
+                adapter.notifyDataSetChanged() // Notify adapter of the changes
+            },
+            onFailure = { exception ->
+                Log.e("Firestore", "Error fetching medicine data: ${exception.message}")
+            }
+        )
         cart = view.findViewById(R.id.cartMedicine)
         cart.setOnClickListener {
             val intent = Intent(context, CartActivity::class.java)
