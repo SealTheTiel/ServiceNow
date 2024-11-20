@@ -13,7 +13,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.gold.servicenow.database.DatabaseHandler
 import com.google.firebase.FirebaseApp
 
+
 class MainActivity : AppCompatActivity() {
+//    companion object {
+//        var isDataInserted = false
+//    }
     private lateinit var navbar: BottomNavigationView
     private lateinit var binding: ActivityMainBinding
 
@@ -22,10 +26,13 @@ class MainActivity : AppCompatActivity() {
         FirebaseApp.initializeApp(this)
         val databaseHandler = DatabaseHandler()
 
-        // Insert dummy data -> Uncomment if there is new dummy data, simply change Data Generator
-//        databaseHandler.insertFoodData()
-//        databaseHandler.insertMedicineData()
-//        databaseHandler.insertEntertainmentData()
+//        // Insert dummy data -> Uncomment if there is new dummy data, simply change Data Generator
+//        if (!isDataInserted) {
+//            databaseHandler.insertFoodData()
+//            databaseHandler.insertMedicineData()
+//            databaseHandler.insertEntertainmentData()
+//            isDataInserted = true
+//        }
 
         supportActionBar?.hide()
         binding = ActivityMainBinding.inflate(layoutInflater)
