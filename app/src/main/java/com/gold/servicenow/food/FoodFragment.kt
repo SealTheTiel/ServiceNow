@@ -2,6 +2,7 @@ package com.gold.servicenow.food
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import com.gold.servicenow.DataGenerator
 import com.gold.servicenow.R
 import com.gold.servicenow.cart.AddtoCart
 import com.gold.servicenow.cart.CartActivity
+import com.gold.servicenow.database.DatabaseHandler
 
 class FoodFragment : Fragment() {
     private lateinit var cart: ImageButton
@@ -43,9 +45,21 @@ class FoodFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Set up RecyclerView after the view is created
-        val foodList: ArrayList<Food> = DataGenerator.Companion.getFoodName()
+        val foodList = ArrayList<Food>()
         val recyclerView: RecyclerView = view.findViewById(R.id.foodRecycle)
         val adapter = FoodAdapter(foodList)
+
+        val databaseHandler = DatabaseHandler()
+        databaseHandler.getFood(
+            onSuccess = { data ->
+                foodList.clear() // Clear existing data
+                foodList.addAll(data) // Add fetched data
+                adapter.notifyDataSetChanged() // Notify adapter of the changes
+            },
+            onFailure = { exception ->
+                Log.e("Firestore", "Error fetching food data: ${exception.message}")
+            }
+        )
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
