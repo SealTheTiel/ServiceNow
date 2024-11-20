@@ -107,7 +107,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:text="Full Name"
-        android:textColorHint="@color/dark_gray"
+        android:textColorHint="@color/tertiary_blue"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:hintTextAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -142,7 +142,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:text="Email"
-        android:textColorHint="@color/dark_gray"
+        android:textColorHint="@color/tertiary_blue"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:hintTextAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -178,7 +178,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:text="Password"
-        android:textColorHint="@color/dark_gray"
+        android:textColorHint="@color/tertiary_blue"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:hintTextAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -188,7 +188,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/profileEmail"
-        app:passwordToggleEnabled="true">
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/primary_blue">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/profilePasswordInput"
@@ -214,7 +215,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:text="Contact Number"
-        android:textColorHint="@color/dark_gray"
+        android:textColorHint="@color/tertiary_blue"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:hintTextAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -249,27 +250,25 @@
         android:layout_gravity="center"
         android:layout_marginStart="64dp"
         android:layout_marginEnd="64dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="@dimen/double_margins"
         android:background="@drawable/rounded"
         android:backgroundTint="@color/primary_blue"
         android:elevation="@dimen/default_elevation"
         android:enabled="false"
         android:gravity="center"
+        android:padding="@dimen/default_margins"
         android:stateListAnimator="@null"
         android:text="Update Profile"
-        android:textAllCaps="false"
 
+        android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:padding="@dimen/default_margins"
         app:backgroundTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileNumber"
-        app:layout_constraintVertical_bias="0.851" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
