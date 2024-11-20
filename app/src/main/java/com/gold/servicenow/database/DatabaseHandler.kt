@@ -2,6 +2,8 @@ package com.gold.servicenow.database
 
 import com.gold.servicenow.DataGenerator
 import com.gold.servicenow.entertainment.Entertainment
+import com.gold.servicenow.food.Food
+import com.gold.servicenow.medicine.Medicine
 import com.google.firebase.firestore.FirebaseFirestore
 
 class DatabaseHandler {
@@ -40,11 +42,26 @@ class DatabaseHandler {
     }
 
     // Get all food documents
-    fun getFood(onSuccess: (List<Map<String, Any>>) -> Unit, onFailure: (Exception) -> Unit) {
+    fun getFood(onSuccess: (List<Food>) -> Unit, onFailure: (Exception) -> Unit) {
         firestore.collection(FOOD_COLLECTION)
             .get()
             .addOnSuccessListener { result ->
-                val dataList = result.documents.map { it.data!! }
+                val dataList = result.documents.mapNotNull { doc ->
+                    try {
+                        Food(
+                            id = doc.get("id") as? Int ?: 0,
+                            imageUrl = doc.get("image") as? String ?: "0",
+                            name = doc.get("name") as? String ?: "",
+                            price = (doc.get("price") as? Double)?.toFloat() ?: 0f,
+                            restaurant = doc.get("restaurant") as? String ?: "",
+                            description = doc.get("description") as? String ?: "",
+                            detail1 = doc.get("detail1") as? String ?: "",
+                            detail2 = doc.get("detail2") as? String ?: ""
+                        )
+                    } catch (e: Exception) {
+                        null // Skip invalid documents
+                    }
+                }
                 onSuccess(dataList)
             }
             .addOnFailureListener { exception -> onFailure(exception) }
@@ -77,11 +94,27 @@ class DatabaseHandler {
     }
 
     // Get all medicine documents
-    fun getMedicine(onSuccess: (List<Map<String, Any>>) -> Unit, onFailure: (Exception) -> Unit) {
+    fun getMedicine(onSuccess: (List<Medicine>) -> Unit, onFailure: (Exception) -> Unit) {
         firestore.collection(MEDICINE_COLLECTION)
             .get()
             .addOnSuccessListener { result ->
-                val dataList = result.documents.map { it.data!! }
+                val dataList = result.documents.mapNotNull { doc ->
+                    try {
+                        Medicine(
+                            id = doc.get("id") as? Int ?: 0,
+                            imageUrl = doc.get("image") as? String ?: "0",
+                            name = doc.get("name") as? String ?: "",
+                            price = (doc.get("price") as? Double)?.toFloat() ?: 0f,
+                            description = doc.get("description") as? String ?: "",
+                            dosage = doc.get("dosage") as? String ?: "",
+                            sideEffects = doc.get("sideEffects") as? String ?: "",
+                            detail1 = doc.get("detail1") as? String ?: "",
+                            detail2 = doc.get("detail2") as? String ?: ""
+                        )
+                    } catch (e: Exception) {
+                        null // Skip invalid documents
+                    }
+                }
                 onSuccess(dataList)
             }
             .addOnFailureListener { exception -> onFailure(exception) }
