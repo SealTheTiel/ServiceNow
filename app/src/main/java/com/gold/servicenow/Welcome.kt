@@ -21,7 +21,7 @@ class Welcome : ComponentActivity() {
         }
 
         loginButton.setOnClickListener {
-            val intent = Intent(this, Login::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
 
