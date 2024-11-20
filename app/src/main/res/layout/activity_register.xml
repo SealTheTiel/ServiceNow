@@ -50,7 +50,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:text="Full Name"
-        android:textColorHint="@color/dark_gray"
+        android:textColorHint="@color/tertiary_blue"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:hintTextAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -85,7 +85,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:text="Email"
-        android:textColorHint="@color/dark_gray"
+        android:textColorHint="@color/tertiary_blue"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:hintTextAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -120,7 +120,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:text="Contact Number"
-        android:textColorHint="@color/dark_gray"
+        android:textColorHint="@color/tertiary_blue"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:hintTextAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -155,7 +155,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:text="Password"
-        android:textColorHint="@color/dark_gray"
+        android:textColorHint="@color/tertiary_blue"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:hintTextAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -165,7 +165,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/registerNumber"
-        app:passwordToggleEnabled="true">
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/primary_blue">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/registerPasswordInput"
@@ -183,71 +184,14 @@
             android:textSize="24sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/registerAgree"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="By continuing, you agree to the"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerPassword" />
-
-    <TextView
-        android:id="@+id/registerTerms"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_weight="1"
-        android:background="@android:color/transparent"
-        android:clickable="true"
-        android:focusable="true"
-        android:text="Terms of Use"
-        android:textAllCaps="false"
-        android:textColor="@color/primary_blue"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/registerAnd"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/registerAnd" />
-
-    <TextView
-        android:id="@+id/registerAnd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_weight="1"
-        android:text=" and "
-        app:layout_constraintEnd_toEndOf="@+id/registerAgree"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="@+id/registerAgree"
-        app:layout_constraintTop_toBottomOf="@+id/registerAgree" />
-
-    <TextView
-        android:id="@+id/registerPrivacy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="@android:color/transparent"
-        android:clickable="true"
-        android:focusable="true"
-        android:text="Privacy Policy"
-        android:textAllCaps="false"
-        android:textColor="@color/primary_blue"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/registerAnd"
-        app:layout_constraintTop_toTopOf="@+id/registerAnd" />
-
     <Button
         android:id="@+id/registerSignupButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="@dimen/double_margins"
         android:layout_marginEnd="64dp"
+        android:layout_marginTop="64dp"
         android:background="@drawable/rounded"
         android:backgroundTint="@color/primary_blue"
         android:elevation="@dimen/default_elevation"
@@ -262,14 +206,14 @@
         app:backgroundTint="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerAnd" />
+        app:layout_constraintTop_toBottomOf="@+id/registerPassword" />
 
 
     <TextView
         android:id="@+id/registerNoAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/double_margins"
+        android:layout_marginTop="@dimen/default_margins"
         android:layout_marginEnd="@dimen/half_margins"
         android:layout_weight="1"
         android:text="Already have an account?"
