@@ -42,6 +42,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tint="@null" />
+
+    <TextView
+        android:id="@+id/registerCreateAccount"
+        android:text="Create an Account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/double_margins"
+        android:layout_marginTop="@dimen/double_margins"
+        android:textColor="@color/primary_blue"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/registerName"
         android:layout_width="match_parent"
@@ -59,7 +73,7 @@
         app:helperTextTextColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/guideline">
+        app:layout_constraintTop_toBottomOf="@+id/registerCreateAccount">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/registerNameInput"
