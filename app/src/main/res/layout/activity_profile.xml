@@ -45,7 +45,7 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
+        android:id="@+id/profileImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/double_margins"
@@ -57,7 +57,7 @@
 
         <!-- Circular Profile Card -->
         <ImageButton
-            android:id="@+id/editProfileImage"
+            android:id="@+id/profileImageButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_margin="@dimen/half_margins"
@@ -116,7 +116,7 @@
         app:helperTextTextColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+        app:layout_constraintTop_toBottomOf="@+id/profileImage">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/profileNameInput"
