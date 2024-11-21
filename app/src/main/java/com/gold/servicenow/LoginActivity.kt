@@ -12,14 +12,15 @@ import androidx.core.view.WindowInsetsCompat
 import android.widget.EditText
 import android.widget.Toast
 import com.gold.servicenow.profile.CurrentProfile
+import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
 class LoginActivity : ComponentActivity() {
     private lateinit var loginButton: Button
     private lateinit var signupButton: TextView
     private lateinit var backButton: ImageButton
-    private lateinit var emailEditText: EditText
-    private lateinit var passwordEditText: EditText
+    private lateinit var emailEditText: TextInputEditText
+    private lateinit var passwordEditText: TextInputEditText
     private lateinit var emailEditLayout: TextInputLayout
     private lateinit var passwordEditLayout: TextInputLayout
 
