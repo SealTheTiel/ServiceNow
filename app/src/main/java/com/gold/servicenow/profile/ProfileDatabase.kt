@@ -26,7 +26,6 @@ class ProfileDatabase {
             "password" to profile.password,
            "imageUrl" to profile.imageUrl
         )
-
         firestore.collection(PROFILE_COLLECTION)
             .get()
             .addOnSuccessListener { results ->
@@ -56,16 +55,18 @@ class ProfileDatabase {
             .get()
             .addOnSuccessListener { results ->
                 for (result in results) {
-                    if (result.get("email") == email && result.get("password") == password) {
-                        profile = Profile(
-                            result.get("name") as String,
-                            result.get("email") as String,
-                            result.get("contact") as String,
-                            result.get("password") as String,
-                            result.get("imageUrl") as String
-                        )
-                        onSuccess(profile)
+                    if (result.get("email") != email) {continue}
+                    if (result.get("password") == password) {
+                    profile = Profile(
+                        result.get("name") as String,
+                        result.get("email") as String,
+                        result.get("contact") as String,
+                        result.get("password") as String,
+                        result.get("imageUrl") as String
+                    )
+                    onSuccess(profile)
                     }
+                    else {return@addOnSuccessListener onFailure(Exception("[ERROR] [Login] Invalid email and password combination."))}
                 }
             }
             .addOnFailureListener { exception ->
