@@ -10,7 +10,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import android.widget.EditText
+import android.widget.Toast
 import com.gold.servicenow.profile.CurrentProfile
+import com.google.android.material.textfield.TextInputLayout
 
 class LoginActivity : ComponentActivity() {
     private lateinit var loginButton: Button
@@ -18,6 +20,8 @@ class LoginActivity : ComponentActivity() {
     private lateinit var backButton: ImageButton
     private lateinit var emailEditText: EditText
     private lateinit var passwordEditText: EditText
+    private lateinit var emailEditLayout: TextInputLayout
+    private lateinit var passwordEditLayout: TextInputLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +38,14 @@ class LoginActivity : ComponentActivity() {
         backButton = findViewById(R.id.loginBackButton)
         emailEditText = findViewById(R.id.loginEmailInput)
         passwordEditText = findViewById(R.id.loginPasswordInput)
+        emailEditLayout = findViewById(R.id.loginEmail)
+        passwordEditLayout = findViewById(R.id.loginPassword)
+
+        emailEditText.setOnFocusChangeListener { view, focused ->
+            if (focused) return@setOnFocusChangeListener
+            emailEditLayout.helperText = InputValidator.validateEmail(emailEditText.text.toString())
+        }
+
 
         loginButton.setOnClickListener {
             val email = emailEditText.text.toString()
@@ -47,6 +59,7 @@ class LoginActivity : ComponentActivity() {
                 },
                 onFailure = {
                     println("[ERROR] [Login]: Failed to log in with email: $email")
+                    Toast.makeText(this, "Invalid Email or Password", Toast.LENGTH_SHORT).show()
                 }
             )
         }
