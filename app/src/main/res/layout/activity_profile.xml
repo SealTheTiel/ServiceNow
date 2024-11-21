@@ -32,7 +32,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/loginBackButton"
+        android:id="@+id/profileBackButton"
         android:layout_width="wrap_content"
         android:layout_height="34dp"
         android:layout_marginStart="@dimen/double_margins"
