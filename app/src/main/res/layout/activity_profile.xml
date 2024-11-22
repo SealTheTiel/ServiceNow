@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clipChildren="false"
-    tools:context=".profile.Profile">
+    tools:context=".profile.Profile"
+    android:backgroundTint="@color/white">
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -53,7 +54,10 @@
         android:clipToPadding="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline">
+        app:layout_constraintTop_toTopOf="@+id/guideline"
+        android:elevation="@dimen/default_elevation"
+        android:background="@drawable/round"
+        android:backgroundTint="@color/white">
 
         <!-- Circular Profile Card -->
         <ImageButton
@@ -79,8 +83,9 @@
             android:layout_height="120dp"
             android:clipChildren="false"
             android:clipToPadding="false"
+            android:layout_margin="@dimen/half_margins"
             app:cardCornerRadius="60dp"
-            app:cardElevation="@dimen/default_elevation"
+            app:cardElevation="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -90,10 +95,9 @@
                 android:id="@+id/profileImageView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="@dimen/default_margins"
+                android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
-                android:src="@drawable/default_profile_picture"
-                android:tint="@color/primary_blue" />
+                android:src="@drawable/default_profile_picture" />
         </androidx.cardview.widget.CardView>
 
         <!-- Pencil Button Overlapping the Card -->
