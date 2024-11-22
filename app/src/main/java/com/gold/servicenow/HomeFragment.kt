@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
@@ -23,6 +24,7 @@ class HomeFragment : Fragment() {
     private lateinit var entertainmentButton: CardView
     private lateinit var profileButton: CardView
     private lateinit var username: TextView
+    private lateinit var profileImage: ImageView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,10 +37,15 @@ class HomeFragment : Fragment() {
         entertainmentButton = view.findViewById(R.id.entertainment_button)
         profileButton = view.findViewById(R.id.profile_button)
         username = view.findViewById(R.id.profile_label)
+        profileImage = view.findViewById(R.id.profileImageViewHome)
         println(CurrentProfile.profile?.name)
         println(CurrentProfile.profile?.email)
         println(CurrentProfile.profile?.contact)
         println(CurrentProfile.profile?.password)
+
+        if (CurrentProfile.profile?.image != "") {
+            profileImage.setImageBitmap(CurrentProfile.convertBase64ToBitmap(CurrentProfile.profile?.image!!))
+        }
 
         username.text = CurrentProfile.profile?.name
         // Set click listeners for each button
