@@ -1,19 +1,9 @@
 package com.gold.servicenow.profile
 
 
-import android.content.ContentValues
-import android.content.Context
-import android.widget.Toast
-import com.gold.servicenow.database.*
+import android.graphics.Bitmap
 import com.gold.servicenow.database.DatabaseHandler
 import com.gold.servicenow.database.DatabaseHandler.Companion.PROFILE_COLLECTION
-import com.google.android.gms.tasks.OnSuccessListener
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
-import kotlinx.coroutines.async
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.tasks.await
-import kotlin.math.max
 
 
 class ProfileDatabase {
@@ -24,12 +14,14 @@ class ProfileDatabase {
             "email" to profile.email,
             "contact" to profile.contact,
             "password" to profile.password,
-           "imageUrl" to profile.imageUrl
+            "image" to profile.image
         )
         firestore.collection(PROFILE_COLLECTION)
             .get()
             .addOnSuccessListener { results ->
+                println(results)
                 for (result in results) {
+                println(result)
                     if (result.get("email") == profile.email) {
                         onFailure(Exception("Email already exists"))
                         return@addOnSuccessListener
@@ -54,17 +46,19 @@ class ProfileDatabase {
         firestore.collection(PROFILE_COLLECTION)
             .get()
             .addOnSuccessListener { results ->
+                println(results)
                 for (result in results) {
+                    println(result)
                     if (result.get("email") != email) {continue}
                     if (result.get("password") == password) {
-                    profile = Profile(
-                        result.get("name") as String,
-                        result.get("email") as String,
-                        result.get("contact") as String,
-                        result.get("password") as String,
-                        result.get("imageUrl") as String
-                    )
-                    onSuccess(profile)
+                        profile = Profile(
+                            result.get("name") as String,
+                            result.get("email") as String,
+                            result.get("contact") as String,
+                            result.get("password") as String,
+                            result.get("image") as String
+                        )
+                        onSuccess(profile)
                     }
                     else {return@addOnSuccessListener onFailure(Exception("[ERROR] [Login] Invalid email and password combination."))}
                 }
@@ -80,7 +74,7 @@ class ProfileDatabase {
             "email" to newProfile.email,
             "contact" to newProfile.contact,
             "password" to newProfile.password,
-            "imageUrl" to newProfile.imageUrl
+            "image" to newProfile.image
         )
         firestore.collection(PROFILE_COLLECTION)
             .get()
