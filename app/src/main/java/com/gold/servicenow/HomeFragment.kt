@@ -69,6 +69,18 @@ class HomeFragment : Fragment() {
         return view
     }
 
+    override fun onResume() {
+        super.onResume()
+        if (CurrentProfile.profile?.image != "") {
+            profileImage.setImageBitmap(CurrentProfile.convertBase64ToBitmap(CurrentProfile.profile?.image!!))
+        }
+    }
+    override fun onStart() {
+        super.onStart()
+        if (CurrentProfile.profile?.image != "") {
+            profileImage.setImageBitmap(CurrentProfile.convertBase64ToBitmap(CurrentProfile.profile?.image!!))
+        }
+    }
     private fun replaceFragment(fragment: Fragment, selected: Int) {
         var fragmentTransition = parentFragmentManager.beginTransaction()
         fragmentTransition.replace(R.id.frame, fragment)
