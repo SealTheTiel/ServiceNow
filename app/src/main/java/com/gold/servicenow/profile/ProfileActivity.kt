@@ -1,5 +1,6 @@
 package com.gold.servicenow.profile
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
@@ -13,6 +14,7 @@ import androidx.activity.result.contract.ActivityResultContracts.PickVisualMedia
 import androidx.core.widget.addTextChangedListener
 import com.gold.servicenow.InputValidator
 import com.gold.servicenow.databinding.ActivityProfileBinding
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 
 
 class ProfileActivity: ComponentActivity() {
@@ -104,6 +106,14 @@ class ProfileActivity: ComponentActivity() {
             CurrentProfile.update(newProfile,
                 onSuccess = {
                     println("[Profile]: Profile updated successfully.")
+                    val intent = Intent("com.gold.servicenow.PROFILE_UPDATED")
+                    intent.putExtra("profileImage", image)
+                    intent.putExtra("profileName", name)
+                    intent.putExtra("profileEmail", email)
+                    intent.putExtra("profileContact", contact)
+                    intent.putExtra("profilePassword", password)
+                    LocalBroadcastManager.getInstance(this).sendBroadcast(intent)
+
                     finish()
                 },
                 onFailure = {

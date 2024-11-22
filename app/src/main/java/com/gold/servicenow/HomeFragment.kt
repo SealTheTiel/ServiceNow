@@ -1,6 +1,9 @@
 package com.gold.servicenow
 
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +12,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.gold.servicenow.entertainment.EntertainmentFragment
 import com.gold.servicenow.food.FoodFragment
 import com.gold.servicenow.medicine.MedicineFragment
@@ -25,6 +29,21 @@ class HomeFragment : Fragment() {
     private lateinit var profileButton: CardView
     private lateinit var username: TextView
     private lateinit var profileImage: ImageView
+
+    private val profileUpdateReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            val imageBase64 = intent?.getStringExtra("profileImage")
+            val newName = intent?.getStringExtra("profileName")
+
+            if (!imageBase64.isNullOrEmpty()) {
+                profileImage.setImageBitmap(CurrentProfile.convertBase64ToBitmap(imageBase64))
+            }
+            if (!newName.isNullOrEmpty()) {
+                username.text = newName
+            }
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -69,17 +88,31 @@ class HomeFragment : Fragment() {
         return view
     }
 
-    override fun onResume() {
-        super.onResume()
-        if (CurrentProfile.profile?.image != "") {
-            profileImage.setImageBitmap(CurrentProfile.convertBase64ToBitmap(CurrentProfile.profile?.image!!))
-        }
-    }
+//    override fun onResume() {
+//        super.onResume()
+//        if (CurrentProfile.profile?.image != "") {
+//            profileImage.setImageBitmap(CurrentProfile.convertBase64ToBitmap(CurrentProfile.profile?.image!!))
+//        }
+//    }
+//    override fun onStart() {
+//        super.onStart()
+//        if (CurrentProfile.profile?.image != "") {
+//            profileImage.setImageBitmap(CurrentProfile.convertBase64ToBitmap(CurrentProfile.profile?.image!!))
+
+//        }
+//    }
+
     override fun onStart() {
         super.onStart()
-        if (CurrentProfile.profile?.image != "") {
-            profileImage.setImageBitmap(CurrentProfile.convertBase64ToBitmap(CurrentProfile.profile?.image!!))
-        }
+        val intentFilter = IntentFilter("com.gold.servicenow.PROFILE_UPDATED")
+        LocalBroadcastManager.getInstance(requireContext())
+            .registerReceiver(profileUpdateReceiver, intentFilter)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        LocalBroadcastManager.getInstance(requireContext())
+            .unregisterReceiver(profileUpdateReceiver)
     }
     private fun replaceFragment(fragment: Fragment, selected: Int) {
         var fragmentTransition = parentFragmentManager.beginTransaction()
