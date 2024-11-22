@@ -4,6 +4,7 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResultLauncher
@@ -45,6 +46,9 @@ class ProfileActivity: ComponentActivity() {
         val photoPicker: ActivityResultLauncher<PickVisualMediaRequest> = registerForActivityResult(PickVisualMedia()) { uri ->
             if (uri == null) { return@registerForActivityResult }
             binding.profileImageView.setImageURI(uri)
+            if (uri.path?.length!! > 1048576) { // 1 MiB = 2^20 bytes = 1048576 bytes
+                return@registerForActivityResult
+            }
             imageUri = uri
             imageEdited = true
             updateButton()
@@ -80,9 +84,11 @@ class ProfileActivity: ComponentActivity() {
         }
 
         binding.profileImage.setOnClickListener {
+            val oldImageUri = imageUri
             photoPicker.launch(PickVisualMediaRequest.Builder().setMediaType(PickVisualMedia.ImageOnly).build())
-            //val photo = ActivityResultContracts.PickVisualMedia
-            updateButton()
+            if (oldImageUri == imageUri) {
+                Toast.makeText(this, "Image ", Toast.LENGTH_SHORT).show()
+            }
             updateButton()
         }
 
