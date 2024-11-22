@@ -7,30 +7,30 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/profile_button"
-        android:layout_width="197dp"
-        android:layout_height="79dp"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@color/secondary_blue"
-        app:cardCornerRadius="@dimen/default_corner_radius"
+        android:layout_width="200dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="@dimen/double_margins"
+        android:layout_marginTop="@dimen/quad_margins"
+        android:backgroundTint="@color/light_gray"
+        app:cardCornerRadius="100dp"
         app:cardElevation="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.191"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:clipChildren="false">
 
         <LinearLayout
-            android:layout_width="178dp"
-            android:layout_height="61dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/half_margins"
+            android:clipChildren="false"
+            android:clipToPadding="false"
             android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
+                android:clipToOutline="false"
                 android:id="@+id/profileCardHome"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
                 android:clipChildren="false"
                 android:clipToPadding="false"
                 app:cardCornerRadius="60dp"
@@ -43,7 +43,7 @@
                     android:id="@+id/profileImageViewHome"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="@dimen/default_margins"
+                    android:layout_margin="4dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/default_profile_picture"
                     android:tint="@color/primary_blue" />
@@ -64,20 +64,22 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/medicine_button"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
-        android:backgroundTint="@color/secondary_blue"
+        android:layout_marginStart="@dimen/double_margins"
+        android:layout_marginTop="@dimen/double_margins"
+        android:layout_marginEnd="@dimen/double_margins"
+        android:backgroundTint="@color/light_gray"
         app:cardCornerRadius="@dimen/default_corner_radius"
         app:cardElevation="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/profile_button">
 
         <LinearLayout
-            android:layout_width="272dp"
-            android:layout_height="93dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/double_margins"
             android:layout_marginTop="@dimen/default_margins"
             android:layout_marginRight="@dimen/double_margins"
@@ -107,22 +109,21 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/food_button"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/secondary_blue"
+        android:layout_marginStart="@dimen/double_margins"
+        android:layout_marginTop="@dimen/double_margins"
+        android:layout_marginEnd="@dimen/double_margins"
+        android:backgroundTint="@color/light_gray"
         app:cardCornerRadius="@dimen/default_corner_radius"
         app:cardElevation="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/entertainment_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/medicine_button">
 
         <LinearLayout
-            android:layout_width="272dp"
-            android:layout_height="93dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/double_margins"
             android:layout_marginTop="@dimen/default_margins"
             android:layout_marginRight="@dimen/double_margins"
@@ -152,20 +153,21 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/entertainment_button"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="192dp"
-        android:backgroundTint="@color/secondary_blue"
+        android:layout_marginStart="@dimen/double_margins"
+        android:layout_marginTop="@dimen/double_margins"
+        android:layout_marginEnd="@dimen/double_margins"
+        android:backgroundTint="@color/light_gray"
         app:cardCornerRadius="@dimen/default_corner_radius"
         app:cardElevation="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/food_button">
 
         <LinearLayout
-            android:layout_width="272dp"
-            android:layout_height="93dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/double_margins"
             android:layout_marginTop="@dimen/default_margins"
             android:layout_marginRight="@dimen/double_margins"
