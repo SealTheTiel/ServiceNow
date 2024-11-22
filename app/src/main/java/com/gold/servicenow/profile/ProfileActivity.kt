@@ -114,6 +114,9 @@ class ProfileActivity: ComponentActivity() {
             finish()
         }
 
+        binding.profileBackButton.setOnClickListener {
+            finish()
+        }
     }
 
     private fun setButtonActivated(button: Button, status: Boolean) {
