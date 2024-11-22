@@ -51,6 +51,11 @@ class ProfileActivity: ComponentActivity() {
 
         setButtonActivated(binding.profileUpdateButton, false)
 
+        val photoPicker: ActivityResultLauncher<PickVisualMediaRequest> = registerForActivityResult(PickVisualMedia()) { uri ->
+            if (uri == null) { return@registerForActivityResult }
+            binding.profileImageView.setImageURI(uri)
+            imageEdited = true
+        }
 
         binding.profileNameInput.addTextChangedListener {
             nameEdited = binding.profileNameInput.text.toString() != CurrentProfile.profile?.name
@@ -85,11 +90,18 @@ class ProfileActivity: ComponentActivity() {
             binding.profilePassword.helperText = InputValidator.validatePassword(binding.profilePasswordInput.text.toString())
         }
 
-        updateButton.setOnClickListener {
-            val name = nameEditText.text.toString()
-            val email = emailEditText.text.toString()
-            val contact = contactEditText.text.toString()
-            val password = passwordEditText.text.toString()
+        binding.profileImage.setOnClickListener {
+            photoPicker.launch(PickVisualMediaRequest.Builder().setMediaType(PickVisualMedia.ImageOnly).build())
+            //val photo = ActivityResultContracts.PickVisualMedia
+            if (nameEdited || emailEdited || contactEdited || passwordEdited || imageEdited) { setButtonActivated(binding.profileUpdateButton, true) }
+            else { setButtonActivated(binding.profileUpdateButton, false) }
+        }
+
+        binding.profileUpdateButton.setOnClickListener {
+            val name = binding.profileNameInput.text.toString()
+            val email = binding.profileEmailInput.text.toString()
+            val contact = binding.profileNumberInput.text.toString()
+            val password = binding.profilePasswordInput.text.toString()
             val newProfile = Profile(name, email, contact, password)
             CurrentProfile.update(newProfile,
                 onSuccess = {
