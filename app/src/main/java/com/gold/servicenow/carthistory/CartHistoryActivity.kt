@@ -28,7 +28,6 @@ class CartHistoryActivity :ComponentActivity() {
     private lateinit var location: TextView
     private lateinit var name: TextView
     private lateinit var sp1: SharedPreferences
-    private lateinit var backButton: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,8 +47,6 @@ class CartHistoryActivity :ComponentActivity() {
         this.confirmButton = findViewById(R.id.confirmOrderButton)
         this.location = findViewById(R.id.location_label)
         this.name = findViewById(R.id.user_label)
-        this.backButton = findViewById(R.id.checkoutBackButton)
-
         this.total.text = "PHP ${CartList.getCartTotal()}"
 
         // get name from sp1
@@ -63,9 +60,6 @@ class CartHistoryActivity :ComponentActivity() {
 
         }
 
-        backButton.setOnClickListener {
-            finish()
-        }
     }
 
     private fun loadCartFromPreferences() {
