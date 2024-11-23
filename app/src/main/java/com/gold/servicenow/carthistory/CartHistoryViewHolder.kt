@@ -4,15 +4,13 @@ import android.graphics.Bitmap
 import android.os.Handler
 import android.os.Looper
 import android.view.View
-import android.view.animation.AnimationUtils
-import android.widget.EditText
-import android.widget.ImageButton
+    import android.widget.EditText
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.recyclerview.widget.RecyclerView
 import com.gold.servicenow.R
-import com.gold.servicenow.cart.CartAdapter
 import com.gold.servicenow.cart.CartEntry
 import com.gold.servicenow.databinding.ItemLayoutBinding
 import java.util.concurrent.Executors
@@ -47,6 +45,17 @@ class CartHistoryViewHolder(itemView: View, adapter: CartHistoryAdapter): Recycl
                 }
             }
 
+            itemBinding.itemDescription.visibility = View.GONE
+            itemBinding.itemIncrement.visibility = View.GONE
+            itemBinding.itemDecrement.visibility = View.GONE
+            itemBinding.itemDelete.visibility = View.GONE
+
+            val constraintSet = ConstraintSet()
+            constraintSet.clone(itemBinding.itemDetails)
+            constraintSet.connect(itemBinding.itemQuantityValue.id, ConstraintSet.TOP, ConstraintSet.GONE, ConstraintSet.TOP)
+            constraintSet.connect(itemBinding.itemQuantityValue.id, ConstraintSet.START, itemBinding.itemQuantity.id, ConstraintSet.END)
+            constraintSet.connect(itemBinding.itemQuantityValue.id, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END)
+            constraintSet.applyTo(itemBinding.itemDetails)
         }
 
 
