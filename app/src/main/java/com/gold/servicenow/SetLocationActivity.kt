@@ -18,6 +18,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.gold.servicenow.carthistory.CartHistoryActivity
 import org.osmdroid.api.IGeoPoint
 import org.osmdroid.config.Configuration
 import org.osmdroid.util.GeoPoint
@@ -80,7 +81,19 @@ class SetLocationActivity : ComponentActivity() {
 
         // Proceed to payment method
         proceed.setOnClickListener {
-            val intent = Intent(this, SuccessActivity::class.java)
+            val intent = Intent(this, CartHistoryActivity::class.java)
+
+            // Get the selected location based on the current mode
+            val location = if (currentSelection == "AUTO") {
+                locationAutoText.text.toString().takeIf { it.isNotBlank() } ?: "Unable to detect location."
+            } else {
+                locationAddInput.text.toString().takeIf { it.isNotBlank() } ?: "No location entered."
+            }
+
+            // Add the location as an extra
+            intent.putExtra("selectedLocation", location)
+
+            // Start CartHistoryActivity
             startActivity(intent)
         }
 
