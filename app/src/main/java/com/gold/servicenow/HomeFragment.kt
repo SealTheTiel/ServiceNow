@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -29,6 +30,7 @@ class HomeFragment : Fragment() {
     private lateinit var profileButton: CardView
     private lateinit var username: TextView
     private lateinit var profileImage: ImageView
+    private lateinit var sharedPreferences: SharedPreferences
 
     private val profileUpdateReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
@@ -49,6 +51,11 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
+//        sharedPreferences = requireContext().getSharedPreferences("ServiceNowPrefs", Context.MODE_PRIVATE)
+//        // Save name into shared prerferences
+//        val editor = sharedPreferences.edit()
+//        editor.putString("name", CurrentProfile.profile?.name)
+//        editor.apply()
 
         // Initialize buttons
         medicineButton = view.findViewById(R.id.medicine_button)
