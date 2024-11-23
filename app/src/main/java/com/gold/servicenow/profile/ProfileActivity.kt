@@ -19,11 +19,11 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 
 class ProfileActivity: ComponentActivity() {
     private lateinit var binding: ActivityProfileBinding
-    var nameEdited: Boolean = false
-    var emailEdited: Boolean = false
-    var contactEdited: Boolean = false
-    var passwordEdited: Boolean = false
-    var imageEdited: Boolean = false
+    private var nameEdited: Boolean = false
+    private var emailEdited: Boolean = false
+    private var contactEdited: Boolean = false
+    private var passwordEdited: Boolean = false
+    private var imageEdited: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -121,7 +121,6 @@ class ProfileActivity: ComponentActivity() {
                 onFailure = {
                     println("[Profile]: Profile update failed.")
                 })
-            finish()
         }
 
         binding.profileBackButton.setOnClickListener {
