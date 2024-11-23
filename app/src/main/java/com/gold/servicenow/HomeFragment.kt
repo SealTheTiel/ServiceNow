@@ -30,32 +30,44 @@ class HomeFragment : Fragment() {
     private lateinit var profileButton: CardView
     private lateinit var username: TextView
     private lateinit var profileImage: ImageView
-    private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var sp: SharedPreferences
 
     private val profileUpdateReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             val imageBase64 = intent?.getStringExtra("profileImage")
             val newName = intent?.getStringExtra("profileName")
 
-            if (!imageBase64.isNullOrEmpty()) {
-                profileImage.setImageBitmap(CurrentProfile.convertBase64ToBitmap(imageBase64))
-            }
-            if (!newName.isNullOrEmpty()) {
-                username.text = newName
+            if (context != null) {
+                // Get SharedPreferences
+                val sharedPreferences = context.getSharedPreferences("ServiceNowPrefs", Context.MODE_PRIVATE)
+                val editor = sharedPreferences.edit()
+
+                // Update SharedPreferences with the new data
+                if (!imageBase64.isNullOrEmpty()) {
+                    profileImage.setImageBitmap(CurrentProfile.convertBase64ToBitmap(imageBase64))
+                }
+                if (!newName.isNullOrEmpty()) {
+                    username.text = newName
+                    editor.putString("name", newName)
+                }
+
+                // Apply changes to SharedPreferences
+                editor.apply()
             }
         }
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
-//        sharedPreferences = requireContext().getSharedPreferences("ServiceNowPrefs", Context.MODE_PRIVATE)
-//        // Save name into shared prerferences
-//        val editor = sharedPreferences.edit()
-//        editor.putString("name", CurrentProfile.profile?.name)
-//        editor.apply()
+        sp = requireContext().getSharedPreferences("ServiceNowPrefs", Context.MODE_PRIVATE)
+        // Save name into shared prerferences
+        val editor = sp.edit()
+        editor.putString("name", CurrentProfile.profile?.name)
+        editor.apply()
 
         // Initialize buttons
         medicineButton = view.findViewById(R.id.medicine_button)
@@ -114,6 +126,10 @@ class HomeFragment : Fragment() {
         val intentFilter = IntentFilter("com.gold.servicenow.PROFILE_UPDATED")
         LocalBroadcastManager.getInstance(requireContext())
             .registerReceiver(profileUpdateReceiver, intentFilter)
+
+        val editor = sp.edit()
+        editor.putString("name", CurrentProfile.profile?.name)
+        editor.apply()
     }
 
     override fun onStop() {
@@ -130,5 +146,6 @@ class HomeFragment : Fragment() {
         (activity as? MainActivity)?.findViewById<BottomNavigationView>(R.id.navbar)?.selectedItemId = selected
 
     }
+
 
 }
