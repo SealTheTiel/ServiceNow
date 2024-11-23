@@ -59,19 +59,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/successIcon" />
 
-    <TextView
-        android:id="@+id/successSubMessage2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/double_margins"
-        android:layout_marginTop="@dimen/default_margins"
-        android:layout_marginRight="@dimen/double_margins"
-        android:text="Please prepare the exact amount for your order. Thank you!"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="19sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/successIcon" />
 </LinearLayout>
