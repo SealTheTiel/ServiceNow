@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
@@ -27,6 +28,7 @@ class CartHistoryActivity :ComponentActivity() {
     private lateinit var location: TextView
     private lateinit var name: TextView
     private lateinit var sp1: SharedPreferences
+    private lateinit var backButton: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +39,7 @@ class CartHistoryActivity :ComponentActivity() {
 
         sp = getSharedPreferences("cart", MODE_PRIVATE)
         loadCartFromPreferences()
+        cartAdapter.notifyDataSetChanged()
 
         this.cartRecyclerView.adapter = cartAdapter
         this.cartRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
@@ -45,8 +48,9 @@ class CartHistoryActivity :ComponentActivity() {
         this.confirmButton = findViewById(R.id.confirmOrderButton)
         this.location = findViewById(R.id.location_label)
         this.name = findViewById(R.id.user_label)
+        this.backButton = findViewById(R.id.checkoutBackButton)
 
-        this.total.text = "Total: PHP ${CartList.getCartTotal()}"
+        this.total.text = "PHP ${CartList.getCartTotal()}"
 
         // get name from sp1
         sp1 = getSharedPreferences("ServiceNowPrefs", MODE_PRIVATE)
@@ -59,7 +63,9 @@ class CartHistoryActivity :ComponentActivity() {
 
         }
 
-
+        backButton.setOnClickListener {
+            finish()
+        }
     }
 
     private fun loadCartFromPreferences() {
@@ -84,7 +90,7 @@ class CartHistoryActivity :ComponentActivity() {
                 }
             }
         }
-
+        cartAdapter.notifyDataSetChanged()
         // Notify the cart list that data has been loaded
         CartList.notifyListener()
     }
