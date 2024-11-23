@@ -30,17 +30,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/locationBackButton"
-        android:layout_width="wrap_content"
-        android:layout_height="34dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
-        app:layout_constraintEnd_toStartOf="@+id/locationHeader"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/back_icon" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/locationAutoLocation"
         android:layout_width="match_parent"
@@ -171,7 +160,7 @@
         android:backgroundTint="@color/primary_blue"
         android:gravity="center"
         android:padding="@dimen/default_margins"
-        android:text="Proceed to Payment"
+        android:text="Review Order"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="24sp"

@@ -11,7 +11,7 @@
         android:id="@+id/checkoutHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="@dimen/quad_margins"
         android:layout_marginBottom="20dp"
         android:fontFamily="sans-serif"
         android:text="Checkout"
@@ -23,20 +23,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/checkoutBackButton"
-        android:layout_width="wrap_content"
-        android:layout_height="34dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="36dp"
-        android:background="@android:color/transparent"
-        android:src="@drawable/back_icon"
-        app:layout_constraintEnd_toStartOf="@+id/checkoutHeader"
-        app:layout_constraintHorizontal_bias="0.261"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="@null" />
 
     <Button
         android:id="@+id/confirmOrderButton"
