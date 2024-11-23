@@ -55,5 +55,6 @@ class SuccessActivity : AppCompatActivity() {
         val editor = sharedPreferences.edit()
         editor.clear()
         editor.apply()
+
     }
 }
