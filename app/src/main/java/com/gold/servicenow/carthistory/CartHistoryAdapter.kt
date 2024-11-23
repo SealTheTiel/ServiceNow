@@ -11,7 +11,7 @@ class CartHistoryAdapter (private val data: ArrayList<CartEntry>): RecyclerView.
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartHistoryViewHolder{
         val inflater = LayoutInflater.from(parent.context)
-        val itemView = inflater.inflate(R.layout.item_layout_checkout, parent, false)
+        val itemView = inflater.inflate(R.layout.item_layout, parent, false)
         return CartHistoryViewHolder(itemView, this)
     }
 
