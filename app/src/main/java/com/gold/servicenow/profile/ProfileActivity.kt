@@ -99,9 +99,11 @@ class ProfileActivity: ComponentActivity() {
             val email = binding.profileEmailInput.text.toString()
             val contact = binding.profileNumberInput.text.toString()
             val password = binding.profilePasswordInput.text.toString()
-            var image = CurrentProfile.convertBitmapToBase64(CurrentProfile.convertUriToBitmap(this, imageUri!!))
+            val image = imageUri?.let { CurrentProfile.convertBitmapToBase64(CurrentProfile.convertUriToBitmap(this, it)) } ?: CurrentProfile.profile?.image.orEmpty()
+
             val newProfile = Profile(name, email, contact, password, image)
             println("name: ${newProfile.name}, email: ${newProfile.email}, contact: ${newProfile.contact}, password: ${newProfile.password}, image: ${newProfile.image}")
+
 
             CurrentProfile.update(newProfile,
                 onSuccess = {
