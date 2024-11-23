@@ -14,23 +14,20 @@ import androidx.recyclerview.widget.RecyclerView
 import com.gold.servicenow.R
 import com.gold.servicenow.cart.CartAdapter
 import com.gold.servicenow.cart.CartEntry
-import com.gold.servicenow.cart.CartList
+import com.gold.servicenow.databinding.ItemLayoutBinding
 import java.util.concurrent.Executors
 
 class CartHistoryViewHolder(itemView: View, adapter: CartHistoryAdapter): RecyclerView.ViewHolder(itemView)  {
-        private val image: ImageView = itemView.findViewById(R.id.itemImageCheckout)
-        private val name: TextView = itemView.findViewById(R.id.itemCheckoutName)
-        private val price: TextView = itemView.findViewById(R.id.itemCheckoutPrice)
-        private val quantity: EditText = itemView.findViewById(R.id.itemCheckoutQuantity)
-        private val loading: ProgressBar = itemView.findViewById(R.id.itemLoadingCheckout)
+        private lateinit var itemBinding: ItemLayoutBinding
 
         private lateinit var cartEntry: CartEntry
 
         fun bindData(cartEntry: CartEntry) {
+            itemBinding = ItemLayoutBinding.bind(itemView)
             this.cartEntry = cartEntry
-            name.text = cartEntry.name
-            quantity.setText(String.format("%d", cartEntry.quantity))
-            price.text = "PHP " + String.format("%.2f", cartEntry.price * cartEntry.quantity)
+            itemBinding.itemName.text = cartEntry.name
+            itemBinding.itemQuantityValue.setText(String.format("%d", cartEntry.quantity))
+            itemBinding.itemPrice.text = "PHP " + String.format("%.2f", cartEntry.price * cartEntry.quantity)
 
             val imageExecutor = Executors.newSingleThreadExecutor()
             val imageHandler = Handler(Looper.getMainLooper())
@@ -41,8 +38,8 @@ class CartHistoryViewHolder(itemView: View, adapter: CartHistoryAdapter): Recycl
                     val `in` = java.net.URL(cartEntry.imageUrl).openStream()
                     imageBitmap = android.graphics.BitmapFactory.decodeStream(`in`)
                     imageHandler.post {
-                        image.setImageBitmap(imageBitmap)
-                        loading.visibility = View.GONE
+                        itemBinding.itemImage.setImageBitmap(imageBitmap)
+                        itemBinding.itemLoading.visibility = View.GONE
                     }
                 } catch (e: Exception) {
                     error("Error: ${e.message}")

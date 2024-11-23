@@ -18,26 +18,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.gold.servicenow.R
 import com.gold.servicenow.cart.CartEntry
 import com.gold.servicenow.cart.CartList
+import com.gold.servicenow.databinding.ItemLayoutBinding
 import java.util.concurrent.Executors
 
 class MedicineViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-    private val image: ImageView = itemView.findViewById(R.id.itemImage)
-    private val name: TextView = itemView.findViewById(R.id.itemName)
-    private val description: TextView = itemView.findViewById(R.id.itemDescription)
-    private val price: TextView = itemView.findViewById(R.id.itemPrice)
-    private val quantity: EditText = itemView.findViewById(R.id.itemQuantity)
-    private val decrement: ImageButton = itemView.findViewById(R.id.itemDecrement)
-    private val increment: ImageButton = itemView.findViewById(R.id.itemIncrement)
-    private val delete: ImageButton = itemView.findViewById(R.id.itemDelete)
-    private val loading: ProgressBar = itemView.findViewById(R.id.itemLoading)
-
+    private lateinit var itemBinding: ItemLayoutBinding
     private lateinit var medicine: Medicine
 
     fun bindData(medicine: Medicine) {
+        itemBinding = ItemLayoutBinding.bind(itemView)
         this.medicine = medicine
-        name.text = medicine.name
-        description.text = medicine.description
-        price.text = "PHP " + medicine.price.toString()
+        itemBinding.itemName.text = medicine.name
+        itemBinding.itemDescription.text = medicine.description
+        itemBinding.itemPrice.text = "PHP " + medicine.price.toString()
 
         val imageExecutor = Executors.newSingleThreadExecutor()
         val imageHandler = Handler(Looper.getMainLooper())
@@ -48,8 +41,8 @@ class MedicineViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
                 val `in` = java.net.URL(medicine.imageUrl).openStream()
                 imageBitmap = android.graphics.BitmapFactory.decodeStream(`in`)
                 imageHandler.post {
-                    image.setImageBitmap(imageBitmap)
-                    loading.visibility = View.GONE
+                    itemBinding.itemImage.setImageBitmap(imageBitmap)
+                    itemBinding.itemLoading.visibility = View.GONE
                 }
             } catch (e: Exception) {
                 error("Error: ${e.message}")
@@ -57,10 +50,11 @@ class MedicineViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
             }
         }
 
-        quantity.visibility = View.GONE
-        decrement.visibility = View.GONE
-        increment.visibility = View.GONE
-        delete.visibility = View.GONE
+        itemBinding.itemQuantityValue.visibility = View.GONE
+        itemBinding.itemQuantity.visibility = View.GONE
+        itemBinding.itemDecrement.visibility = View.GONE
+        itemBinding.itemIncrement.visibility = View.GONE
+        itemBinding.itemDelete.visibility = View.GONE
     }
 
     init {

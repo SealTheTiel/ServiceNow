@@ -2,7 +2,6 @@ package com.gold.servicenow.entertainment
 
 import android.app.Dialog
 import android.graphics.Bitmap
-import android.os.Debug
 import android.os.Handler
 import android.os.Looper
 import android.view.Gravity
@@ -19,26 +18,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.gold.servicenow.R
 import com.gold.servicenow.cart.CartEntry
 import com.gold.servicenow.cart.CartList
+import com.gold.servicenow.databinding.ItemLayoutBinding
 import java.util.concurrent.Executors
 
 class EntertainmentViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-    private val image: ImageView = itemView.findViewById(R.id.itemImage)
-    private val name: TextView = itemView.findViewById(R.id.itemName)
-    private val description: TextView = itemView.findViewById(R.id.itemDescription)
-    private val price: TextView = itemView.findViewById(R.id.itemPrice)
-    private val quantity: EditText = itemView.findViewById(R.id.itemQuantity)
-    private val decrement: ImageButton = itemView.findViewById(R.id.itemDecrement)
-    private val increment: ImageButton = itemView.findViewById(R.id.itemIncrement)
-    private val delete: ImageButton = itemView.findViewById(R.id.itemDelete)
-    private val loading: ProgressBar = itemView.findViewById(R.id.itemLoading)
-
+    private lateinit var itemBinding: ItemLayoutBinding
     private lateinit var entertainment: Entertainment
 
     fun bindData(entertainment: Entertainment) {
+        itemBinding = ItemLayoutBinding.bind(itemView)
         this.entertainment = entertainment
-        name.text = entertainment.name
-        description.text = entertainment.description
-        price.text = "PHP " + entertainment.price.toString()
+        itemBinding.itemName.text = entertainment.name
+        itemBinding.itemDescription.text = entertainment.description
+        itemBinding.itemPrice.text = "PHP " + entertainment.price.toString()
 
         val imageExecutor = Executors.newSingleThreadExecutor()
         val imageHandler = Handler(Looper.getMainLooper())
@@ -49,8 +41,8 @@ class EntertainmentViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
                 val `in` = java.net.URL(entertainment.imageUrl).openStream()
                 imageBitmap = android.graphics.BitmapFactory.decodeStream(`in`)
                 imageHandler.post {
-                    image.setImageBitmap(imageBitmap)
-                    loading.visibility = View.GONE
+                    itemBinding.itemImage.setImageBitmap(imageBitmap)
+                    itemBinding.itemLoading.visibility = View.GONE
                 }
             } catch (e: Exception) {
                 error("Error: ${e.message}")
@@ -58,10 +50,11 @@ class EntertainmentViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
             }
         }
 
-        quantity.visibility = View.GONE
-        decrement.visibility = View.GONE
-        increment.visibility = View.GONE
-        delete.visibility = View.GONE
+        itemBinding.itemQuantityValue.visibility = View.GONE
+        itemBinding.itemQuantity.visibility = View.GONE
+        itemBinding.itemDecrement.visibility = View.GONE
+        itemBinding.itemIncrement.visibility = View.GONE
+        itemBinding.itemDelete.visibility = View.GONE
     }
 
     init {

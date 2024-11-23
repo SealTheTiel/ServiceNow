@@ -12,26 +12,19 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.gold.servicenow.R
+import com.gold.servicenow.databinding.ItemLayoutBinding
 import java.util.concurrent.Executors
 
 class CartViewHolder(itemView: View, adapter: CartAdapter): RecyclerView.ViewHolder(itemView) {
-    private val image: ImageView = itemView.findViewById(R.id.itemImage)
-    private val name: TextView = itemView.findViewById(R.id.itemName)
-    private val description: TextView = itemView.findViewById(R.id.itemDescription)
-    private val price: TextView = itemView.findViewById(R.id.itemPrice)
-    private val quantity: EditText = itemView.findViewById(R.id.itemQuantity)
-    private val decrement: ImageButton = itemView.findViewById(R.id.itemDecrement)
-    private val increment: ImageButton = itemView.findViewById(R.id.itemIncrement)
-    private val delete: ImageButton = itemView.findViewById(R.id.itemDelete)
-    private val loading: ProgressBar = itemView.findViewById(R.id.itemLoading)
+    private lateinit var itemBinding: ItemLayoutBinding
 
     private lateinit var cartEntry: CartEntry
 
     fun bindData(cartEntry: CartEntry) {
         this.cartEntry = cartEntry
-        name.text = cartEntry.name
-        quantity.setText(String.format("%d", cartEntry.quantity))
-        price.text = "PHP " + String.format("%.2f", cartEntry.price * cartEntry.quantity)
+        itemBinding.itemName.text = cartEntry.name
+        itemBinding.itemQuantityValue.setText(String.format("%d", cartEntry.quantity))
+        itemBinding.itemPrice.text = "PHP " + String.format("%.2f", cartEntry.price * cartEntry.quantity)
 
         val imageExecutor = Executors.newSingleThreadExecutor()
         val imageHandler = Handler(Looper.getMainLooper())
@@ -42,8 +35,8 @@ class CartViewHolder(itemView: View, adapter: CartAdapter): RecyclerView.ViewHol
                 val `in` = java.net.URL(cartEntry.imageUrl).openStream()
                 imageBitmap = android.graphics.BitmapFactory.decodeStream(`in`)
                 imageHandler.post {
-                    image.setImageBitmap(imageBitmap)
-                    loading.visibility = View.GONE
+                    itemBinding.itemImage.setImageBitmap(imageBitmap)
+                    itemBinding.itemLoading.visibility = View.GONE
                 }
             } catch (e: Exception) {
                 error("Error: ${e.message}")
@@ -51,24 +44,26 @@ class CartViewHolder(itemView: View, adapter: CartAdapter): RecyclerView.ViewHol
             }
         }
 
-        description.visibility = View.GONE
+        itemBinding.itemDescription.visibility = View.GONE
+        itemBinding.itemQuantity.visibility = View.GONE
     }
 
     init {
-        delete.setOnClickListener {
+        itemBinding = ItemLayoutBinding.bind(itemView)
+        itemBinding.itemDelete.setOnClickListener {
             adapter.removeItem(adapterPosition)
             CartList.removeCartEntry(cartEntry)
         }
 
-        increment.setOnClickListener {
-            increment.startAnimation(AnimationUtils.loadAnimation(itemView.context, R.anim.button_click_scale))
+        itemBinding.itemIncrement.setOnClickListener {
+            itemBinding.itemIncrement.startAnimation(AnimationUtils.loadAnimation(itemView.context, R.anim.button_click_scale))
             val newEntry = CartEntry(cartEntry.name, cartEntry.price, 1, cartEntry.imageUrl)
             CartList.addCartEntry(newEntry)
             val amount = CartList.getCartEntry(cartEntry.name)?.quantity ?: return@setOnClickListener
-            quantity.setText(String.format("%d", amount))
+            itemBinding.itemQuantityValue.setText(String.format("%d", amount))
         }
-        decrement.setOnClickListener {
-            decrement.startAnimation(AnimationUtils.loadAnimation(itemView.context, R.anim.button_click_scale))
+        itemBinding.itemDecrement.setOnClickListener {
+            itemBinding.itemDecrement.startAnimation(AnimationUtils.loadAnimation(itemView.context, R.anim.button_click_scale))
             if (cartEntry.quantity == 1) {
                 adapter.removeItem(adapterPosition)
                 CartList.removeCartEntry(cartEntry)
@@ -77,7 +72,7 @@ class CartViewHolder(itemView: View, adapter: CartAdapter): RecyclerView.ViewHol
             val newEntry = CartEntry(cartEntry.name, cartEntry.price, -1, cartEntry.imageUrl)
             CartList.addCartEntry(newEntry)
             val amount = CartList.getCartEntry(cartEntry.name)?.quantity ?: return@setOnClickListener
-            quantity.setText(String.format("%d", amount))
+            itemBinding.itemQuantityValue.setText(String.format("%d", amount))
         }
     }
 }
