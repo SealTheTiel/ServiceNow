@@ -43,11 +43,9 @@ class RegisterActivity : ComponentActivity() {
         }
 
         binding.registerSignupButton.setOnClickListener {
-            println("Asda")
             binding.registerSignupButton.isEnabled = false
             binding.registerSignupButton.visibility = View.INVISIBLE
             binding.registerLoading.visibility = View.VISIBLE
-            println("Asda")
 
             val name = binding.registerNameInput.text.toString()
             val email = binding.registerEmailInput.text.toString()
