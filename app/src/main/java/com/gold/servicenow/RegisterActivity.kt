@@ -11,25 +11,16 @@ import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.gold.servicenow.databinding.ActivityRegisterBinding
 import com.gold.servicenow.profile.*
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
 class RegisterActivity : ComponentActivity() {
-    private lateinit var registerButton: Button
-    private lateinit var loginButton: TextView
-    private lateinit var backButton: ImageButton
-    private lateinit var emailEditText: TextInputEditText
-    private lateinit var emailEditLayout: TextInputLayout
-    private lateinit var nameEditText: EditText
-    private lateinit var nameEditLayout: TextInputLayout
-    private lateinit var contactEditText: EditText
-    private lateinit var contactEditLayout: TextInputLayout
-    private lateinit var passwordEditText: EditText
-    private lateinit var passwordEditLayout: TextInputLayout
-
+    private lateinit var binding: ActivityRegisterBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        binding = ActivityRegisterBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_register)
@@ -39,33 +30,21 @@ class RegisterActivity : ComponentActivity() {
             insets
         }
 
-        registerButton = findViewById(R.id.registerSignupButton)
-        loginButton = findViewById(R.id.registerSignIn)
-        backButton = findViewById(R.id.registerBackButton)
-        emailEditText = findViewById(R.id.registerEmailInput)
-        nameEditText = findViewById(R.id.registerNameInput)
-        contactEditText = findViewById(R.id.registerNumberInput)
-        passwordEditText = findViewById(R.id.registerPasswordInput)
-        emailEditLayout = findViewById(R.id.registerEmail)
-        nameEditLayout = findViewById(R.id.registerName)
-        contactEditLayout = findViewById(R.id.registerNumber)
-        passwordEditLayout = findViewById(R.id.registerPassword)
-
-        emailEditText.setOnFocusChangeListener { view, focused ->
+        binding.registerEmailInput.setOnFocusChangeListener { view, focused ->
             if (focused) return@setOnFocusChangeListener
-            emailEditLayout.helperText = InputValidator.validateEmail(emailEditText.text.toString())
+            binding.registerEmail.helperText = InputValidator.validateEmail(binding.registerEmailInput.text.toString())
         }
 
-        passwordEditText.setOnFocusChangeListener { view, focused ->
+        binding.registerPasswordInput.setOnFocusChangeListener { view, focused ->
             if (focused) return@setOnFocusChangeListener
-            passwordEditLayout.helperText = InputValidator.validatePassword(passwordEditText.text.toString())
+            binding.registerPassword.helperText = InputValidator.validatePassword(binding.registerPasswordInput.text.toString())
         }
 
-        registerButton.setOnClickListener {
-            val name = nameEditText.text.toString()
-            val email = emailEditText.text.toString()
-            val contact = contactEditText.text.toString()
-            val password = passwordEditText.text.toString()
+        binding.registerSignupButton.setOnClickListener {
+            val name = binding.registerNameInput.text.toString()
+            val email = binding.registerEmailInput.text.toString()
+            val contact = binding.registerNumberInput.text.toString()
+            val password = binding.registerPasswordInput.text.toString()
             val newProfile = Profile(name, email, contact, password)
             CurrentProfile.register(newProfile,
                 onSuccess = {
@@ -80,12 +59,12 @@ class RegisterActivity : ComponentActivity() {
                 })
         }
 
-        loginButton.setOnClickListener {
+        binding.registerSignIn.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
             startActivity(intent)
         }
-        backButton.setOnClickListener {
+        binding.registerBackButton.setOnClickListener {
             finish()
         }
     }
