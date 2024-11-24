@@ -2,6 +2,7 @@ package com.gold.servicenow
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
@@ -36,6 +37,9 @@ class LoginActivity : ComponentActivity() {
 
 
         binding.loginLoginButton.setOnClickListener {
+            binding.loginLoginButton.isEnabled = false
+            binding.loginLoginButton.visibility = View.INVISIBLE
+            binding.loginLoading.visibility = View.VISIBLE
             val email = binding.loginEmailInput.text.toString()
             val password = binding.loginPasswordInput.text.toString()
             CurrentProfile.login(email, password,
@@ -48,6 +52,9 @@ class LoginActivity : ComponentActivity() {
                 onFailure = {
                     println("[ERROR] [Login]: Failed to log in with email: $email")
                     Toast.makeText(this, "Invalid Email or Password", Toast.LENGTH_SHORT).show()
+                    binding.loginLoginButton.isEnabled = true
+                    binding.loginLoginButton.visibility = View.VISIBLE
+                    binding.loginLoading.visibility = View.INVISIBLE
                 }
             )
         }
