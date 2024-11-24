@@ -2,6 +2,7 @@ package com.gold.servicenow
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
@@ -11,6 +12,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.transition.Visibility
 import com.gold.servicenow.databinding.ActivityRegisterBinding
 import com.gold.servicenow.profile.*
 import com.google.android.material.textfield.TextInputEditText
@@ -23,7 +25,7 @@ class RegisterActivity : ComponentActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_register)
+        setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -41,6 +43,12 @@ class RegisterActivity : ComponentActivity() {
         }
 
         binding.registerSignupButton.setOnClickListener {
+            println("Asda")
+            binding.registerSignupButton.isEnabled = false
+            binding.registerSignupButton.visibility = View.INVISIBLE
+            binding.registerLoading.visibility = View.VISIBLE
+            println("Asda")
+
             val name = binding.registerNameInput.text.toString()
             val email = binding.registerEmailInput.text.toString()
             val contact = binding.registerNumberInput.text.toString()
@@ -56,6 +64,9 @@ class RegisterActivity : ComponentActivity() {
                 onFailure = {
                     Toast.makeText(this, "Registration failed.", Toast.LENGTH_SHORT).show()
                     println("[Register]: Registration failed.")
+                    binding.registerSignupButton.isEnabled = true
+                    binding.registerSignupButton.visibility = View.VISIBLE
+                    binding.registerLoading.visibility = View.INVISIBLE
                 })
         }
 
