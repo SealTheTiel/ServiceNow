@@ -9,48 +9,35 @@ import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import android.widget.EditText
 import android.widget.Toast
+import com.gold.servicenow.databinding.ActivityLoginBinding
 import com.gold.servicenow.profile.CurrentProfile
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
 class LoginActivity : ComponentActivity() {
-    private lateinit var loginButton: Button
-    private lateinit var signupButton: TextView
-    private lateinit var backButton: ImageButton
-    private lateinit var emailEditText: TextInputEditText
-    private lateinit var passwordEditText: TextInputEditText
-    private lateinit var emailEditLayout: TextInputLayout
-    private lateinit var passwordEditLayout: TextInputLayout
+    private lateinit var binding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        binding = ActivityLoginBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_login)
+        setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        loginButton = findViewById(R.id.loginLoginButton)
-        signupButton = findViewById(R.id.loginSignup)
-        backButton = findViewById(R.id.loginBackButton)
-        emailEditText = findViewById(R.id.loginEmailInput)
-        passwordEditText = findViewById(R.id.loginPasswordInput)
-        emailEditLayout = findViewById(R.id.loginEmail)
-        passwordEditLayout = findViewById(R.id.loginPassword)
-
-        emailEditText.setOnFocusChangeListener { view, focused ->
+        binding.loginEmailInput.setOnFocusChangeListener { view, focused ->
             if (focused) return@setOnFocusChangeListener
-            emailEditLayout.helperText = InputValidator.validateEmail(emailEditText.text.toString())
+            binding.loginEmail.helperText = InputValidator.validateEmail(binding.loginEmailInput.text.toString())
         }
 
 
-        loginButton.setOnClickListener {
-            val email = emailEditText.text.toString()
-            val password = passwordEditText.text.toString()
+        binding.loginLoginButton.setOnClickListener {
+            val email = binding.loginEmailInput.text.toString()
+            val password = binding.loginPasswordInput.text.toString()
             CurrentProfile.login(email, password,
                 onSuccess = {
                     println("[INFO] [Login]: Log in successful with email: $email")
@@ -64,13 +51,13 @@ class LoginActivity : ComponentActivity() {
                 }
             )
         }
-        signupButton.setOnClickListener {
+        binding.loginSignup.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
             startActivity(intent)
         }
 
-        backButton.setOnClickListener {
+        binding.loginBackButton.setOnClickListener {
             finish()
         }
     }
