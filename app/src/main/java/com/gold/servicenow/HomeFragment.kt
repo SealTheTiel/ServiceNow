@@ -76,10 +76,6 @@ class HomeFragment : Fragment() {
         profileButton = view.findViewById(R.id.profile_button)
         username = view.findViewById(R.id.profile_label)
         profileImage = view.findViewById(R.id.profileImageViewHome)
-        println(CurrentProfile.profile?.name)
-        println(CurrentProfile.profile?.email)
-        println(CurrentProfile.profile?.contact)
-        println(CurrentProfile.profile?.password)
 
         if (CurrentProfile.profile?.image != "") {
             profileImage.setImageBitmap(CurrentProfile.convertBase64ToBitmap(CurrentProfile.profile?.image!!))
