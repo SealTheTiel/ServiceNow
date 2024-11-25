@@ -2,6 +2,7 @@ package com.gold.servicenow
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -54,12 +55,13 @@ class RegisterActivity : ComponentActivity() {
             val newProfile = Profile(name, email, contact, password)
             CurrentProfile.register(newProfile,
                 onSuccess = {
-                    println("[Register]: Registration successful.")
+                    msg -> Log.i("Register", msg.toString())
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                     finish()
                 },
                 onFailure = {
+                    msg -> Log.e("Register", msg.toString())
                     Toast.makeText(this, "Registration failed.", Toast.LENGTH_SHORT).show()
                     println("[Register]: Registration failed.")
                     binding.registerSignupButton.isEnabled = true

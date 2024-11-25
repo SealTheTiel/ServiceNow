@@ -1,14 +1,13 @@
 package com.gold.servicenow.profile
 
 
-import android.graphics.Bitmap
 import com.gold.servicenow.database.DatabaseHandler
 import com.gold.servicenow.database.DatabaseHandler.Companion.PROFILE_COLLECTION
 
 
 class ProfileDatabase {
     private val firestore = DatabaseHandler.firestore
-    fun insertProfile(profile: Profile, onSuccess: (Profile) -> Unit, onFailure: (Exception) -> Unit) {
+    fun insertProfile(profile: Profile, onSuccess: (profile: Profile, Any?) -> Unit, onFailure: (Any?) -> Unit) {
         val profileMap = mapOf(
             "name" to profile.name,
             "email" to profile.email,
@@ -19,52 +18,49 @@ class ProfileDatabase {
         firestore.collection(PROFILE_COLLECTION)
             .get()
             .addOnSuccessListener { results ->
-                println(results)
                 for (result in results) {
-                println(result)
                     if (result.get("email") == profile.email) {
-                        onFailure(Exception("Email already exists"))
+                        onFailure("Email \"${profile.email}\" is already taken.")
                         return@addOnSuccessListener
                     }
                 }
                 firestore.collection(PROFILE_COLLECTION)
                     .add(profileMap)
                     .addOnSuccessListener {
-                        onSuccess(profile)
+                        onSuccess(profile, "Successfully registered \"${profile.email}\"")
                     }
                     .addOnFailureListener {
-                            exception -> onFailure(exception)
+                        onFailure("Error registering account with email: \"${profile.email}\"")
                     }
             }
             .addOnFailureListener {
-                exception -> onFailure(exception)
+                onFailure("Error registering account with email: \"${profile.email}\"")
             }
     }
 
-    fun getProfile(email: String, password: String, onSuccess: (Profile) -> Unit, onFailure: (Exception) -> Unit) {
-        lateinit var profile: Profile
+    fun getProfile(email: String, password: String, onSuccess: (profile: Profile, Any?) -> Unit, onFailure: (Any?) -> Unit) {
+        lateinit var profileFromDb: Profile
         firestore.collection(PROFILE_COLLECTION)
             .get()
             .addOnSuccessListener { results ->
-                println(results)
                 for (result in results) {
-                    println(result)
-                    if (result.get("email") != email) {continue}
-                    if (result.get("password") == password) {
-                        profile = Profile(
+                    if (result.get("email") == email && result.get("password") == password) {
+                        profileFromDb = Profile(
                             result.get("name") as String,
                             result.get("email") as String,
                             result.get("contact") as String,
                             result.get("password") as String,
                             result.get("image") as String
                         )
-                        onSuccess(profile)
+                        onSuccess(profileFromDb, "Account with email \"$email\" found.")
+                        return@addOnSuccessListener
                     }
-                    else {return@addOnSuccessListener onFailure(Exception("[ERROR] [Login] Invalid email and password combination."))}
                 }
+                onFailure("Account with email \"$email\" not found.")
+                return@addOnSuccessListener
             }
-            .addOnFailureListener { exception ->
-                onFailure(exception)
+            .addOnFailureListener {
+                onFailure("Account with email \"$email\" not found.")
             }
     }
 

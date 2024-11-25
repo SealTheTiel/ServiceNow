@@ -47,24 +47,26 @@ class Profile {
 
 object CurrentProfile {
     var profile: Profile? = null
-    fun login(email: String, password: String, onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {
+    fun login(email: String, password: String, onSuccess: (Any?) -> Unit, onFailure: (Any?) -> Unit) {
         ProfileDatabase().getProfile(email, password,
-            onSuccess = {   profile -> this.profile = profile
-                            onSuccess()
+            onSuccess = { profileFromDb, msg -> this.profile = profileFromDb
+                            onSuccess(msg)
+                            return@getProfile
                         },
-            onFailure = {   Exception -> onFailure(Exception)
-                            println("[ERROR] [Login] Failed to login with email: $email")
+            onFailure = { msg -> onFailure(msg)
+                            return@getProfile
                         }
         )
     }
 
-    fun register(profile: Profile, onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {
+    fun register(profile: Profile, onSuccess: (Any?) -> Unit, onFailure: (Any?) -> Unit) {
         ProfileDatabase().insertProfile(profile,
-            onSuccess = {   profile -> this.profile = profile
-                            onSuccess()
+            onSuccess = {   newProfile, msg -> this.profile = newProfile
+                            onSuccess(msg)
+                            return@insertProfile
                         },
-            onFailure = {   Exception -> onFailure(Exception)
-                            println("[ERROR] [Register] Failed to register profile: ${profile.name}")
+            onFailure = {   msg -> onFailure(msg)
+                            return@insertProfile
                         }
         )
     }

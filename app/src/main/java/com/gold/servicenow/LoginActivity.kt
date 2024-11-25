@@ -2,6 +2,7 @@ package com.gold.servicenow
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
@@ -37,6 +38,7 @@ class LoginActivity : ComponentActivity() {
 
 
         binding.loginLoginButton.setOnClickListener {
+            println("clicked")
             binding.loginLoginButton.isEnabled = false
             binding.loginLoginButton.visibility = View.INVISIBLE
             binding.loginLoading.visibility = View.VISIBLE
@@ -44,13 +46,13 @@ class LoginActivity : ComponentActivity() {
             val password = binding.loginPasswordInput.text.toString()
             CurrentProfile.login(email, password,
                 onSuccess = {
-                    println("[INFO] [Login]: Log in successful with email: $email")
+                    msg -> Log.i("Log In", msg.toString())
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                     finish()
                 },
                 onFailure = {
-                    println("[ERROR] [Login]: Failed to log in with email: $email")
+                    msg -> Log.e("Log In", msg.toString())
                     Toast.makeText(this, "Invalid Email or Password", Toast.LENGTH_SHORT).show()
                     binding.loginLoginButton.isEnabled = true
                     binding.loginLoginButton.visibility = View.VISIBLE
