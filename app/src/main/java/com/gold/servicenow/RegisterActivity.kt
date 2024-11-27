@@ -44,24 +44,70 @@ class RegisterActivity : ComponentActivity() {
         }
 
         binding.registerSignupButton.setOnClickListener {
+            // Get the input values
+            val name = binding.registerNameInput.text.toString().trim()
+            val email = binding.registerEmailInput.text.toString().trim()
+            val contact = binding.registerNumberInput.text.toString().trim()
+            val password = binding.registerPasswordInput.text.toString().trim()
+
+            // Perform validation checks
+            var isValid = true
+
+            // Validate name (check if it's blank)
+            if (name.isBlank()) {
+                binding.registerName.helperText = "Name cannot be empty"
+                isValid = false
+            } else {
+                binding.registerName.helperText = null
+            }
+
+            // Validate email
+            val emailError = InputValidator.validateEmail(email)
+            if (emailError != null) {
+                binding.registerEmail.helperText = emailError
+                isValid = false
+            } else {
+                binding.registerEmail.helperText = null
+            }
+
+            // Validate contact (check if it's blank)
+            if (contact.isBlank()) {
+                binding.registerNumber.helperText = "Contact number cannot be empty"
+                isValid = false
+            } else {
+                binding.registerNumber.helperText = null
+            }
+
+            // Validate password
+            val passwordError = InputValidator.validatePassword(password)
+            if (passwordError != null) {
+                binding.registerPassword.helperText = passwordError
+                isValid = false
+            } else {
+                binding.registerPassword.helperText = null
+            }
+
+            // If any validation fails, show a message and stop the process
+            if (!isValid) {
+                Toast.makeText(this, "Please fill all fields correctly.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            // Proceed with registration if all fields are valid
             binding.registerSignupButton.isEnabled = false
             binding.registerSignupButton.visibility = View.INVISIBLE
             binding.registerLoading.visibility = View.VISIBLE
 
-            val name = binding.registerNameInput.text.toString()
-            val email = binding.registerEmailInput.text.toString()
-            val contact = binding.registerNumberInput.text.toString()
-            val password = binding.registerPasswordInput.text.toString()
             val newProfile = Profile(name, email, contact, password)
             CurrentProfile.register(newProfile,
-                onSuccess = {
-                    msg -> Log.i("Register", msg.toString())
+                onSuccess = { msg ->
+                    Log.i("Register", msg.toString())
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                     finish()
                 },
-                onFailure = {
-                    msg -> Log.e("Register", msg.toString())
+                onFailure = { msg ->
+                    Log.e("Register", msg.toString())
                     Toast.makeText(this, "Registration failed.", Toast.LENGTH_SHORT).show()
                     println("[Register]: Registration failed.")
                     binding.registerSignupButton.isEnabled = true
@@ -69,6 +115,7 @@ class RegisterActivity : ComponentActivity() {
                     binding.registerLoading.visibility = View.INVISIBLE
                 })
         }
+
 
         binding.registerSignIn.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)

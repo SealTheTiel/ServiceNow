@@ -34,25 +34,72 @@ class LoginActivity : ComponentActivity() {
         binding.loginEmailInput.setOnFocusChangeListener { view, focused ->
             if (focused) return@setOnFocusChangeListener
             binding.loginEmail.helperText = InputValidator.validateEmail(binding.loginEmailInput.text.toString())
+
+        }
+
+        binding.loginPasswordInput.setOnFocusChangeListener { view, focused ->
+            if (focused) return@setOnFocusChangeListener
+            binding.loginPassword.helperText = InputValidator.validatePassword(binding.loginPasswordInput.text.toString())
         }
 
 
         binding.loginLoginButton.setOnClickListener {
-            println("clicked")
+            // Get the input values
+            val email = binding.loginEmailInput.text.toString().trim()
+            val password = binding.loginPasswordInput.text.toString().trim()
+
+            // Perform validation checks
+            var isValid = true
+
+            // Validate email
+            val emailError = InputValidator.validateEmail(email)
+            if (emailError != null) {
+                binding.loginEmail.helperText = emailError
+                isValid = false
+            } else {
+                binding.loginEmail.helperText = null
+            }
+
+            // Validate password
+            val passwordError = InputValidator.validatePassword(password)
+            if (passwordError != null) {
+                binding.loginPassword.helperText = passwordError
+                isValid = false
+            } else {
+                binding.loginPassword.helperText = null
+            }
+
+            // Validate email and password for blank inputs
+            if (email.isBlank()) {
+                binding.loginEmail.helperText = "Email cannot be empty"
+                isValid = false
+            }
+
+            if (password.isBlank()) {
+                binding.loginPassword.helperText = "Password cannot be empty"
+                isValid = false
+            }
+
+            // If validation fails, stop the process and show a toast
+            if (!isValid) {
+                Toast.makeText(this, "Please fill out all fields correctly.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            // Proceed with login if all fields are valid
             binding.loginLoginButton.isEnabled = false
             binding.loginLoginButton.visibility = View.INVISIBLE
             binding.loginLoading.visibility = View.VISIBLE
-            val email = binding.loginEmailInput.text.toString()
-            val password = binding.loginPasswordInput.text.toString()
+
             CurrentProfile.login(email, password,
-                onSuccess = {
-                    msg -> Log.i("Log In", msg.toString())
+                onSuccess = { msg ->
+                    Log.i("Log In", msg.toString())
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                     finish()
                 },
-                onFailure = {
-                    msg -> Log.e("Log In", msg.toString())
+                onFailure = { msg ->
+                    Log.e("Log In", msg.toString())
                     Toast.makeText(this, "Invalid Email or Password", Toast.LENGTH_SHORT).show()
                     binding.loginLoginButton.isEnabled = true
                     binding.loginLoginButton.visibility = View.VISIBLE
@@ -60,6 +107,7 @@ class LoginActivity : ComponentActivity() {
                 }
             )
         }
+
         binding.loginSignup.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
