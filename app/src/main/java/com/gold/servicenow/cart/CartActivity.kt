@@ -6,10 +6,14 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.gold.servicenow.R
@@ -21,11 +25,16 @@ class CartActivity : ComponentActivity(), CartChangeListener {
     private lateinit var recyclerView: RecyclerView
     private lateinit var checkout: Button
     private lateinit var sp: SharedPreferences
-
+    private lateinit var emptyText: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cart)
         enableEdgeToEdge()
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout())
+            v.updatePadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            WindowInsetsCompat.CONSUMED
+        }
 
 //        private val cartUpdateReceiver = object : BroadcastReceiver() {
 //            override fun onReceive(context: Context?, intent: Intent?) {
@@ -38,20 +47,24 @@ class CartActivity : ComponentActivity(), CartChangeListener {
 
         this.recyclerView = findViewById(R.id.cartRecycle)
         this.total = findViewById(R.id.cartTotal)
+        this.emptyText = findViewById(R.id.cartEmptyText)
+        this.total.text = "Total: PHP 0.00"
+        this.checkout = findViewById(R.id.cartCheckoutButton)
+
+
+        val adapter = CartAdapter(this.cartList)
+        this.recyclerView.adapter = adapter
 
         // Load cart data and update cart items
         sp = getSharedPreferences("cart", MODE_PRIVATE)
         loadCartFromPreferences()
 
         // Set total to show initial amount (or 0.00 if cart is empty)
-        this.total.text = "Total: PHP 0.00"
 
-        CartList.addListener(this)
-        val adapter = CartAdapter(this.cartList)
-        this.recyclerView.adapter = adapter
         this.recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
-        checkout = findViewById(R.id.cartCheckoutButton)
+
+        CartList.addListener(this)
         checkout.setOnClickListener {
             val intent = Intent(this, SetLocationActivity::class.java)
             startActivity(intent)
@@ -87,6 +100,16 @@ class CartActivity : ComponentActivity(), CartChangeListener {
     }
 
     override fun onCartUpdated(totalPrice: Float) {
+        if (cartList.size == 0) {
+            emptyText.visibility = View.VISIBLE
+            total.visibility = View.GONE
+            checkout.visibility = View.GONE
+        }
+        else {
+            emptyText.visibility = View.GONE
+            total.visibility = View.VISIBLE
+            checkout.visibility = View.VISIBLE
+        }
         saveCartToPreferences()
         total.text = "Total: PHP ${String.format("%.2f", totalPrice)}"
     }
