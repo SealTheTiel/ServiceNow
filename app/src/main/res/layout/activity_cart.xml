@@ -8,19 +8,24 @@
     tools:context=".cart.AddtoCart"
     android:background="@color/white">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.12" />
+
     <TextView
         android:id="@+id/cartHeader"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/double_margins"
-        android:layout_marginBottom="20dp"
         android:fontFamily="sans-serif"
         android:text="Cart"
         android:textAlignment="center"
         android:textColor="@color/primary_blue"
         android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/cartRecycle"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -30,11 +35,13 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="@dimen/default_margins"
+        android:layout_marginTop="@dimen/default_margins"
         android:layout_marginEnd="@dimen/default_margins"
         app:layout_constraintBottom_toTopOf="@+id/cartTotal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cartHeader">
+        app:layout_constraintTop_toBottomOf="@+id/guideline">
 
     </androidx.recyclerview.widget.RecyclerView>
 
@@ -71,4 +78,17 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/cartEmptyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cart is empty"
+        android:textColor="@color/tertiary_blue"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/cartRecycle"
+        app:layout_constraintEnd_toEndOf="@+id/cartRecycle"
+        app:layout_constraintStart_toStartOf="@+id/cartRecycle"
+        app:layout_constraintTop_toTopOf="@+id/cartRecycle" />
 </androidx.constraintlayout.widget.ConstraintLayout>
