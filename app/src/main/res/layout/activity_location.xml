@@ -31,6 +31,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:clickable="true"
         android:id="@+id/locationAutoLocation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -82,11 +83,12 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:clickable="true"
         android:id="@+id/locationAddLocation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/double_margins"
         android:layout_marginStart="@dimen/default_margins"
+        android:layout_marginTop="@dimen/double_margins"
         android:layout_marginEnd="@dimen/default_margins"
         android:background="@drawable/rounded"
         android:backgroundTint="@color/white"
@@ -103,14 +105,13 @@
             android:layout_height="50dp"
             android:padding="5dp"
             android:src="@drawable/location_icon"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/locationAddInput"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center|start"
             android:layout_marginStart="@dimen/half_margins"
             android:layout_marginEnd="@dimen/half_margins"
@@ -119,16 +120,15 @@
             android:inputType="text"
             android:textColorHint="@color/primary_blue"
             android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/locationAddIcon"
             app:layout_constraintEnd_toStartOf="@+id/locationAddButton"
             app:layout_constraintStart_toEndOf="@+id/locationAddIcon"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/locationAddIcon" />
 
         <RadioButton
             android:id="@+id/locationAddButton"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -140,16 +140,17 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="16dp"
-        android:layout_marginTop="@dimen/double_margins"
         app:backgroundTint="@null"
         app:layout_constraintBottom_toTopOf="@+id/paymentProceedButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/locationAddLocation"
-        app:tint="@null" />
+        app:layout_constraintTop_toTopOf="@+id/guideline"
+        app:layout_constraintVertical_bias="0.0"
+        app:tint="@null"
+        tools:visibility="gone">
 
-
+    </org.osmdroid.views.MapView>
 
     <Button
         android:id="@+id/paymentProceedButton"
