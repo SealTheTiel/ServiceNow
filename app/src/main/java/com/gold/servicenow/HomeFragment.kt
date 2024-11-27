@@ -128,11 +128,17 @@ class HomeFragment : Fragment() {
         editor.apply()
     }
 
-    override fun onStop() {
-        super.onStop()
+    override fun onResume() {
+        super.onResume()
+        val intentFilter = IntentFilter("com.gold.servicenow.PROFILE_UPDATED")
         LocalBroadcastManager.getInstance(requireContext())
-            .unregisterReceiver(profileUpdateReceiver)
+            .registerReceiver(profileUpdateReceiver, intentFilter)
+
+        val editor = sp.edit()
+        editor.putString("name", CurrentProfile.profile?.name)
+        editor.apply()
     }
+
     private fun replaceFragment(fragment: Fragment, selected: Int) {
         var fragmentTransition = parentFragmentManager.beginTransaction()
         fragmentTransition.replace(R.id.frame, fragment)
