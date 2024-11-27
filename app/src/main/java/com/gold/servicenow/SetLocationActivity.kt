@@ -6,8 +6,7 @@ import android.content.pm.PackageManager
 import android.location.Geocoder
 import android.os.Bundle
 import android.util.Log
-import android.view.GestureDetector
-import android.view.MotionEvent
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioButton
@@ -19,14 +18,10 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.gold.servicenow.carthistory.CartHistoryActivity
-import org.osmdroid.api.IGeoPoint
 import org.osmdroid.config.Configuration
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
-import org.osmdroid.views.overlay.ItemizedIconOverlay
-import org.osmdroid.views.overlay.ItemizedOverlayWithFocus
 import org.osmdroid.views.overlay.Marker
-import org.osmdroid.views.overlay.OverlayItem
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay
 import java.util.Locale
 
@@ -40,7 +35,7 @@ class SetLocationActivity : ComponentActivity() {
     private lateinit var locationAutoText: TextView
     private val LOCATION_PERMISSION_REQUEST_CODE = 1
 
-    private var currentSelection: String = "ADD" // Default selection is Add Location
+    private var currentSelection: String = "AUTO" // Default selection is Add Location
     private var myLocationOverlay: MyLocationNewOverlay? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,8 +71,10 @@ class SetLocationActivity : ComponentActivity() {
         locationAddInput = findViewById(R.id.locationAddInput)
         locationAutoText = findViewById(R.id.locationAutoText)
 
+        locationMap.setMultiTouchControls(true)
+        locationMap.controller.setZoom(15.0)
         // Set default to Add Location
-        initializeAddLocation()
+        initializeAutoLocation()
 
         // Proceed to payment method
         proceed.setOnClickListener {
@@ -112,14 +109,33 @@ class SetLocationActivity : ComponentActivity() {
                 initializeAddLocation()
             }
         }
+
+        locationAddInput.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
+            if (keyCode == android.view.KeyEvent.KEYCODE_ENTER && event.action == android.view.KeyEvent.ACTION_UP) {
+                locationAddInput.clearFocus()
+                return@OnKeyListener true
+            }
+            false
+        })
+        locationAddInput.onFocusChangeListener = View.OnFocusChangeListener { _, focused ->
+            if (focused) { return@OnFocusChangeListener }
+            if (locationAddInput.text == null || locationAddInput.text.toString().isEmpty()) { return@OnFocusChangeListener }
+            val geocoder = Geocoder(this@SetLocationActivity, Locale.getDefault())
+            var addresses = geocoder.getFromLocationName(locationAddInput.text.toString(), 1)
+            if (addresses != null && addresses.isNotEmpty()) {
+                val address = addresses[0].getAddressLine(0)
+                val location = GeoPoint(addresses[0].latitude, addresses[0].longitude)
+                locationAddInput.setText(address)
+                addMarker(location, address)
+                locationMap.controller.animateTo(location)
+            }
+        }
     }
 
     // Initialize Add Location logic
     private fun initializeAddLocation() {
         // Show the map and configure it
         locationMap.visibility = android.view.View.VISIBLE
-        locationMap.setMultiTouchControls(true)
-        locationMap.controller.setZoom(15.0)
         locationMap.controller.setCenter(GeoPoint(14.5648, 120.9932))
 
         // Add double-tap listener for choosing a location
@@ -178,7 +194,12 @@ class SetLocationActivity : ComponentActivity() {
                         val addresses = geocoder.getFromLocation(lat, lon, 1)
                         if (addresses != null && addresses.isNotEmpty()) {
                             val address = addresses[0].getAddressLine(0)
+                            val position = GeoPoint(addresses[0].latitude, addresses[0].longitude)
                             locationAutoText.setText(address)
+                            locationMap.controller.animateTo(position)
+                            locationMap.controller.setCenter(position)
+                            locationMap.controller.setZoom(15.0)
+                            locationMap.visibility = android.view.View.VISIBLE
                             Log.d("AutoLocation", "Detected location: $address")
                         } else {
                             locationAutoText.setText("Lat: $lat, Lon: $lon")
