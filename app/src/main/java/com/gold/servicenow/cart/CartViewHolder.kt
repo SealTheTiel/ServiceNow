@@ -61,6 +61,7 @@ class CartViewHolder(itemView: View, adapter: CartAdapter): RecyclerView.ViewHol
             CartList.addCartEntry(newEntry)
             val amount = CartList.getCartEntry(cartEntry.name)?.quantity ?: return@setOnClickListener
             itemBinding.itemQuantityValue.setText(String.format("%d", amount))
+            itemBinding.itemPrice.text = "PHP " + String.format("%.2f", cartEntry.price * amount)
         }
         itemBinding.itemDecrement.setOnClickListener {
             itemBinding.itemDecrement.startAnimation(AnimationUtils.loadAnimation(itemView.context, R.anim.button_click_scale))
@@ -73,6 +74,7 @@ class CartViewHolder(itemView: View, adapter: CartAdapter): RecyclerView.ViewHol
             CartList.addCartEntry(newEntry)
             val amount = CartList.getCartEntry(cartEntry.name)?.quantity ?: return@setOnClickListener
             itemBinding.itemQuantityValue.setText(String.format("%d", amount))
+            itemBinding.itemPrice.text = "PHP " + String.format("%.2f", cartEntry.price * amount)
         }
     }
 }
